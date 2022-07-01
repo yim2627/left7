@@ -19,6 +19,7 @@
 		A6443942286EE59A009E9F74 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = A6443941286EE59A009E9F74 /* ReactorKit */; };
 		A6443944286EE783009E9F74 /* HttpNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443943286EE783009E9F74 /* HttpNetworkError.swift */; };
 		A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443945286EE8A6009E9F74 /* HttpMethod.swift */; };
+		A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443947286EE8D5009E9F74 /* EndPoint.swift */; };
 		A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9766286EC80E009968B1 /* AppDelegate.swift */; };
 		A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9768286EC80E009968B1 /* SceneDelegate.swift */; };
 		A6AD976B286EC80E009968B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD976A286EC80E009968B1 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A6443943286EE783009E9F74 /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
 		A6443945286EE8A6009E9F74 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		A6443947286EE8D5009E9F74 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A6AD9763286EC80E009968B1 /* Left7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AD9766286EC80E009968B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6AD9768286EC80E009968B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				A6AD976A286EC80E009968B1 /* ViewController.swift */,
 				A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */,
 				A6443945286EE8A6009E9F74 /* HttpMethod.swift */,
+				A6443947286EE8D5009E9F74 /* EndPoint.swift */,
 				A6443943286EE783009E9F74 /* HttpNetworkError.swift */,
 				A6443933286EDCA2009E9F74 /* ResponseModel */,
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
@@ -189,6 +192,7 @@
 				A6AD976B286EC80E009968B1 /* ViewController.swift in Sources */,
 				A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */,
 				A6443930286EDC84009E9F74 /* ProductDataResponse.swift in Sources */,
+				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */,
 				A6443944286EE783009E9F74 /* HttpNetworkError.swift in Sources */,
