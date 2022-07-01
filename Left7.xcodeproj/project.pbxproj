@@ -43,7 +43,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
+		A6443933286EDCA2009E9F74 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				A644392B286ED8D9009E9F74 /* ProductResponse.swift */,
@@ -51,7 +51,7 @@
 				A644392D286EDC58009E9F74 /* YogiResponse.swift */,
 				A6443931286EDC9C009E9F74 /* ProductDescriptionResponse.swift */,
 			);
-			path = ResponseModel;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		A6AD975A286EC80E009968B1 = {
@@ -76,7 +76,7 @@
 				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
 				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
 				A6AD976A286EC80E009968B1 /* ViewController.swift */,
-				A6443933286EDCA2009E9F74 /* ResponseModel */,
+				A6443933286EDCA2009E9F74 /* Entity */,
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
 				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
 				A6AD9774286EC810009968B1 /* Info.plist */,
