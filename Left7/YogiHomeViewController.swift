@@ -23,7 +23,7 @@ final class YogiHomeViewController: UIViewController {
         configureYogiHomeCollectionView()
     }
     
-    func configureYogiHomeCollectionView() {
+    private func configureYogiHomeCollectionView() {
         let layout = configureYogiCollectionViewCompositionalLayout()
         yogiHomeCollectionView = UICollectionView(
             frame: .zero,
@@ -35,7 +35,7 @@ final class YogiHomeViewController: UIViewController {
         yogiHomeCollectionView.backgroundColor = .blue // 임시 체크
     }
     
-    func configureYogiHomeCollectionViewLayout() {
+    private func configureYogiHomeCollectionViewLayout() {
         yogiHomeCollectionView.snp.makeConstraints { [weak self] in
             guard let self = self else {
                 return
@@ -47,7 +47,7 @@ final class YogiHomeViewController: UIViewController {
         }
     }
     
-    func configureYogiCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    private func configureYogiCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let sectionProvider = { [weak self] (sectionIndex: Int, enviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let section = self?.makeCollectionViewYogiProductSection()
             
@@ -56,7 +56,7 @@ final class YogiHomeViewController: UIViewController {
         return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
     }
     
-    func makeCollectionViewYogiProductSection() -> NSCollectionLayoutSection? {
+    private func makeCollectionViewYogiProductSection() -> NSCollectionLayoutSection? {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.5),
             heightDimension: .fractionalHeight(1)
