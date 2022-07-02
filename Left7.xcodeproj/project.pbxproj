@@ -26,6 +26,7 @@
 		A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C75287089B300DF06DB /* YogiProductRepository.swift */; };
 		A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7728708C4300DF06DB /* NetworkRepository.swift */; };
 		A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */; };
+		A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7F2870A18600DF06DB /* YogiHomeViewReactor.swift */; };
 		A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9766286EC80E009968B1 /* AppDelegate.swift */; };
 		A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9768286EC80E009968B1 /* SceneDelegate.swift */; };
 		A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */; };
@@ -48,6 +49,7 @@
 		A67F1C75287089B300DF06DB /* YogiProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiProductRepository.swift; sourceTree = "<group>"; };
 		A67F1C7728708C4300DF06DB /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUsecase.swift; sourceTree = "<group>"; };
+		A67F1C7F2870A18600DF06DB /* YogiHomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeViewReactor.swift; sourceTree = "<group>"; };
 		A6AD9763286EC80E009968B1 /* Left7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AD9766286EC80E009968B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6AD9768286EC80E009968B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		A67F1C74287085EA00DF06DB /* Reactor */ = {
 			isa = PBXGroup;
 			children = (
+				A67F1C7F2870A18600DF06DB /* YogiHomeViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */,
 				A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */,
+				A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */,
