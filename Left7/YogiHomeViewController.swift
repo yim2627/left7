@@ -43,7 +43,6 @@ final class YogiHomeViewController: UIViewController {
         
         view.addSubview(yogiHomeCollectionView)
         configureYogiHomeCollectionViewLayout()
-        yogiHomeCollectionView.backgroundColor = .blue // 임시 체크
         configureYogiHomeCollectionviewDataSource()
     }
     
@@ -78,7 +77,7 @@ final class YogiHomeViewController: UIViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(250)
+            heightDimension: .absolute(300)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,

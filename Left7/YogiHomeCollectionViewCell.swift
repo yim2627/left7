@@ -9,11 +9,11 @@ import UIKit
 
 final class YogiHomeCollectionViewCell: UICollectionViewCell {
     let productImageView = YogiProductImageView(frame: .zero)
+    private let rateStackView = YogiRateStackView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .gray
-        configureImageView()
+        configureYogiHomeCollectionViewCell()
     }
     
     required init?(coder: NSCoder) {
@@ -24,7 +24,13 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
         let d = try! Data(contentsOf: URL(string: product.thumbnailPath)!)
         let i = UIImage(data: d)
         productImageView.image = i
+        rateStackView.setRateValue(rate: product.rate)
         configureFavoriteButton(isFavorite: product.isFavorite)
+    }
+    
+    private func configureYogiHomeCollectionViewCell() {
+        configureImageView()
+        configureRateStackView()
     }
     
     private func configureImageView() {
@@ -32,6 +38,14 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
         productImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(120)
+        }
+    }
+    
+    private func configureRateStackView() {
+        contentView.addSubview(rateStackView)
+        rateStackView.snp.makeConstraints {
+            $0.top.equalTo(productImageView.snp.bottom).inset(-10)
+            $0.leading.equalTo(productImageView.snp.leading)
         }
     }
     
