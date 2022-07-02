@@ -24,7 +24,11 @@ final class YogiHomeViewController: UIViewController {
     }
     
     func configureYogiHomeCollectionView() {
-        yogiHomeCollectionView = UICollectionView() // Layout 추가
+        let layout = configureYogiCollectionViewCompositionalLayout()
+        yogiHomeCollectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
         
         view.addSubview(yogiHomeCollectionView)
         configureYogiHomeCollectionViewLayout()
@@ -41,6 +45,37 @@ final class YogiHomeViewController: UIViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             $0.leading.trailing.equalToSuperview()
         }
+    }
+    
+    func configureYogiCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        let sectionProvider = { [weak self] (sectionIndex: Int, enviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let section = self?.makeCollectionViewYogiProductSection()
+            
+            return section
+        }
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+    }
+    
+    func makeCollectionViewYogiProductSection() -> NSCollectionLayoutSection? {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.5),
+            heightDimension: .fractionalHeight(1)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(500)
+        )
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 20
+        
+        return section
     }
 }
 
