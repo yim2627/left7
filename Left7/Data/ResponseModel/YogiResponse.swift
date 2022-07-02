@@ -22,11 +22,11 @@ struct YogiResponse: Decodable {
 extension YogiResponse {
     struct ProductDataResponse: Decodable {
         let productTotalCount: Int
-        let product: [ProductResponse]
+        let products: [ProductResponse]
         
         enum CodingKeys: String, CodingKey {
             case productTotalCount = "totalCount"
-            case product
+            case products = "product"
         }
     }
 }
@@ -63,7 +63,7 @@ extension YogiResponse.ProductDataResponse.ProductResponse {
             price: description.price,
             rate: rate,
             isFavorite: false,
-            favoriteRegistrationTime: Date()
+            favoriteRegistrationTime: nil
         )
     }
 }
