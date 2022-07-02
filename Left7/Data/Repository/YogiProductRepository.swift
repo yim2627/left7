@@ -15,9 +15,18 @@ final class YogiProductRepository: NetworkRepository {
         self.network = network
     }
     
-    func fetchYogiProduct(page: Int) -> Observable<Product> {
+    func fetchYogiProducts(page: Int) -> Observable<[Product]> {
         let endPoint = EndPoint(urlInformation: .pagination(page: page))
         
-        return .empty()
+        return network.fetch(endPoint: endPoint)
+            .map { data -> [Product] in
+                let jsonDecoder = JSONDecoder()
+                let decodedData = try? jsonDecoder.decode(YogiResponse.self, from: data)
+                
+                let products = decodedData?.productData.products.map { product in
+                    product.toDomain()
+                }
+                return products ?? []
+            }
     }
 }
