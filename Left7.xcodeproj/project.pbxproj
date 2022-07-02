@@ -18,9 +18,14 @@
 		A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443945286EE8A6009E9F74 /* HttpMethod.swift */; };
 		A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443947286EE8D5009E9F74 /* EndPoint.swift */; };
 		A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644394E286EEBA0009E9F74 /* HttpNetwork.swift */; };
+		A644395128704139009E9F74 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644395028704139009E9F74 /* Product.swift */; };
+		A6443954287053B8009E9F74 /* YogiHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */; };
+		A644395628705402009E9F74 /* UICollectionView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644395528705402009E9F74 /* UICollectionView+extension.swift */; };
+		A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644395728706790009E9F74 /* YogiProductImageView.swift */; };
+		A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644395928706E48009E9F74 /* YogiRateStackView.swift */; };
 		A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9766286EC80E009968B1 /* AppDelegate.swift */; };
 		A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9768286EC80E009968B1 /* SceneDelegate.swift */; };
-		A6AD976B286EC80E009968B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD976A286EC80E009968B1 /* ViewController.swift */; };
+		A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */; };
 		A6AD9770286EC810009968B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6AD976F286EC810009968B1 /* Assets.xcassets */; };
 		A6AD9773286EC810009968B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -32,10 +37,15 @@
 		A6443945286EE8A6009E9F74 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		A6443947286EE8D5009E9F74 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A644394E286EEBA0009E9F74 /* HttpNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetwork.swift; sourceTree = "<group>"; };
+		A644395028704139009E9F74 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		A644395528705402009E9F74 /* UICollectionView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+extension.swift"; sourceTree = "<group>"; };
+		A644395728706790009E9F74 /* YogiProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiProductImageView.swift; sourceTree = "<group>"; };
+		A644395928706E48009E9F74 /* YogiRateStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiRateStackView.swift; sourceTree = "<group>"; };
 		A6AD9763286EC80E009968B1 /* Left7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AD9766286EC80E009968B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6AD9768286EC80E009968B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A6AD976A286EC80E009968B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeViewController.swift; sourceTree = "<group>"; };
 		A6AD976F286EC810009968B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6AD9772286EC810009968B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6AD9774286EC810009968B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,6 +120,57 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		A644395228704153009E9F74 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A644395028704139009E9F74 /* Product.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		A67F1C70287085A500DF06DB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C71287085B400DF06DB /* Home */,
+				A67F1C72287085B900DF06DB /* Common */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A67F1C71287085B400DF06DB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C73287085DF00DF06DB /* View */,
+				A67F1C74287085EA00DF06DB /* Reactor */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A67F1C72287085B900DF06DB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A644395728706790009E9F74 /* YogiProductImageView.swift */,
+				A644395928706E48009E9F74 /* YogiRateStackView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A67F1C73287085DF00DF06DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */,
+				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A67F1C74287085EA00DF06DB /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
 		A6AD975A286EC80E009968B1 = {
 			isa = PBXGroup;
 			children = (
@@ -131,11 +192,13 @@
 			children = (
 				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
 				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
-				A6AD976A286EC80E009968B1 /* ViewController.swift */,
+				A67F1C70287085A500DF06DB /* Presentation */,
+				A644395228704153009E9F74 /* Entity */,
 				A6443949286EEAB4009E9F74 /* Data */,
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
 				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
 				A6AD9774286EC810009968B1 /* Info.plist */,
+				A644395528705402009E9F74 /* UICollectionView+extension.swift */,
 			);
 			path = Left7;
 			sourceTree = "<group>";
@@ -222,15 +285,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6AD976B286EC80E009968B1 /* ViewController.swift in Sources */,
+				A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */,
 				A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */,
+				A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */,
+				A6443954287053B8009E9F74 /* YogiHomeCollectionViewCell.swift in Sources */,
 				A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */,
 				A6443944286EE783009E9F74 /* HttpNetworkError.swift in Sources */,
+				A644395628705402009E9F74 /* UICollectionView+extension.swift in Sources */,
+				A644395128704139009E9F74 /* Product.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
+				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
