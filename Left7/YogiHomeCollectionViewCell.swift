@@ -11,6 +11,13 @@ import SnapKit
 final class YogiHomeCollectionViewCell: UICollectionViewCell {
     let productImageView = YogiProductImageView(frame: .zero)
     private let rateStackView = YogiRateStackView(frame: .zero)
+    private let productNameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.textColor = .black
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,17 +34,19 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
         productImageView.image = i
         rateStackView.setRateValue(rate: product.rate)
         configureFavoriteButton(isFavorite: product.isFavorite)
+        productNameLabel.text = product.name
     }
     
     private func configureYogiHomeCollectionViewCell() {
         configureImageView()
         configureRateStackView()
+        configureProductNameLabel()
     }
     
     private func configureImageView() {
         contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(10)
+            $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(120)
         }
     }
@@ -45,8 +54,19 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     private func configureRateStackView() {
         contentView.addSubview(rateStackView)
         rateStackView.snp.makeConstraints {
-            $0.top.equalTo(productImageView.snp.bottom).inset(-10)
+            $0.top.equalTo(productImageView.snp.bottom).inset(-8)
             $0.leading.equalTo(productImageView.snp.leading)
+            $0.trailing.equalTo(productImageView.snp.trailing)
+        }
+    }
+    
+    private func configureProductNameLabel() {
+        contentView.addSubview(productNameLabel)
+        productNameLabel.snp.makeConstraints {
+            $0.top.equalTo(rateStackView.snp.bottom).inset(-8)
+            $0.leading.equalTo(rateStackView.snp.leading)
+            $0.trailing.equalTo(rateStackView.snp.trailing)
+            $0.bottom.lessThanOrEqualToSuperview()
         }
     }
     

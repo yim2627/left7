@@ -39,6 +39,8 @@ final class YogiRateStackView: UIStackView {
         
         self.addArrangedSubview(starImageView)
         self.addArrangedSubview(rateLabel)
+        
+        starImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     func setRateValue(rate: Double) {

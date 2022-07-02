@@ -29,7 +29,7 @@ final class YogiHomeViewController: UIViewController {
         view.backgroundColor = .red
         configureYogiHomeCollectionView()
         
-        let products = [Product(id: 1, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_7.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_6.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_10.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
+        let products = [Product(id: 1, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가가나다라마바사아자차카타파하파타카차자아사바마라다나가가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "따뜻한 분위기의 서비스와 현대적인 호텔", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_7.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "여기어때 남산", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_6.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_10.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
         applySnapShot(products: products)
     }
     
@@ -73,16 +73,17 @@ final class YogiHomeViewController: UIViewController {
             heightDimension: .fractionalHeight(1)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(300)
+            heightDimension: .absolute(250)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [item]
         )
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16)
         
         let section = NSCollectionLayoutSection(group: group)
         
