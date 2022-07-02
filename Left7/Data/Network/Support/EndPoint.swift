@@ -26,12 +26,12 @@ struct EndPoint {
     }
     
     enum URLInformation {
-        case pagination(jsonId: Int)
+        case pagination(page: Int)
         
         var path: String {
             switch self {
-            case .pagination(let jsonId):
-                return "/App/json/\(jsonId).json"
+            case .pagination(let page):
+                return "/App/json/\(page).json"
             }
         }
     }
