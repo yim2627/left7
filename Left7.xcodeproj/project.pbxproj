@@ -128,6 +128,49 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		A67F1C70287085A500DF06DB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C71287085B400DF06DB /* Home */,
+				A67F1C72287085B900DF06DB /* Common */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A67F1C71287085B400DF06DB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C73287085DF00DF06DB /* View */,
+				A67F1C74287085EA00DF06DB /* Reactor */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A67F1C72287085B900DF06DB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A644395728706790009E9F74 /* YogiProductImageView.swift */,
+				A644395928706E48009E9F74 /* YogiRateStackView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A67F1C73287085DF00DF06DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */,
+				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A67F1C74287085EA00DF06DB /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
 		A6AD975A286EC80E009968B1 = {
 			isa = PBXGroup;
 			children = (
@@ -149,10 +192,7 @@
 			children = (
 				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
 				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
-				A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */,
-				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
-				A644395728706790009E9F74 /* YogiProductImageView.swift */,
-				A644395928706E48009E9F74 /* YogiRateStackView.swift */,
+				A67F1C70287085A500DF06DB /* Presentation */,
 				A644395228704153009E9F74 /* Entity */,
 				A6443949286EEAB4009E9F74 /* Data */,
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
