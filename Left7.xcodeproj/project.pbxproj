@@ -25,6 +25,7 @@
 		A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644395928706E48009E9F74 /* YogiRateStackView.swift */; };
 		A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C75287089B300DF06DB /* YogiProductRepository.swift */; };
 		A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7728708C4300DF06DB /* NetworkRepository.swift */; };
+		A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */; };
 		A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9766286EC80E009968B1 /* AppDelegate.swift */; };
 		A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9768286EC80E009968B1 /* SceneDelegate.swift */; };
 		A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */; };
@@ -46,6 +47,7 @@
 		A644395928706E48009E9F74 /* YogiRateStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiRateStackView.swift; sourceTree = "<group>"; };
 		A67F1C75287089B300DF06DB /* YogiProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiProductRepository.swift; sourceTree = "<group>"; };
 		A67F1C7728708C4300DF06DB /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
+		A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUsecase.swift; sourceTree = "<group>"; };
 		A6AD9763286EC80E009968B1 /* Left7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AD9766286EC80E009968B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6AD9768286EC80E009968B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,8 +199,17 @@
 			children = (
 				A644395228704153009E9F74 /* Entity */,
 				A67F1C7928708F1A00DF06DB /* Interface */,
+				A67F1C7E2870A04500DF06DB /* Usecase */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		A67F1C7E2870A04500DF06DB /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */,
+			);
+			path = Usecase;
 			sourceTree = "<group>";
 		};
 		A6AD975A286EC80E009968B1 = {
@@ -320,6 +331,7 @@
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */,
+				A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */,
 				A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */,
 				A6443954287053B8009E9F74 /* YogiHomeCollectionViewCell.swift in Sources */,
 				A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */,
