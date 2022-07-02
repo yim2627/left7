@@ -47,11 +47,7 @@ final class YogiHomeViewController: UIViewController {
     }
     
     private func configureYogiHomeCollectionViewLayout() {
-        yogiHomeCollectionView.snp.makeConstraints { [weak self] in
-            guard let self = self else {
-                return
-            }
-            
+        yogiHomeCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             $0.leading.trailing.equalToSuperview()
