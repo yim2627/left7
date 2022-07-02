@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class YogiProductImageView: UIImageView {
     let favoriteButton: UIButton = UIButton()

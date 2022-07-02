@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class YogiHomeCollectionViewCell: UICollectionViewCell {
     let productImageView = YogiProductImageView(frame: .zero)
