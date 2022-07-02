@@ -29,7 +29,7 @@ final class YogiHomeViewController: UIViewController {
         view.backgroundColor = .red
         configureYogiHomeCollectionView()
         
-        let products = [Product(id: 1, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
+        let products = [Product(id: 1, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_7.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_6.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "1", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_10.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
         applySnapShot(products: products)
     }
     
@@ -96,12 +96,13 @@ final class YogiHomeViewController: UIViewController {
     
     private func configureYogiHomeCollectionviewDataSource() {
         dataSource = DiffableDataSource(collectionView: yogiHomeCollectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Product) in
+            (collectionView: UICollectionView, indexPath: IndexPath, product: Product) in
             let cell = collectionView.dequeueReusableCell(
                 withClass: YogiHomeCollectionViewCell.self,
                 indextPath: indexPath
             )
             
+            cell.setData(product: product)
             return cell
         }
     }
