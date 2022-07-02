@@ -84,7 +84,7 @@
 			children = (
 				A6443933286EDCA2009E9F74 /* ResponseModel */,
 				A644394D286EEAF2009E9F74 /* Network */,
-				A67F1C75287089B300DF06DB /* YogiProductRepository.swift */,
+				A67F1C7A28708F2E00DF06DB /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -176,6 +176,31 @@
 			path = Reactor;
 			sourceTree = "<group>";
 		};
+		A67F1C7928708F1A00DF06DB /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C7728708C4300DF06DB /* NetworkRepository.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		A67F1C7A28708F2E00DF06DB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A67F1C75287089B300DF06DB /* YogiProductRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A67F1C7B28708F5F00DF06DB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A644395228704153009E9F74 /* Entity */,
+				A67F1C7928708F1A00DF06DB /* Interface */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		A6AD975A286EC80E009968B1 = {
 			isa = PBXGroup;
 			children = (
@@ -198,13 +223,12 @@
 				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
 				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
 				A67F1C70287085A500DF06DB /* Presentation */,
-				A644395228704153009E9F74 /* Entity */,
+				A67F1C7B28708F5F00DF06DB /* Domain */,
 				A6443949286EEAB4009E9F74 /* Data */,
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
 				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
 				A6AD9774286EC810009968B1 /* Info.plist */,
 				A644395528705402009E9F74 /* UICollectionView+extension.swift */,
-				A67F1C7728708C4300DF06DB /* NetworkRepository.swift */,
 			);
 			path = Left7;
 			sourceTree = "<group>";
