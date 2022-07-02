@@ -17,22 +17,34 @@ import SnapKit
 final class YogiHomeViewController: UIViewController {
     private var yogiHomeCollectionView: UICollectionView!
     
+    private enum HomeSection: Hashable {
+        case home
+    }
+
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<HomeSection, Product>
+    private var dataSource: DiffableDataSource?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         configureYogiHomeCollectionView()
+        
+        let products = [Product(id: 1, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
+        applySnapShot(products: products)
     }
     
     private func configureYogiHomeCollectionView() {
-        let layout = configureYogiCollectionViewCompositionalLayout()
+        let layout = configureYogiHomeCollectionViewCompositionalLayout()
         yogiHomeCollectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout
         )
+        configureYogiHomeCollectionViewCell()
         
         view.addSubview(yogiHomeCollectionView)
         configureYogiHomeCollectionViewLayout()
         yogiHomeCollectionView.backgroundColor = .blue // 임시 체크
+        configureYogiHomeCollectionviewDataSource()
     }
     
     private func configureYogiHomeCollectionViewLayout() {
@@ -47,7 +59,7 @@ final class YogiHomeViewController: UIViewController {
         }
     }
     
-    private func configureYogiCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    private func configureYogiHomeCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let sectionProvider = { [weak self] (sectionIndex: Int, enviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let section = self?.makeCollectionViewYogiProductSection()
             
@@ -62,20 +74,44 @@ final class YogiHomeViewController: UIViewController {
             heightDimension: .fractionalHeight(1)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(500)
+            heightDimension: .estimated(250)
         )
-        let group = NSCollectionLayoutGroup.vertical(
+        let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [item]
         )
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 20
         
         return section
     }
+    
+    private func configureYogiHomeCollectionViewCell() {
+        yogiHomeCollectionView.registerCell(withClass: YogiHomeCollectionViewCell.self)
+    }
+    
+    private func configureYogiHomeCollectionviewDataSource() {
+        dataSource = DiffableDataSource(collectionView: yogiHomeCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: Product) in
+            let cell = collectionView.dequeueReusableCell(
+                withClass: YogiHomeCollectionViewCell.self,
+                indextPath: indexPath
+            )
+            
+            return cell
+        }
+    }
+    
+    private func applySnapShot(products: [Product]) {
+        var snapShot = NSDiffableDataSourceSnapshot<HomeSection, Product>()
+        
+        snapShot.appendSections([.home])
+        snapShot.appendItems(products, toSection: .home)
+        
+        dataSource?.apply(snapShot)
+    }
 }
-
