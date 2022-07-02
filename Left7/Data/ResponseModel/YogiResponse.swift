@@ -52,4 +52,18 @@ extension YogiResponse.ProductDataResponse.ProductResponse {
         let subject: String
         let price: Int
     }
+    
+    func toDomain() -> Product {
+        return Product(
+            id: id,
+            name: name,
+            thumbnailPath: thumbnailPath,
+            descriptionImagePath: description.imagePath,
+            descriptionSubject: description.subject,
+            price: description.price,
+            rate: rate,
+            isFavorite: false,
+            favoriteRegistrationTime: Date()
+        )
+    }
 }
