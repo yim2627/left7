@@ -69,7 +69,7 @@ final class YogiDetailViewController: UIViewController, View {
         return view
     }()
     
-    private let favoriteButton = UIBarButtonItem()
+    private let favoriteButton = UIButton()
     
     var disposeBag = DisposeBag()
     
@@ -104,7 +104,7 @@ final class YogiDetailViewController: UIViewController, View {
     private func configureNavigationBar() {
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.topItem?.title = String()
-        navigationItem.rightBarButtonItem = favoriteButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
     }
     
     private func configureYogiProductDetailView() {
@@ -156,11 +156,11 @@ final class YogiDetailViewController: UIViewController, View {
     
     private func setFavoriteState(state: Bool) {
         if state == true {
-            self.favoriteButton.image = UIImage(systemName: "suit.heart.fill")
+            self.favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
             self.favoriteButton.tintColor = .systemRed
         } else  {
-            self.favoriteButton.image = UIImage(systemName: "suit.heart")
-            self.favoriteButton.tintColor = .white
+            self.favoriteButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+            self.favoriteButton.tintColor = .lightGray
         }
     }
 }
