@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6075D792871666F00913FD4 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075D782871666F00913FD4 /* UIViewController+Rx.swift */; };
 		A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644392D286EDC58009E9F74 /* YogiResponse.swift */; };
 		A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */; };
 		A6443938286EE56F009E9F74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A6443937286EE56F009E9F74 /* SnapKit */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6075D782871666F00913FD4 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		A644392D286EDC58009E9F74 /* YogiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiResponse.swift; sourceTree = "<group>"; };
 		A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A6443943286EE783009E9F74 /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				A67F1C71287085B400DF06DB /* Home */,
 				A67F1C72287085B900DF06DB /* Common */,
+				A6075D782871666F00913FD4 /* UIViewController+Rx.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				A6443944286EE783009E9F74 /* HttpNetworkError.swift in Sources */,
 				A644395628705402009E9F74 /* UICollectionView+extension.swift in Sources */,
 				A644395128704139009E9F74 /* Product.swift in Sources */,
+				A6075D792871666F00913FD4 /* UIViewController+Rx.swift in Sources */,
 				A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */,
 				A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
