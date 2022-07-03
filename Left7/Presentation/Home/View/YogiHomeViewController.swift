@@ -60,11 +60,12 @@ final class YogiHomeViewController: UIViewController, View {
             .disposed(by: disposeBag)
         
         yogiHomeCollectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self, weak reactor] indexPath in
-                self?.yogiHomeCollectionView.deselectItem(at: indexPath, animated: false)
-                print(reactor?.currentState.products[indexPath.row])
-                let de = YogiDetailViewController()
-                self?.navigationController?.pushViewController(de, animated: true)
+            .subscribe(onNext: { [unowned self, unowned reactor] indexPath in
+                self.yogiHomeCollectionView.deselectItem(at: indexPath, animated: false)
+                let detailReactor = YogiDetailViewReactor(selectedProduct: reactor.currentState.products[indexPath.row])
+                let detailViewController = YogiDetailViewController()
+                detailViewController.reactor = detailReactor
+                self.navigationController?.pushViewController(detailViewController, animated: true)
             })
             .disposed(by: disposeBag)
     }

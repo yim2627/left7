@@ -13,13 +13,19 @@ import RxCocoa
 import ReactorKit
 
 final class YogiDetailViewReactor: Reactor {
-    var initialState: State = State()
+    var initialState: State
+    
+    init(selectedProduct: Product) {
+        self.initialState = State(product: selectedProduct)
+    }
     
     enum Action {
+        case didInit
         case didTapFavoriteButton
     }
     
     enum Mutation {
+        case setProduct
         case toggleFavoriteState
     }
     
@@ -29,6 +35,8 @@ final class YogiDetailViewReactor: Reactor {
     
     func reduce(state: State, mutation: Mutation) -> State {
         switch mutation {
+        case .setProduct:
+            return state
         case .toggleFavoriteState:
             var newState = state
             let updatedProduct = toggleFavoriteState(previousState: state)
@@ -39,6 +47,8 @@ final class YogiDetailViewReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .didInit:
+            return Observable.just(Mutation.setProduct)
         case .didTapFavoriteButton:
             return Observable.just(Mutation.toggleFavoriteState)
             // CoreData 저장
