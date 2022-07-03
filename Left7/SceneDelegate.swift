@@ -17,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         let vc = YogiHomeViewController()
-        vc.reactor = YogiHomeViewReactor()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
