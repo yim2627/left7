@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 extension ProductDataObject {
+    static let entityName = String(describing: ProductDataObject.self)
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ProductDataObject> {
         return NSFetchRequest<ProductDataObject>(entityName: "ProductDataObject")
     }
