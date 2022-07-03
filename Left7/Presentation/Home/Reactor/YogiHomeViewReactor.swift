@@ -19,12 +19,14 @@ final class YogiHomeViewReactor: Reactor {
     enum Action {
         case fetchProducts
         case loadNextPage
+        case didTapFavoriteButton(Int)
     }
     
     enum Mutation {
         case setProducts([Product])
         case appendProducts([Product], page: Int)
         case setLoadingNextPage(Bool)
+        case toggleFavoriteState(index: Int)
     }
     
     struct State {
@@ -47,6 +49,11 @@ final class YogiHomeViewReactor: Reactor {
         case let .setLoadingNextPage(isLoadingNextPage):
             var newState = state
             newState.isLoadingNextPage = isLoadingNextPage
+            return newState
+        case let .toggleFavoriteState(index: index):
+            var newState = state
+            let updatedProduct = toggleFavoriteState(previousState: newState, index: index)
+            newState.products[index] = updatedProduct
             return newState
         }
     }
@@ -71,7 +78,26 @@ final class YogiHomeViewReactor: Reactor {
                 
                 Observable.just(Mutation.setLoadingNextPage(false))
             ])
+            
+        case let .didTapFavoriteButton(index):
+            return Observable.just(Mutation.toggleFavoriteState(index: index))
         }
+    }
+}
+
+private extension YogiHomeViewReactor {
+    func toggleFavoriteState(previousState: State, index: Int) -> Product {
+        return Product(
+            id: previousState.products[index].id,
+            name: previousState.products[index].name,
+            thumbnailPath: previousState.products[index].thumbnailPath,
+            descriptionImagePath: previousState.products[index].descriptionImagePath,
+            descriptionSubject: previousState.products[index].descriptionSubject,
+            price: previousState.products[index].price,
+            rate: previousState.products[index].rate,
+            isFavorite: !previousState.products[index].isFavorite,
+            favoriteRegistrationTime: Date()
+        )
     }
 }
 
