@@ -43,9 +43,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(product: Product) {
-        let d = try! Data(contentsOf: URL(string: product.thumbnailPath)!)
-        let i = UIImage(data: d)
-        productImageView.image = i
+        productImageView.setImage(with: product.thumbnailPath)
         rateStackView.setRateValue(rate: product.rate)
         configureFavoriteButton(isFavorite: product.isFavorite)
         productNameLabel.text = product.name
