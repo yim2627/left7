@@ -7,9 +7,15 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+import ReactorKit
+
 import SnapKit
 
-final class YogiDetailViewController: UIViewController {
+
+final class YogiDetailViewController: UIViewController, View {
     private let productDetailScrollView = UIScrollView(frame: .zero)
     
     private let productDetailStackView: UIStackView = {
@@ -61,6 +67,10 @@ final class YogiDetailViewController: UIViewController {
         super.viewDidLoad()
         configureYogiProductDetailView()
     }
+    
+//    func bind(reactor: Reactor) {
+//        <#code#>
+//    }
     
     private func configureYogiProductDetailView() {
         configureProductDetailScrollView()
