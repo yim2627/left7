@@ -15,22 +15,25 @@ import ReactorKit
 import SnapKit
 
 
-final class YogiDetailViewController: UIViewController, View {
-    private let productDetailScrollView = UIScrollView(frame: .zero)
+final class YogiDetailViewController: UIViewController {
+    private let productDetailScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        return scrollView
+    }()
     
     private let productDetailStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
-        stackView.backgroundColor = .white
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 12
         return stackView
     }()
     
-    private let productImageView: YogiProductImageView = {
-        let imageView = YogiProductImageView(frame: .zero)
+    private let productImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
         imageView.setImage(with: "https://gccompany.co.kr/App/image/img_1.jpg")
-        imageView.clipsToBounds = false 
-        imageView.setFavoriteState(state: true)
         return imageView
     }()
     
@@ -63,14 +66,31 @@ final class YogiDetailViewController: UIViewController, View {
         return label
     }()
     
+    private let seperateLineView: UIView = {
+        let view = UIView(frame: .zero)
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        return view
+    }()
+    
+    private let favoriteButton = UIBarButtonItem()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureYogiProductDetailView()
+        configureNavigationBar()
     }
     
 //    func bind(reactor: Reactor) {
 //        <#code#>
 //    }
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.topItem?.title = String()
+        favoriteButton.image = UIImage(systemName: "heart.fill")
+        favoriteButton.tintColor = .red
+        navigationItem.rightBarButtonItem = favoriteButton
+    }
     
     private func configureYogiProductDetailView() {
         configureProductDetailScrollView()
@@ -82,23 +102,31 @@ final class YogiDetailViewController: UIViewController, View {
         productDetailScrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-    }
-    
-    private func configureProductDetailStackView() {
-        self.productDetailScrollView.addSubview(productDetailStackView)
-        productDetailStackView.snp.makeConstraints {
-            $0.edges.equalTo(productDetailScrollView.contentLayoutGuide)
-            $0.width.equalTo(productDetailScrollView.frameLayoutGuide)
-        }
         
-        self.productDetailStackView.addArrangedSubview(productImageView)
+        self.productDetailScrollView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(300)
         }
         
+        self.productDetailScrollView.addSubview(productDetailStackView)
+        productDetailStackView.snp.makeConstraints {
+            $0.top.equalTo(productImageView.snp.bottom).offset(10)
+            $0.leading.trailing.bottom.equalTo(productDetailScrollView.contentLayoutGuide)
+            $0.width.equalTo(productDetailScrollView.frameLayoutGuide)
+        }
+    }
+    
+    private func configureProductDetailStackView() {
         self.productDetailStackView.addArrangedSubview(productNameLabel)
         self.productDetailStackView.addArrangedSubview(rateStackView)
         self.productDetailStackView.addArrangedSubview(productPriceLabel)
+        
+        self.productDetailStackView.addArrangedSubview(seperateLineView)
+        seperateLineView.snp.makeConstraints {
+            $0.height.equalTo(1)
+        }
+        
         self.productDetailStackView.addArrangedSubview(productSubjectLabel)
     }
 }
