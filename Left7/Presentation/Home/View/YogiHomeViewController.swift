@@ -28,19 +28,34 @@ final class YogiHomeViewController: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureYogiHomeCollectionView()
+        self.reactor = YogiHomeViewReactor()
     }
     
     func bind(reactor: YogiHomeViewReactor) {
-        self.rx.viewDidLoad
+        self.rx.viewWillAppear
+            .take(1)
             .map { Reactor.Action.fetchProducts }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        yogiHomeCollectionView.rx.contentOffset
+            .withUnretained(self)
+            .filter { (self, offset) in
+                guard self.yogiHomeCollectionView.frame.height > 0 else {
+                    return false
+                }
+                
+                return self.yogiHomeCollectionView.frame.height + offset.y >= self.yogiHomeCollectionView.contentSize.height - 100
+            }
+            .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         reactor.state
             .map { $0.products }
-            .withUnretained(self)
-            .subscribe(onNext: { (self, products) in
-                self.applySnapShot(products: products)
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] products in
+                self?.applySnapShot(products: products)
             })
             .disposed(by: disposeBag)
     }
