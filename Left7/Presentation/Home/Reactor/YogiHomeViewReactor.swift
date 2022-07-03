@@ -81,6 +81,7 @@ final class YogiHomeViewReactor: Reactor {
             
         case let .didTapFavoriteButton(index):
             return Observable.just(Mutation.toggleFavoriteState(index: index))
+            // CoreData 저장
         }
     }
 }

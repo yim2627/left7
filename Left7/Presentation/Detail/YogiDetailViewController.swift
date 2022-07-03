@@ -15,7 +15,7 @@ import ReactorKit
 import SnapKit
 
 
-final class YogiDetailViewController: UIViewController {
+final class YogiDetailViewController: UIViewController, View {
     private let productDetailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -75,20 +75,33 @@ final class YogiDetailViewController: UIViewController {
     
     private let favoriteButton = UIBarButtonItem()
     
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureYogiProductDetailView()
         configureNavigationBar()
+        self.reactor = YogiDetailViewReactor()
     }
     
-//    func bind(reactor: Reactor) {
-//        <#code#>
-//    }
+    func bind(reactor: YogiDetailViewReactor) {
+        favoriteButton.rx.tap
+            .map { _ in Reactor.Action.didTapFavoriteButton }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .compactMap { $0.product?.isFavorite }
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] in
+                self?.setFavoriteState(state: $0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func configureNavigationBar() {
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.topItem?.title = String()
-        favoriteButton.image = UIImage(systemName: "heart.fill")
-        favoriteButton.tintColor = .red
         navigationItem.rightBarButtonItem = favoriteButton
     }
     
@@ -128,5 +141,15 @@ final class YogiDetailViewController: UIViewController {
         }
         
         self.productDetailStackView.addArrangedSubview(productSubjectLabel)
+    }
+    
+    private func setFavoriteState(state: Bool) {
+        if state == true {
+            self.favoriteButton.image = UIImage(systemName: "suit.heart.fill")
+            self.favoriteButton.tintColor = .systemRed
+        } else  {
+            self.favoriteButton.image = UIImage(systemName: "suit.heart")
+            self.favoriteButton.tintColor = .white
+        }
     }
 }

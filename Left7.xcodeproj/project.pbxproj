@@ -36,6 +36,7 @@
 		A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */; };
 		A6AD9770286EC810009968B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6AD976F286EC810009968B1 /* Assets.xcassets */; };
 		A6AD9773286EC810009968B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */; };
+		A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		A6AD976F286EC810009968B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6AD9772286EC810009968B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6AD9774286EC810009968B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailViewReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A6075D812871997100913FD4 /* YogiDetailViewController.swift */,
+				A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				A6075D792871666F00913FD4 /* UIViewController+Rx.swift in Sources */,
 				A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */,
 				A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */,
+				A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
