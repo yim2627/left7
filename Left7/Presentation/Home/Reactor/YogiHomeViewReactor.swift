@@ -41,7 +41,7 @@ final class YogiHomeViewReactor: Reactor {
             return newState
         case let .appendProducts(products, page: page):
             var newState = state
-            newState.products = products
+            newState.products.append(contentsOf: products)	
             newState.page = page
             return newState
         case let .setLoadingNextPage(isLoadingNextPage):
@@ -64,8 +64,9 @@ final class YogiHomeViewReactor: Reactor {
             return Observable.concat([
                 Observable.just(Mutation.setLoadingNextPage(true)),
                 
-                useCase.fetchProducts(page: self.currentState.page)
+                useCase.fetchProducts(page: self.currentState.page + 1)
                     .take(until: self.action.filter(Action.isUpdate))
+                    .filter { $0.isEmpty == false }
                     .map { Mutation.appendProducts($0, page: self.currentState.page + 1) },
                 
                 Observable.just(Mutation.setLoadingNextPage(false))
