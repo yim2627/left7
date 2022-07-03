@@ -11,7 +11,7 @@ import RxSwift
 final class YogiHomeUsecase {
     private let productRepository: NetworkRepository
     
-    init(productRepository: NetworkRepository) {
+    init(productRepository: NetworkRepository = YogiProductRepository()) {
         self.productRepository = productRepository
     }
     

@@ -14,8 +14,9 @@ import ReactorKit
 
 import SnapKit
 
-final class YogiHomeViewController: UIViewController {
+final class YogiHomeViewController: UIViewController, View {
     private var yogiHomeCollectionView: UICollectionView!
+    var disposeBag = DisposeBag()
     
     private enum HomeSection: Hashable {
         case home
@@ -26,11 +27,37 @@ final class YogiHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         configureYogiHomeCollectionView()
+        self.reactor = YogiHomeViewReactor()
+    }
+    
+    func bind(reactor: YogiHomeViewReactor) {
+        self.rx.viewWillAppear
+            .take(1)
+            .map { Reactor.Action.fetchProducts }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
-        let products = [Product(id: 1, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가가나다라마바사아자차카타파하파타카차자아사바마라다나가가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "따뜻한 분위기의 서비스와 현대적인 호텔", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_7.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "여기어때 남산", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_6.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_10.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
-        applySnapShot(products: products)
+        yogiHomeCollectionView.rx.contentOffset
+            .withUnretained(self)
+            .filter { (self, offset) in
+                guard self.yogiHomeCollectionView.frame.height > 0 else {
+                    return false
+                }
+                
+                return self.yogiHomeCollectionView.frame.height + offset.y >= self.yogiHomeCollectionView.contentSize.height - 100
+            }
+            .map { _ in Reactor.Action.loadNextPage }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.products }
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] products in
+                self?.applySnapShot(products: products)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureYogiHomeCollectionView() {
@@ -91,12 +118,17 @@ final class YogiHomeViewController: UIViewController {
     }
     
     private func configureYogiHomeCollectionviewDataSource() {
-        dataSource = DiffableDataSource(collectionView: yogiHomeCollectionView) {
+        dataSource = DiffableDataSource(collectionView: yogiHomeCollectionView) { [unowned self]
             (collectionView: UICollectionView, indexPath: IndexPath, product: Product) in
             let cell = collectionView.dequeueReusableCell(
                 withClass: YogiHomeCollectionViewCell.self,
                 indextPath: indexPath
             )
+            
+            cell.favoriteButtonTap
+                .map { _ in Reactor.Action.didTapFavoriteButton(indexPath.row) }
+                .bind(to: self.reactor!.action)
+                .disposed(by: cell.disposeBag)
             
             cell.setData(product: product)
             return cell

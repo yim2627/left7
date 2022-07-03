@@ -6,10 +6,14 @@
 //
 
 import UIKit
+
 import SnapKit
 
+import RxSwift
+import RxCocoa
+
 final class YogiHomeCollectionViewCell: UICollectionViewCell {
-    let productImageView = YogiProductImageView(frame: .zero)
+    private let productImageView = YogiProductImageView(frame: .zero)
     private let rateStackView = YogiRateStackView(frame: .zero)
     private let productNameLabel: UILabel = {
         let label = UILabel()
@@ -18,6 +22,16 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
+    
+    var favoriteButtonTap: Observable<Void> {
+        return self.productImageView.favoriteButton.rx.tap.asObservable()
+    }
+    
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,9 +43,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(product: Product) {
-        let d = try! Data(contentsOf: URL(string: product.thumbnailPath)!)
-        let i = UIImage(data: d)
-        productImageView.image = i
+        productImageView.setImage(with: product.thumbnailPath)
         rateStackView.setRateValue(rate: product.rate)
         configureFavoriteButton(isFavorite: product.isFavorite)
         productNameLabel.text = product.name
