@@ -58,6 +58,15 @@ final class YogiHomeViewController: UIViewController, View {
                 self?.applySnapShot(products: products)
             })
             .disposed(by: disposeBag)
+        
+        yogiHomeCollectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self, weak reactor] indexPath in
+                self?.yogiHomeCollectionView.deselectItem(at: indexPath, animated: false)
+                print(reactor?.currentState.products[indexPath.row])
+                let de = YogiDetailViewController()
+                self?.navigationController?.pushViewController(de, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureYogiHomeCollectionView() {
