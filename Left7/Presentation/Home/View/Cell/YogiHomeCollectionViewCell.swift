@@ -83,12 +83,6 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureFavoriteButton(isFavorite: Bool) {
-        if isFavorite == true {
-            productImageView.favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
-            productImageView.favoriteButton.tintColor = .systemRed
-        } else  {
-            productImageView.favoriteButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-            productImageView.favoriteButton.tintColor = .white
-        }
+        productImageView.setFavoriteState(state: isFavorite)
     }
 }
