@@ -81,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6075D7F2871910A00913FD4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A6075D782871666F00913FD4 /* UIViewController+Rx.swift */,
+				A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A6075D802871911400913FD4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,8 +165,7 @@
 			children = (
 				A67F1C71287085B400DF06DB /* Home */,
 				A67F1C72287085B900DF06DB /* Common */,
-				A6075D782871666F00913FD4 /* UIViewController+Rx.swift */,
-				A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */,
+				A6075D7F2871910A00913FD4 /* Extension */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -176,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				A6AD976A286EC80E009968B1 /* YogiHomeViewController.swift */,
-				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
+				A6075D802871911400913FD4 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
