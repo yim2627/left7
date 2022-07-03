@@ -139,8 +139,7 @@
 				A6443933286EDCA2009E9F74 /* ResponseModel */,
 				A644394D286EEAF2009E9F74 /* Network */,
 				A67F1C7A28708F2E00DF06DB /* Repository */,
-				A6AF969D287202A7000E21B2 /* CoreDataManager.swift */,
-				A6AF969F28720726000E21B2 /* CoreDataError.swift */,
+				A6AF96A128721082000E21B2 /* CoreData */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -333,6 +332,23 @@
 				A644392D286EDC58009E9F74 /* YogiResponse.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A6AF96A128721082000E21B2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF969D287202A7000E21B2 /* CoreDataManager.swift */,
+				A6AF96A228721088000E21B2 /* Error */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A6AF96A228721088000E21B2 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF969F28720726000E21B2 /* CoreDataError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
