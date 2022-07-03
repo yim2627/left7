@@ -14,8 +14,9 @@ import ReactorKit
 
 import SnapKit
 
-final class YogiHomeViewController: UIViewController {
+final class YogiHomeViewController: UIViewController, View {
     private var yogiHomeCollectionView: UICollectionView!
+    var disposeBag = DisposeBag()
     
     private enum HomeSection: Hashable {
         case home
@@ -26,11 +27,22 @@ final class YogiHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         configureYogiHomeCollectionView()
-        
-        let products = [Product(id: 1, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가가나다라마바사아자차카타파하파타카차자아사바마라다나가가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 2, name: "따뜻한 분위기의 서비스와 현대적인 호텔", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_7.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 3, name: "여기어때 남산", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_6.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date()), Product(id: 4, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_10.jpg", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 0.1, isFavorite: true, favoriteRegistrationTime: Date())]
-        applySnapShot(products: products)
+    }
+    
+    func bind(reactor: YogiHomeViewReactor) {
+        self.rx.viewDidLoad
+            .map { Reactor.Action.fetchProducts }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.products }
+            .withUnretained(self)
+            .subscribe(onNext: { (self, products) in
+                self.applySnapShot(products: products)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureYogiHomeCollectionView() {
