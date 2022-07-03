@@ -105,8 +105,8 @@
 		A6075D832871997500913FD4 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				A6075D812871997100913FD4 /* YogiDetailViewController.swift */,
-				A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */,
+				A6AF968D2871ECDB000E21B2 /* View */,
+				A6AF968E2871ECE3000E21B2 /* Reactor */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -283,6 +283,22 @@
 				A644395528705402009E9F74 /* UICollectionView+extension.swift */,
 			);
 			path = Left7;
+			sourceTree = "<group>";
+		};
+		A6AF968D2871ECDB000E21B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6075D812871997100913FD4 /* YogiDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6AF968E2871ECE3000E21B2 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */,
+			);
+			path = Reactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

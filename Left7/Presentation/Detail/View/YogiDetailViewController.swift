@@ -14,7 +14,6 @@ import ReactorKit
 
 import SnapKit
 
-
 final class YogiDetailViewController: UIViewController, View {
     private let productDetailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
