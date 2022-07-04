@@ -22,11 +22,11 @@ final class YogiProductImageView: UIImageView {
     }
     
     private func configureUI() {
-        configureAblyGoodsImageView()
+        configureImageView()
         configureFavoriteButtonLayout()
     }
     
-    private func configureAblyGoodsImageView() {
+    private func configureImageView() {
         self.isUserInteractionEnabled = true
         self.layer.cornerRadius = 8
         self.contentMode = .scaleAspectFill
