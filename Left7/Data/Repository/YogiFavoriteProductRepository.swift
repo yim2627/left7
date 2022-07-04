@@ -17,11 +17,25 @@ final class YogiFavoriteProductRepository: CoreDataRepository {
     }
     
     func fetchFavoriteProduct() -> Observable<[Product]> {
-        return .empty()
+        return coreDataManager.fetch()
+            .map { productObject in
+                productObject.map { $0.toDomain() }
+            }
     }
     
     func saveFavoriteProduct(_ product: Product) {
-        coreDataManager.save(product)
+        let productObject = ProductDataObject(context: coreDataManager.context)
+        productObject.id = product.id
+        productObject.name = product.name
+        productObject.thumbnailPath = product.thumbnailPath
+        productObject.descriptionImagePath = product.descriptionImagePath
+        productObject.descriptionSubject = product.descriptionSubject
+        productObject.price = product.price
+        productObject.rate = product.rate
+        productObject.isFavorite = true
+        productObject.favoriteRegistrationTime = Date()
+        
+        coreDataManager.saveContext()
     }
     
     func deleteFavoriteProduct(_ product: Product) {

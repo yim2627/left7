@@ -41,22 +41,7 @@ final class CoreDataManager {
         }
     }
     
-    func save(_ product: Product) {
-        let productObject = ProductDataObject(context: context)
-        productObject.id = product.id
-        productObject.name = product.name
-        productObject.thumbnailPath = product.thumbnailPath
-        productObject.descriptionImagePath = product.descriptionImagePath
-        productObject.descriptionSubject = product.descriptionSubject
-        productObject.price = product.price
-        productObject.rate = product.rate
-        productObject.isFavorite = product.isFavorite
-        productObject.favoriteRegistrationTime = Date()
-        
-        saveContextChange()
-    }
-    
-    private func saveContextChange() {
+    func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()
