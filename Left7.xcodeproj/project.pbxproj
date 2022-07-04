@@ -43,6 +43,7 @@
 		A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */; };
 		A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969D287202A7000E21B2 /* CoreDataManager.swift */; };
 		A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969F28720726000E21B2 /* CoreDataError.swift */; };
+		A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDataObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6AF969D287202A7000E21B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A6AF969F28720726000E21B2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				A67F1C7728708C4300DF06DB /* NetworkRepository.swift */,
+				A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
 				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
+				A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */,
 				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
