@@ -13,6 +13,7 @@ import RxCocoa
 import ReactorKit
 
 final class YogiDetailViewReactor: Reactor {
+    private let useCase = YogiDetailUsecase()
     var initialState: State
     
     init(selectedProduct: Product) {
@@ -51,14 +52,13 @@ final class YogiDetailViewReactor: Reactor {
             return Observable.just(Mutation.setProduct)
         case .didTapFavoriteButton:
             return Observable.just(Mutation.toggleFavoriteState)
-            // CoreData 저장
         }
     }
 }
 
 extension YogiDetailViewReactor {
     func toggleFavoriteState(previousState: State) -> Product {
-        return Product(
+        let product = Product(
             id: previousState.product?.id ?? 0,
             name: previousState.product?.name ?? "",
             thumbnailPath: previousState.product?.thumbnailPath ?? "",
@@ -67,7 +67,11 @@ extension YogiDetailViewReactor {
             price: previousState.product?.price ?? 0,
             rate: previousState.product?.rate ?? 0,
             isFavorite: !(previousState.product?.isFavorite ?? false),
-            favoriteRegistrationTime: nil
+            favoriteRegistrationTime: !(previousState.product?.isFavorite ?? false) ? Date() : nil
         )
+        
+        useCase.updateFavoriteProduct(product)
+        
+        return product
     }
 }

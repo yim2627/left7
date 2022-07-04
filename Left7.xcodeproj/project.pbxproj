@@ -37,6 +37,14 @@
 		A6AD9770286EC810009968B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6AD976F286EC810009968B1 /* Assets.xcassets */; };
 		A6AD9773286EC810009968B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */; };
 		A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */; };
+		A6AF96902871F2F4000E21B2 /* YogiDetailUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF968F2871F2F4000E21B2 /* YogiDetailUsecase.swift */; };
+		A6AF96962871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */; };
+		A6AF96992871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96972871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift */; };
+		A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */; };
+		A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969D287202A7000E21B2 /* CoreDataManager.swift */; };
+		A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969F28720726000E21B2 /* CoreDataError.swift */; };
+		A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */; };
+		A6AF96A62872A119000E21B2 /* YogiFavoriteProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +74,14 @@
 		A6AD9772286EC810009968B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6AD9774286EC810009968B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailViewReactor.swift; sourceTree = "<group>"; };
+		A6AF968F2871F2F4000E21B2 /* YogiDetailUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailUsecase.swift; sourceTree = "<group>"; };
+		A6AF96952871F523000E21B2 /* YogiCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YogiCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		A6AF96972871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDataObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDataObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6AF969D287202A7000E21B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		A6AF969F28720726000E21B2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteProductRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +104,9 @@
 		A6075D7F2871910A00913FD4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				A6075D782871666F00913FD4 /* UIViewController+Rx.swift */,
+				A644395528705402009E9F74 /* UICollectionView+extension.swift */,
 				A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */,
+				A6075D782871666F00913FD4 /* UIViewController+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -114,7 +131,8 @@
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
-				A644392D286EDC58009E9F74 /* YogiResponse.swift */,
+				A6AF969B2871F7F3000E21B2 /* CoreData */,
+				A6AF969C2871F800000E21B2 /* Network */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -125,6 +143,7 @@
 				A6443933286EDCA2009E9F74 /* ResponseModel */,
 				A644394D286EEAF2009E9F74 /* Network */,
 				A67F1C7A28708F2E00DF06DB /* Repository */,
+				A6AF96A128721082000E21B2 /* CoreData */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -223,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				A67F1C7728708C4300DF06DB /* NetworkRepository.swift */,
+				A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -231,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				A67F1C75287089B300DF06DB /* YogiProductRepository.swift */,
+				A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -249,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */,
+				A6AF968F2871F2F4000E21B2 /* YogiDetailUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -280,7 +302,7 @@
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
 				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
 				A6AD9774286EC810009968B1 /* Info.plist */,
-				A644395528705402009E9F74 /* UICollectionView+extension.swift */,
+				A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */,
 			);
 			path = Left7;
 			sourceTree = "<group>";
@@ -299,6 +321,40 @@
 				A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */,
 			);
 			path = Reactor;
+			sourceTree = "<group>";
+		};
+		A6AF969B2871F7F3000E21B2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF96972871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift */,
+				A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A6AF969C2871F800000E21B2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A644392D286EDC58009E9F74 /* YogiResponse.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A6AF96A128721082000E21B2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF969D287202A7000E21B2 /* CoreDataManager.swift */,
+				A6AF96A228721088000E21B2 /* Error */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A6AF96A228721088000E21B2 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF969F28720726000E21B2 /* CoreDataError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,12 +442,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */,
+				A6AF96A62872A119000E21B2 /* YogiFavoriteProductRepository.swift in Sources */,
 				A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */,
+				A6AF96962871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld in Sources */,
 				A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
+				A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */,
 				A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */,
 				A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */,
+				A6AF96902871F2F4000E21B2 /* YogiDetailUsecase.swift in Sources */,
 				A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */,
 				A6443954287053B8009E9F74 /* YogiHomeCollectionViewCell.swift in Sources */,
 				A6075D822871997200913FD4 /* YogiDetailViewController.swift in Sources */,
@@ -402,11 +462,15 @@
 				A644395128704139009E9F74 /* Product.swift in Sources */,
 				A6075D792871666F00913FD4 /* UIViewController+Rx.swift in Sources */,
 				A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */,
+				A6AF96992871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift in Sources */,
 				A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */,
 				A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
+				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
+				A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */,
+				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +746,19 @@
 			productName = ReactorKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A6AF96952871F523000E21B2 /* YogiCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = A6AF96952871F523000E21B2 /* YogiCoreDataModel.xcdatamodel */;
+			path = YogiCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A6AD975B286EC80E009968B1 /* Project object */;
 }
