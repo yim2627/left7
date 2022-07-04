@@ -45,6 +45,7 @@
 		A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969F28720726000E21B2 /* CoreDataError.swift */; };
 		A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */; };
 		A6AF96A62872A119000E21B2 /* YogiFavoriteProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */; };
+		A6AF96AB2872E115000E21B2 /* YogiFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		A6AF969F28720726000E21B2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteProductRepository.swift; sourceTree = "<group>"; };
+		A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 		A67F1C70287085A500DF06DB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A6AF96AC2872E121000E21B2 /* Favorite */,
 				A67F1C71287085B400DF06DB /* Home */,
 				A67F1C72287085B900DF06DB /* Common */,
 				A6075D7F2871910A00913FD4 /* Extension */,
@@ -357,6 +360,14 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		A6AF96AC2872E121000E21B2 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -465,6 +476,7 @@
 				A6AF96992871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift in Sources */,
 				A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */,
 				A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */,
+				A6AF96AB2872E115000E21B2 /* YogiFavoriteViewController.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
 				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
