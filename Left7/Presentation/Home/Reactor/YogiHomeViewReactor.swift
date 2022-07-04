@@ -97,7 +97,7 @@ private extension YogiHomeViewReactor {
             price: previousState.products[index].price,
             rate: previousState.products[index].rate,
             isFavorite: !previousState.products[index].isFavorite,
-            favoriteRegistrationTime: Date()
+            favoriteRegistrationTime: !previousState.products[index].isFavorite ? Date() : nil
         )
     }
 }

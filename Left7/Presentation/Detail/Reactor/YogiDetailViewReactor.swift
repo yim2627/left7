@@ -67,7 +67,7 @@ extension YogiDetailViewReactor {
             price: previousState.product?.price ?? 0,
             rate: previousState.product?.rate ?? 0,
             isFavorite: !(previousState.product?.isFavorite ?? false),
-            favoriteRegistrationTime: nil
+            favoriteRegistrationTime: !(previousState.product?.isFavorite ?? false) ? Date() : nil
         )
         
         useCase.updateFavoriteProduct(product)

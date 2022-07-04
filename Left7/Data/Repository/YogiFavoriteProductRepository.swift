@@ -33,7 +33,7 @@ final class YogiFavoriteProductRepository: CoreDataRepository {
         productObject.price = product.price
         productObject.rate = product.rate
         productObject.isFavorite = product.isFavorite
-        productObject.favoriteRegistrationTime = Date()
+        productObject.favoriteRegistrationTime = product.favoriteRegistrationTime
         
         coreDataManager.saveContext()
     }
