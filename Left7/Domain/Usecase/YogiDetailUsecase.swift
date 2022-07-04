@@ -8,5 +8,17 @@
 import Foundation
 
 final class YogiDetailUsecase {
+    private let favoriteProductRepository: CoreDataRepository
     
+    init(favoriteProductRepository: CoreDataRepository = YogiFavoriteProductRepository()) {
+        self.favoriteProductRepository = favoriteProductRepository
+    }
+    
+    func saveFavoriteProduct(_ product: Product) {
+        favoriteProductRepository.saveFavoriteProduct(product)
+    }
+    
+    func deleteFavoriteProduct(_ product: Product) {
+        favoriteProductRepository.deleteFavoriteProduct(product)
+    }
 }
