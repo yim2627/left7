@@ -14,11 +14,15 @@ final class YogiDetailUsecase {
         self.favoriteProductRepository = favoriteProductRepository
     }
     
-    func saveFavoriteProduct(_ product: Product) {
-        favoriteProductRepository.saveFavoriteProduct(product)
-    }
-    
-    func deleteFavoriteProduct(_ product: Product) {
-        favoriteProductRepository.deleteFavoriteProduct(product)
+    func updateFavoriteProduct(_ product: Product?) {
+        guard let product = product else {
+            return
+        }
+        
+        if product.isFavorite == true {
+            favoriteProductRepository.saveFavoriteProduct(product)
+        } else {
+            favoriteProductRepository.deleteFavoriteProduct(product)
+        }
     }
 }

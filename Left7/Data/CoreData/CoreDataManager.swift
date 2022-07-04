@@ -12,7 +12,7 @@ import RxSwift
 
 final class CoreDataManager {
     static let shared = CoreDataManager()
-    private let persistentContainer = NSPersistentContainer(name: ProductDataObject.entityName)
+    private let persistentContainer = NSPersistentContainer(name: "YogiCoreDataModel")
     private(set) lazy var context = persistentContainer.viewContext
     
     private init() {
@@ -43,7 +43,7 @@ final class CoreDataManager {
     
     func delete(with id: Int) {
         let request = ProductDataObject.fetchRequest()
-        let predicate = NSPredicate(format: "id == &@", id)
+        let predicate = NSPredicate(format: "id == %@", String(id))
         request.predicate = predicate
         
         guard let fetchResult = try? context.fetch(request) else {
