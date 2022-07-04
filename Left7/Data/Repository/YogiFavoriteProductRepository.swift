@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 final class YogiFavoriteProductRepository: CoreDataRepository {
-    let coreDataManager: CoreDataManager
+    private let coreDataManager: CoreDataManager
     
     init(manager: CoreDataManager = CoreDataManager.shared) {
         self.coreDataManager = manager
