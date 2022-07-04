@@ -21,7 +21,27 @@ final class YogiHomeUsecase {
     }
     
     func fetchProducts(page: Int) -> Observable<[Product]> {
-        productRepository.fetchYogiProducts(page: page)
+        return Observable.zip(
+            productRepository.fetchYogiProducts(page: page),
+            favoriteProductRepository.fetchFavoriteProduct()
+        )
+        .map { products, favoriteProducts in
+            let favoriteProductsId = favoriteProducts.map { $0.id }
+            
+            return products.map {
+                return Product(
+                    id: $0.id,
+                    name: $0.name,
+                    thumbnailPath: $0.thumbnailPath,
+                    descriptionImagePath: $0.descriptionImagePath,
+                    descriptionSubject: $0.descriptionSubject,
+                    price: $0.price,
+                    rate: $0.rate,
+                    isFavorite: favoriteProductsId.contains($0.id),
+                    favoriteRegistrationTime: $0.favoriteRegistrationTime
+                )
+            }
+        }
     }
     
     func updateFavoriteProduct(_ product: Product?) {
