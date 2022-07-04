@@ -41,22 +41,22 @@ final class CoreDataManager {
         }
     }
     
-    func save(_ product: Product) {
-        let productObject = ProductDataObject(context: context)
-        productObject.id = product.id
-        productObject.name = product.name
-        productObject.thumbnailPath = product.thumbnailPath
-        productObject.descriptionImagePath = product.descriptionImagePath
-        productObject.descriptionSubject = product.descriptionSubject
-        productObject.price = product.price
-        productObject.rate = product.rate
-        productObject.isFavorite = product.isFavorite
-        productObject.favoriteRegistrationTime = Date()
+    func delete(with id: Int) {
+        let request = ProductDataObject.fetchRequest()
+        let predicate = NSPredicate(format: "id == &@", id)
+        request.predicate = predicate
         
-        saveContextChange()
+        guard let fetchResult = try? context.fetch(request) else {
+            return
+        }
+        fetchResult.forEach {
+            context.delete($0)
+        }
+        
+        saveContext()
     }
     
-    private func saveContextChange() {
+    func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()

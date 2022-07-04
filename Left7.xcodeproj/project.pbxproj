@@ -43,6 +43,8 @@
 		A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */; };
 		A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969D287202A7000E21B2 /* CoreDataManager.swift */; };
 		A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF969F28720726000E21B2 /* CoreDataError.swift */; };
+		A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */; };
+		A6AF96A62872A119000E21B2 /* YogiFavoriteProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDataObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6AF969D287202A7000E21B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A6AF969F28720726000E21B2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteProductRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				A67F1C7728708C4300DF06DB /* NetworkRepository.swift */,
+				A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				A67F1C75287089B300DF06DB /* YogiProductRepository.swift */,
+				A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6AD976B286EC80E009968B1 /* YogiHomeViewController.swift in Sources */,
+				A6AF96A62872A119000E21B2 /* YogiFavoriteProductRepository.swift in Sources */,
 				A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */,
 				A6AF96962871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld in Sources */,
 				A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */,
@@ -462,6 +469,7 @@
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
 				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
+				A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */,
 				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
