@@ -39,6 +39,6 @@ final class YogiFavoriteProductRepository: CoreDataRepository {
     }
     
     func deleteFavoriteProduct(_ product: Product) {
-        
+        coreDataManager.delete(with: product.id)
     }
 }
