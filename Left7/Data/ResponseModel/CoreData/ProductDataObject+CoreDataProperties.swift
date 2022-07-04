@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 extension ProductDataObject {
     static let entityName = String(describing: ProductDataObject.self)
@@ -28,4 +29,20 @@ extension ProductDataObject {
 
 extension ProductDataObject : Identifiable {
 
+}
+
+extension ProductDataObject {
+    func toDomain() -> Product {
+        return Product(
+            id: id,
+            name: name ?? "",
+            thumbnailPath: thumbnailPath ?? "",
+            descriptionImagePath: descriptionImagePath ?? "",
+            descriptionSubject: descriptionSubject ?? "",
+            price: price,
+            rate: rate,
+            isFavorite: isFavorite,
+            favoriteRegistrationTime: favoriteRegistrationTime
+        )
+    }
 }
