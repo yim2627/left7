@@ -38,6 +38,12 @@ final class YogiHomeViewController: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        self.rx.viewWillAppear
+            .skip(1)
+            .map { Reactor.Action.fetchFavoriteProducts }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         yogiHomeCollectionView.rx.contentOffset
             .withUnretained(self)
             .filter { (self, offset) in

@@ -44,6 +44,10 @@ final class YogiHomeUsecase {
         }
     }
     
+    func fetchFavoriteProduct() -> Observable<[Product]> {
+        favoriteProductRepository.fetchFavoriteProduct()
+    }
+    
     func updateFavoriteProduct(_ product: Product?) {
         guard let product = product else {
             return
