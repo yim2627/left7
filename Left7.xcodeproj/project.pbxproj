@@ -46,6 +46,7 @@
 		A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */; };
 		A6AF96A62872A119000E21B2 /* YogiFavoriteProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */; };
 		A6AF96AB2872E115000E21B2 /* YogiFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */; };
+		A6AF96AE2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96AD2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		A6AF96A32872A085000E21B2 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		A6AF96A52872A119000E21B2 /* YogiFavoriteProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteProductRepository.swift; sourceTree = "<group>"; };
 		A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteViewController.swift; sourceTree = "<group>"; };
+		A6AF96AD2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,9 +365,26 @@
 		A6AF96AC2872E121000E21B2 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */,
+				A6AF96AF2872E1C6000E21B2 /* View */,
 			);
 			path = Favorite;
+			sourceTree = "<group>";
+		};
+		A6AF96AF2872E1C6000E21B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF96AA2872E115000E21B2 /* YogiFavoriteViewController.swift */,
+				A6AF96B02872E1CB000E21B2 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6AF96B02872E1CB000E21B2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF96AD2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +501,7 @@
 				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
 				A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */,
+				A6AF96AE2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift in Sources */,
 				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
