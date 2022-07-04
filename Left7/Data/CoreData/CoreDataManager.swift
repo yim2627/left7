@@ -41,6 +41,21 @@ final class CoreDataManager {
         }
     }
     
+    func delete(with id: Int) {
+        let request = ProductDataObject.fetchRequest()
+        let predicate = NSPredicate(format: "id == &@", id)
+        request.predicate = predicate
+        
+        guard let fetchResult = try? context.fetch(request) else {
+            return
+        }
+        fetchResult.forEach {
+            context.delete($0)
+        }
+        
+        saveContext()
+    }
+    
     func saveContext() {
         if context.hasChanges {
             do {
