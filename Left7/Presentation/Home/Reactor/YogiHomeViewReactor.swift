@@ -81,14 +81,13 @@ final class YogiHomeViewReactor: Reactor {
             
         case let .didTapFavoriteButton(index):
             return Observable.just(Mutation.toggleFavoriteState(index: index))
-            // CoreData 저장
         }
     }
 }
 
 private extension YogiHomeViewReactor {
     func toggleFavoriteState(previousState: State, index: Int) -> Product {
-        return Product(
+        let product = Product(
             id: previousState.products[index].id,
             name: previousState.products[index].name,
             thumbnailPath: previousState.products[index].thumbnailPath,
@@ -99,6 +98,10 @@ private extension YogiHomeViewReactor {
             isFavorite: !previousState.products[index].isFavorite,
             favoriteRegistrationTime: !previousState.products[index].isFavorite ? Date() : nil
         )
+        
+        useCase.updateFavoriteProduct(product)
+        
+        return product
     }
 }
 
