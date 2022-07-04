@@ -18,12 +18,14 @@ final class YogiHomeViewReactor: Reactor {
     
     enum Action {
         case fetchProducts
+        case fetchFavoriteProducts
         case loadNextPage
         case didTapFavoriteButton(Int)
     }
     
     enum Mutation {
         case setProducts([Product])
+        case setFavoriteProducts([Product])
         case appendProducts([Product], page: Int)
         case setLoadingNextPage(Bool)
         case toggleFavoriteState(index: Int)
@@ -40,6 +42,11 @@ final class YogiHomeViewReactor: Reactor {
         case let .setProducts(products):
             var newState = state
             newState.products = products
+            return newState
+        case let .setFavoriteProducts(products):
+            var newState = state
+            let updatedProduct = updateProducts(previousState: state, favoriteProjects: products)
+            newState.products = updatedProduct
             return newState
         case let .appendProducts(products, page: page):
             var newState = state
@@ -65,6 +72,11 @@ final class YogiHomeViewReactor: Reactor {
                 .take(until: self.action.filter(Action.isUpdate))
                 .map { Mutation.setProducts($0) }
             
+        case .fetchFavoriteProducts:
+            return useCase.fetchFavoriteProduct()
+                .take(until: self.action.filter(Action.isUpdate))
+                .map { Mutation.setFavoriteProducts($0) }
+            
         case .loadNextPage:
             guard !self.currentState.isLoadingNextPage else { return .empty() }
             
@@ -81,14 +93,13 @@ final class YogiHomeViewReactor: Reactor {
             
         case let .didTapFavoriteButton(index):
             return Observable.just(Mutation.toggleFavoriteState(index: index))
-            // CoreData 저장
         }
     }
 }
 
 private extension YogiHomeViewReactor {
     func toggleFavoriteState(previousState: State, index: Int) -> Product {
-        return Product(
+        let product = Product(
             id: previousState.products[index].id,
             name: previousState.products[index].name,
             thumbnailPath: previousState.products[index].thumbnailPath,
@@ -99,6 +110,28 @@ private extension YogiHomeViewReactor {
             isFavorite: !previousState.products[index].isFavorite,
             favoriteRegistrationTime: !previousState.products[index].isFavorite ? Date() : nil
         )
+        
+        useCase.updateFavoriteProduct(product)
+        
+        return product
+    }
+    
+    func updateProducts(previousState: State, favoriteProjects: [Product]) -> [Product] {
+        let favoriteProjectId = favoriteProjects.map { $0.id }
+        
+        return previousState.products.map {
+            return Product(
+                id: $0.id,
+                name: $0.name,
+                thumbnailPath: $0.thumbnailPath,
+                descriptionImagePath: $0.descriptionImagePath,
+                descriptionSubject: $0.descriptionSubject,
+                price: $0.price,
+                rate: $0.rate,
+                isFavorite: favoriteProjectId.contains($0.id),
+                favoriteRegistrationTime: $0.favoriteRegistrationTime
+            )
+        }
     }
 }
 
