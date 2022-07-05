@@ -27,6 +27,7 @@ final class YogiHomeViewController: UIViewController, View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         configureYogiHomeCollectionView()
         self.reactor = YogiHomeViewReactor()
     }

@@ -74,6 +74,7 @@ final class YogiDetailViewController: UIViewController, View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         configureYogiProductDetailView()
         configureNavigationBar()
     }

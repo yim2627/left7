@@ -244,11 +244,11 @@
 		A67F1C70287085A500DF06DB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A6AF96AC2872E121000E21B2 /* Favorite */,
 				A67F1C71287085B400DF06DB /* Home */,
+				A6075D832871997500913FD4 /* Detail */,
+				A6AF96AC2872E121000E21B2 /* Favorite */,
 				A67F1C72287085B900DF06DB /* Common */,
 				A6075D7F2871910A00913FD4 /* Extension */,
-				A6075D832871997500913FD4 /* Detail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";

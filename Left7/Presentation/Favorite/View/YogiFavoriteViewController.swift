@@ -27,6 +27,7 @@ final class YogiFavoriteViewController: UIViewController, View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         configureYogiFavoriteCollectionView()
         self.reactor = YogiFavoriteViewReactor()
     }
