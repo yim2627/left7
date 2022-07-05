@@ -140,6 +140,43 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		A63679FA28746C3E00F480A1 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				A63679F628741B1500F480A1 /* YogiFavoriteViewReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		A63679FB28746C4500F480A1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A63679F22874172900F480A1 /* YogiDateFormatter.swift */,
+				A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		A63679FC28746C4C00F480A1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
+				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A63679FD28746C5900F480A1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A6AD976F286EC810009968B1 /* Assets.xcassets */,
+				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
+				A6AD9774286EC810009968B1 /* Info.plist */,
+				A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,17 +345,12 @@
 		A6AD9765286EC80E009968B1 /* Left7 */ = {
 			isa = PBXGroup;
 			children = (
-				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
-				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
-				A63679F22874172900F480A1 /* YogiDateFormatter.swift */,
-				A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */,
+				A63679FC28746C4C00F480A1 /* Application */,
+				A63679FB28746C4500F480A1 /* Utility */,
 				A67F1C70287085A500DF06DB /* Presentation */,
 				A67F1C7B28708F5F00DF06DB /* Domain */,
 				A6443949286EEAB4009E9F74 /* Data */,
-				A6AD976F286EC810009968B1 /* Assets.xcassets */,
-				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
-				A6AD9774286EC810009968B1 /* Info.plist */,
-				A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */,
+				A63679FD28746C5900F480A1 /* Resource */,
 			);
 			path = Left7;
 			sourceTree = "<group>";
@@ -377,7 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				A6AF96AF2872E1C6000E21B2 /* View */,
-				A63679F628741B1500F480A1 /* YogiFavoriteViewReactor.swift */,
+				A63679FA28746C3E00F480A1 /* Reactor */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -586,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -640,7 +672,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -659,7 +691,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RL265827ML;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Left7/Info.plist;
+				INFOPLIST_FILE = Left7/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -686,7 +718,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RL265827ML;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Left7/Info.plist;
+				INFOPLIST_FILE = Left7/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
