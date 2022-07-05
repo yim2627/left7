@@ -21,7 +21,7 @@ final class YogiRateStackView: UIStackView {
         let label = UILabel()
         label.textColor = .darkGray
         label.textAlignment = .left
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .subheadline)
         return label
     }()
     
