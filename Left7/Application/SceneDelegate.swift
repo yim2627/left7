@@ -17,15 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let tabVC = UITabBarController()
-        
-        let homeVC = UINavigationController(rootViewController: YogiHomeViewController())
+        let homeVC = YogiHomeViewController()
+        homeVC.reactor = YogiHomeViewReactor()
+        let homeNavVC = UINavigationController(rootViewController: homeVC)
         let homeTabBarSelectedImage = UIImage(systemName: "house.fill")
         homeVC.tabBarItem = UITabBarItem(
             title: "홈",
             image: UIImage(systemName: "house"),
             selectedImage: homeTabBarSelectedImage
         )
-        let favoriteVC = UINavigationController(rootViewController: YogiFavoriteViewController())
+        
+        let favoriteVC = YogiFavoriteViewController()
+        favoriteVC.reactor = YogiFavoriteViewReactor()
+        let favoriteNavVC = UINavigationController(rootViewController: favoriteVC)
         let favoriteTabBarSelecetedImage = UIImage(systemName: "suit.heart.fill")
         favoriteVC.tabBarItem = UITabBarItem(
             title: "좋아요",
@@ -33,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             selectedImage: favoriteTabBarSelecetedImage
         )
         
-        tabVC.viewControllers = [homeVC, favoriteVC]
+        tabVC.viewControllers = [homeNavVC, favoriteNavVC]
         tabVC.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
         tabVC.tabBar.unselectedItemTintColor = .systemGray2
         

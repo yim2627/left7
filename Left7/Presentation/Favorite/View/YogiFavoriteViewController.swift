@@ -15,7 +15,16 @@ import ReactorKit
 import SnapKit
 
 final class YogiFavoriteViewController: UIViewController, View {
-    private var yogiFavoriteCollectionView: UICollectionView!
+    private lazy var yogiFavoriteCollectionView: UICollectionView = {
+        let layout = configureYogiFavoriteCollectionViewCompositionalLayout()
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        
+        return collectionView
+    }()
+    
     var disposeBag = DisposeBag()
     
     private enum FavoriteSection: Hashable {
@@ -43,7 +52,6 @@ final class YogiFavoriteViewController: UIViewController, View {
         view.backgroundColor = .white
         configureYogiFavoriteCollectionView()
         configureNavigationBar()
-        self.reactor = YogiFavoriteViewReactor()
     }
     
     func bind(reactor: YogiFavoriteViewReactor) {
@@ -119,10 +127,6 @@ final class YogiFavoriteViewController: UIViewController, View {
     }
     
     private func configureYogiFavoriteCollectionView() {
-        let layout = configureYogiFavoriteCollectionViewCompositionalLayout()
-        yogiFavoriteCollectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: layout)
         configureYogiFavoriteCollectionViewCell()
         
         view.addSubview(yogiFavoriteCollectionView)
