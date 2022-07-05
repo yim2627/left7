@@ -37,7 +37,15 @@ final class YogiFavoriteViewController: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        
+        yogiFavoriteCollectionView.rx.itemSelected
+            .subscribe(onNext: { [unowned self, unowned reactor] indexPath in
+                self.yogiFavoriteCollectionView.deselectItem(at: indexPath, animated: false)
+                let detailReactor = YogiDetailViewReactor(selectedProduct: reactor.currentState.products[indexPath.row])
+                let detailViewController = YogiDetailViewController()
+                detailViewController.reactor = detailReactor
+                self.navigationController?.pushViewController(detailViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         reactor.state
             .map { $0.products }
