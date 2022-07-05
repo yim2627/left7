@@ -13,15 +13,9 @@ import RxCocoa
 import ReactorKit
 
 final class YogiHomeCollectionViewCellReactor: Reactor {
+    typealias Action = NoAction
+    
     var initialState: State
-    
-    enum Action {
-        
-    }
-    
-    enum Mutation {
-        
-    }
     
     struct State {
         var product: Product?
@@ -29,13 +23,5 @@ final class YogiHomeCollectionViewCellReactor: Reactor {
     
     init(state: State) {
         self.initialState = state
-    }
-    
-    func reduce(state: State, mutation: Mutation) -> State {
-        
-    }
-    
-    func mutate(action: Action) -> Observable<Mutation> {
-        
     }
 }
