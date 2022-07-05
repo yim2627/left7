@@ -7,10 +7,16 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+import ReactorKit
+
 import SnapKit
 
-final class YogiFavoriteViewController: UIViewController {
+final class YogiFavoriteViewController: UIViewController, View {
     private var yogiFavoriteCollectionView: UICollectionView!
+    var disposeBag = DisposeBag()
     
     private enum FavoriteSection: Hashable {
         case favorite
@@ -29,6 +35,13 @@ final class YogiFavoriteViewController: UIViewController {
             Product(id: 1010, name: "여기어때 남산", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_3.jpg", descriptionImagePath: "https://gccompany.co.kr/App/image/img_3.jpg", descriptionSubject: "남산은 서울특별시 중구와 용산구에 걸쳐있는 산이다. 높이는 해발 270.85m로서 서울의 중심부에 위치하여 서울의 상징이 되기도 한다. 정상에는 N서울타워가 있으며, 그 부근까지는 케이블카가 설치되어 있으며, 남산 1·2·3호 터널이 뚫려 있다.", price: 25000, rate: 9.6, isFavorite: false, favoriteRegistrationTime: Date()),
             Product(id: 1233, name: "가나다라마바사아자차카타파하파타카차자아사바마라다나가", thumbnailPath: "https://gccompany.co.kr/App/thumbnail/thumb_img_5.jpg", descriptionImagePath: "https://gccompany.co.kr/App/image/img_5.jpg", descriptionSubject: "도보 이용 부탁합니다.", price: 30000, rate:  9.2, isFavorite: true, favoriteRegistrationTime: Date())
         ])
+    }
+    
+    func bind(reactor: YogiFavoriteViewReactor) {
+        self.rx.viewWillAppear
+            .map { Reactor.Action.fetchFavoriteProducts }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func configureYogiFavoriteCollectionView() {
