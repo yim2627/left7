@@ -11,6 +11,8 @@
 		A6075D7C28718FD500913FD4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A6075D7B28718FD500913FD4 /* Kingfisher */; };
 		A6075D7E2871901F00913FD4 /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */; };
 		A6075D822871997200913FD4 /* YogiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075D812871997100913FD4 /* YogiDetailViewController.swift */; };
+		A63679F32874172900F480A1 /* YogiDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F22874172900F480A1 /* YogiDateFormatter.swift */; };
+		A63679F5287417E500F480A1 /* YogiNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */; };
 		A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644392D286EDC58009E9F74 /* YogiResponse.swift */; };
 		A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */; };
 		A6443938286EE56F009E9F74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A6443937286EE56F009E9F74 /* SnapKit */; };
@@ -53,6 +55,8 @@
 		A6075D782871666F00913FD4 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
 		A6075D812871997100913FD4 /* YogiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailViewController.swift; sourceTree = "<group>"; };
+		A63679F22874172900F480A1 /* YogiDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDateFormatter.swift; sourceTree = "<group>"; };
+		A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiNumberFormatter.swift; sourceTree = "<group>"; };
 		A644392D286EDC58009E9F74 /* YogiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiResponse.swift; sourceTree = "<group>"; };
 		A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A6443943286EE783009E9F74 /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 			children = (
 				A6AD9766286EC80E009968B1 /* AppDelegate.swift */,
 				A6AD9768286EC80E009968B1 /* SceneDelegate.swift */,
+				A63679F22874172900F480A1 /* YogiDateFormatter.swift */,
+				A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */,
 				A67F1C70287085A500DF06DB /* Presentation */,
 				A67F1C7B28708F5F00DF06DB /* Domain */,
 				A6443949286EEAB4009E9F74 /* Data */,
@@ -476,6 +482,7 @@
 				A6443946286EE8A6009E9F74 /* HttpMethod.swift in Sources */,
 				A6AF96962871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld in Sources */,
 				A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */,
+				A63679F5287417E500F480A1 /* YogiNumberFormatter.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */,
@@ -497,6 +504,7 @@
 				A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */,
 				A6AF96AB2872E115000E21B2 /* YogiFavoriteViewController.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
+				A63679F32874172900F480A1 /* YogiDateFormatter.swift in Sources */,
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
 				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,

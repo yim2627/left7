@@ -35,6 +35,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     
     private let productFavoriteLableStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.spacing = 4
         stackView.alignment = .trailing
         stackView.axis = .vertical
         return stackView
@@ -114,6 +115,6 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
         productImageView.setImage(with: product.thumbnailPath)
         productImageView.setFavoriteState(state: product.isFavorite)
         productRateStackView.setRateValue(rate: product.rate)
-        productFavoriteRegistrationTimeLabel.text = "\(product.favoriteRegistrationTime!)"
+        productFavoriteRegistrationTimeLabel.text = YogiDateFormatter.shared.toDateString(date: product.favoriteRegistrationTime ?? Date())
     }
 }
