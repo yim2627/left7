@@ -12,7 +12,9 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class YogiHomeCollectionViewCell: UICollectionViewCell {
+import ReactorKit
+
+final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     private let productImageView = YogiProductImageView(frame: .zero)
     private let productRateStackView = YogiRateStackView(frame: .zero)
     private let productNameLabel: UILabel = {
@@ -42,11 +44,15 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    func setData(product: Product) {
-        productImageView.setImage(with: product.thumbnailPath)
-        productRateStackView.setRateValue(rate: product.rate)
-        configureFavoriteButton(isFavorite: product.isFavorite)
-        productNameLabel.text = product.name
+    func bind(reactor: YogiHomeCollectionViewCellReactor) {
+        guard let currentProduct = reactor.currentState.product else {
+            return
+        }
+        
+        productImageView.setImage(with: currentProduct.thumbnailPath)
+        productRateStackView.setRateValue(rate: currentProduct.rate)
+        configureFavoriteButton(isFavorite: currentProduct.isFavorite)
+        productNameLabel.text = currentProduct.name
     }
     
     private func configureYogiHomeCollectionViewCell() {

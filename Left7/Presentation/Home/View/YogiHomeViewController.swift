@@ -142,14 +142,17 @@ final class YogiHomeViewController: UIViewController, View {
                 indextPath: indexPath
             )
             
+            let initialState = YogiHomeCollectionViewCellReactor.State(product: product)
+            let cellReactor = YogiHomeCollectionViewCellReactor(state: initialState)
+            
+            cell.reactor = cellReactor
+            
             reactor.flatMap { reactor in
                 cell.favoriteButtonTap
                     .map { _ in Reactor.Action.didTapFavoriteButton(indexPath.row) }
                     .bind(to: reactor.action)
                     .disposed(by: cell.disposeBag)
             }
-            
-            cell.setData(product: product)
             
             return cell
         }
