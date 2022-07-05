@@ -11,36 +11,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
         
-        let tab = UITabBarController()
+        let tabVC = UITabBarController()
         
-        let homeVC = YogiHomeViewController()
+        let homeVC = UINavigationController(rootViewController: YogiHomeViewController())
         let homeTabBarSelectedImage = UIImage(systemName: "house.fill")
         homeVC.tabBarItem = UITabBarItem(
             title: "홈",
             image: UIImage(systemName: "house"),
             selectedImage: homeTabBarSelectedImage
         )
-        let favoriteGoodVC = YogiFavoriteViewController()
+        let favoriteVC = UINavigationController(rootViewController: YogiFavoriteViewController())
         let favoriteTabBarSelecetedImage = UIImage(systemName: "suit.heart.fill")
-        favoriteGoodVC.tabBarItem = UITabBarItem(
+        favoriteVC.tabBarItem = UITabBarItem(
             title: "좋아요",
             image: UIImage(systemName: "suit.heart"),
             selectedImage: favoriteTabBarSelecetedImage
         )
         
-        tab.viewControllers = [homeVC, favoriteGoodVC]
-        tab.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
-        tab.tabBar.unselectedItemTintColor = .systemGray2
+        tabVC.viewControllers = [homeVC, favoriteVC]
+        tabVC.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
+        tabVC.tabBar.unselectedItemTintColor = .systemGray2
         
-        let t = UINavigationController(rootViewController: tab)
-        t.navigationBar.backgroundColor = .white
-        window?.rootViewController = t
+        window?.rootViewController = tabVC
         window?.makeKeyAndVisible()
     }
 

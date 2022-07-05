@@ -52,7 +52,7 @@ final class YogiHomeViewController: UIViewController, View {
                     return false
                 }
                 
-                return self.yogiHomeCollectionView.frame.height + offset.y >= self.yogiHomeCollectionView.contentSize.height - 100
+                return self.yogiHomeCollectionView.frame.height + offset.y <= self.yogiHomeCollectionView.contentSize.height - 100
             }
             .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)
@@ -142,12 +142,15 @@ final class YogiHomeViewController: UIViewController, View {
                 indextPath: indexPath
             )
             
-            cell.favoriteButtonTap
-                .map { _ in Reactor.Action.didTapFavoriteButton(indexPath.row) }
-                .bind(to: self.reactor!.action)
-                .disposed(by: cell.disposeBag)
+            reactor.flatMap { reactor in
+                cell.favoriteButtonTap
+                    .map { _ in Reactor.Action.didTapFavoriteButton(indexPath.row) }
+                    .bind(to: reactor.action)
+                    .disposed(by: cell.disposeBag)
+            }
             
             cell.setData(product: product)
+            
             return cell
         }
     }
