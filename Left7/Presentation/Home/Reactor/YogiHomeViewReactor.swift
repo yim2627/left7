@@ -116,6 +116,7 @@ private extension YogiHomeViewReactor {
         return product
     }
     
+    // 서버에서 가져오는 행위를 한번만 하기위해(비용 감소) 기존 State와 비교하여 데이터를 내려줌 -> 즐겨찾기의 상태는 어느 뷰에서든 가능하기 때문에 항시 찜목록은 가져와야함
     func updateProducts(previousState: State, favoriteProjects: [Product]) -> [Product] {
         let favoriteProjectId = favoriteProjects.map { $0.id }
         
