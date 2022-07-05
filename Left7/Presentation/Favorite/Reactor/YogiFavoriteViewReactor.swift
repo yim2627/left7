@@ -19,11 +19,15 @@ final class YogiFavoriteViewReactor: Reactor {
     enum Action {
         case fetchFavoriteProducts
         case didTapFavoriteButton(Product)
+        case didTapSortOrderByLastRegisteredAction
+        case didTapSortOrderByRateAction
     }
     
     enum Mutation {
         case setFavoriteProducts([Product])
         case removeFavoriteProduct(Product)
+        case sortOrderByLateRegistered
+        case sortOrderByRate
     }
     
     struct State {
@@ -35,13 +39,31 @@ final class YogiFavoriteViewReactor: Reactor {
         case let .setFavoriteProducts(products):
             var newState = state
             newState.products = products
+            
             return newState
+    
         case let .removeFavoriteProduct(product):
             var newState = state
             removeFavoriteProduct(previousState: state, product: product)
             newState.products.removeAll {
                 $0.id == product.id
             }
+            
+            return newState
+            
+        case .sortOrderByLateRegistered:
+            var newState = state
+            newState.products
+                .sort {
+                    $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date()
+                }
+            
+            return newState
+            
+        case .sortOrderByRate:
+            var newState = state
+            newState.products.sort { $0.rate > $1.rate }
+            
             return newState
         }
     }
@@ -55,6 +77,12 @@ final class YogiFavoriteViewReactor: Reactor {
             
         case let .didTapFavoriteButton(product):
             return Observable.just(Mutation.removeFavoriteProduct(product))
+            
+        case .didTapSortOrderByLastRegisteredAction:
+            return Observable.just(Mutation.sortOrderByLateRegistered)
+            
+        case .didTapSortOrderByRateAction:
+            return Observable.just(Mutation.sortOrderByRate)
         }
     }
 }

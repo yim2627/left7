@@ -21,14 +21,28 @@ final class YogiFavoriteViewController: UIViewController, View {
     private enum FavoriteSection: Hashable {
         case favorite
     }
+    
+    private enum SortAlertActionType {
+        case lastRegistered
+        case rate
+    }
 
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<FavoriteSection, Product>
     private var dataSource: DiffableDataSource?
+    
+    private let sortButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.up.arrow.down.circle"), for: .normal)
+        button.tintColor = .black
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureYogiFavoriteCollectionView()
+        configureNavigationBar()
         self.reactor = YogiFavoriteViewReactor()
     }
     
@@ -48,6 +62,21 @@ final class YogiFavoriteViewController: UIViewController, View {
             })
             .disposed(by: disposeBag)
         
+        sortButton.rx.tap
+            .flatMap { [unowned self] _ in
+                self.showAlertController()
+            }
+            .map { action in
+                switch action {
+                case .lastRegistered:
+                    return Reactor.Action.didTapSortOrderByLastRegisteredAction
+                case .rate:
+                    return Reactor.Action.didTapSortOrderByRateAction
+                }
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state
             .map { $0.products }
             .asDriver(onErrorJustReturn: [])
@@ -55,6 +84,38 @@ final class YogiFavoriteViewController: UIViewController, View {
                 self?.applySnapShot(products: products)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sortButton)
+    }
+    
+    private func showAlertController() -> Observable<SortAlertActionType> {
+        return Observable.create { emmiter in
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let orderByLastRegisteredAction = UIAlertAction(title: "최근등록순", style: .default) { _ in
+                emmiter.onNext(.lastRegistered)
+                emmiter.onCompleted()
+            }
+            
+            let orderByRateAction = UIAlertAction(title: "평점순", style: .default) { _ in
+                emmiter.onNext(.rate)
+                emmiter.onCompleted()
+            }
+            
+            let cancelAction = UIAlertAction(title: "취소", style: .destructive)
+            
+            alertController.addAction(orderByLastRegisteredAction)
+            alertController.addAction(orderByRateAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true)
+            
+            return Disposables.create {
+                alertController.dismiss(animated: true)
+            }
+        }
     }
     
     private func configureYogiFavoriteCollectionView() {
