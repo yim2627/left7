@@ -16,12 +16,15 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     private let productInformationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.alignment = .trailing
+        stackView.spacing = 16
         return stackView
     }()
     
     private let productNameLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
+        label.text = "가나다라마바사아자차카타파하파타카차자아사바마라다나가"
+        label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .black
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -47,6 +50,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     
     private let productFavoriteRegistrationTimeLabel: UILabel = {
         let label = UILabel()
+        label.text = "22.07.04 17:58"
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .lightGray
         return label
@@ -66,6 +70,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        productImageView.setImage(with: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg")
         configureYogiFavoriteCollectionViewCell()
     }
     
@@ -83,22 +88,22 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
             $0.leading.top.equalToSuperview().inset(20)
-            $0.trailing.equalTo(productInformationStackView.snp.leading).inset(20)
+            $0.width.equalTo(150)
             $0.height.equalTo(200)
         }
     }
     
     private func configureProductFavoriteLableStackView() {
-        self.productFavoriteLableStackView.addSubview(productFavoriteTitleLabel)
-        self.productFavoriteLableStackView.addSubview(productFavoriteLableStackView)
+        self.productFavoriteLableStackView.addArrangedSubview(productFavoriteTitleLabel)
+        self.productFavoriteLableStackView.addArrangedSubview(productFavoriteRegistrationTimeLabel)
     }
     
     private func configureProductInformationStackView() {
         self.contentView.addSubview(productInformationStackView)
         productInformationStackView.snp.makeConstraints {
             $0.top.equalTo(productImageView.snp.top)
-            $0.bottom.equalTo(productImageView.snp.bottom)
-            $0.trailing.equalToSuperview().inset(10)
+            $0.leading.equalTo(productImageView.snp.trailing).inset(-25)
+            $0.trailing.equalToSuperview().inset(25)
         }
         
         self.productInformationStackView.addArrangedSubview(productNameLabel)

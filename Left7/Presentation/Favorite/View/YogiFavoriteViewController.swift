@@ -22,6 +22,13 @@ final class YogiFavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureYogiFavoriteCollectionView()
+        
+        applySnapShot(products: [
+            Product(id: 1, name: "1", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 1, isFavorite: true, favoriteRegistrationTime: Date()),
+            Product(id: 2, name: "2", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 1, isFavorite: true, favoriteRegistrationTime: Date()),
+            Product(id: 3, name: "3", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 1, isFavorite: true, favoriteRegistrationTime: Date()),
+            Product(id: 4, name: "4", thumbnailPath: "1", descriptionImagePath: "1", descriptionSubject: "1", price: 1, rate: 1, isFavorite: true, favoriteRegistrationTime: Date())
+        ])
     }
     
     private func configureYogiFavoriteCollectionView() {
@@ -33,6 +40,7 @@ final class YogiFavoriteViewController: UIViewController {
         
         view.addSubview(yogiFavoriteCollectionView)
         configureYogiFavoriteCollectionViewLayout()
+        configureYogiFavoriteCollectionviewDataSource()
     }
     
     private func configureYogiFavoriteCollectionViewLayout() {
@@ -75,5 +83,26 @@ final class YogiFavoriteViewController: UIViewController {
     
     private func configureYogiFavoriteCollectionViewCell() {
         yogiFavoriteCollectionView.registerCell(withClass: YogiFavoriteCollectionViewCell.self)
+    }
+    
+    private func configureYogiFavoriteCollectionviewDataSource() {
+        dataSource = DiffableDataSource(collectionView: yogiFavoriteCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, product: Product) in
+            let cell = collectionView.dequeueReusableCell(
+                withClass: YogiFavoriteCollectionViewCell.self,
+                indextPath: indexPath
+            )
+            
+            return cell
+        }
+    }
+    
+    private func applySnapShot(products: [Product]) {
+        var snapShot = NSDiffableDataSourceSnapshot<FavoriteSection, Product>()
+        
+        snapShot.appendSections([.favorite])
+        snapShot.appendItems(products, toSection: .favorite)
+        
+        dataSource?.apply(snapShot)
     }
 }
