@@ -18,12 +18,12 @@ final class YogiFavoriteViewReactor: Reactor {
     
     enum Action {
         case fetchFavoriteProducts
-        case didTapFavoriteButton(Int)
+        case didTapFavoriteButton(Product)
     }
     
     enum Mutation {
         case setFavoriteProducts([Product])
-        case toggleFavoriteState(index: Int)
+        case removeFavoriteProduct(Product)
     }
     
     struct State {
@@ -36,10 +36,12 @@ final class YogiFavoriteViewReactor: Reactor {
             var newState = state
             newState.products = products
             return newState
-        case let .toggleFavoriteState(index: index):
+        case let .removeFavoriteProduct(product):
             var newState = state
-            let updatedProduct = toggleFavoriteState(previousState: state, index: index)
-            newState.products[index] = updatedProduct
+            removeFavoriteProduct(previousState: state, product: product)
+            newState.products.removeAll {
+                $0.id == product.id
+            }
             return newState
         }
     }
@@ -48,30 +50,27 @@ final class YogiFavoriteViewReactor: Reactor {
         switch action {
         case .fetchFavoriteProducts:
             return useCase.fetchFavoriteProduct()
+                .take(until: self.action.filter(Action.isUpdate))
                 .map { Mutation.setFavoriteProducts($0) }
             
-        case let .didTapFavoriteButton(index):
-            return Observable.just(Mutation.toggleFavoriteState(index: index))
+        case let .didTapFavoriteButton(product):
+            return Observable.just(Mutation.removeFavoriteProduct(product))
         }
     }
 }
 
 extension YogiFavoriteViewReactor {
-    func toggleFavoriteState(previousState: State, index: Int) -> Product {
-        let product = Product(
-            id: previousState.products[index].id,
-            name: previousState.products[index].name,
-            thumbnailPath: previousState.products[index].thumbnailPath,
-            descriptionImagePath: previousState.products[index].descriptionImagePath,
-            descriptionSubject: previousState.products[index].descriptionSubject,
-            price: previousState.products[index].price,
-            rate: previousState.products[index].rate,
-            isFavorite: !previousState.products[index].isFavorite,
-            favoriteRegistrationTime: !previousState.products[index].isFavorite ? Date() : nil
-        )
-        
-        useCase.updateFavoriteProduct(product)
-        
-        return product
+    func removeFavoriteProduct(previousState: State, product: Product) {
+        useCase.deleteFavoriteProduct(product)
+    }
+}
+
+extension YogiFavoriteViewReactor.Action {
+    static func isUpdate(_ action: YogiFavoriteViewReactor.Action) -> Bool {
+        if case .fetchFavoriteProducts = action {
+            return true
+        } else {
+            return false
+        }
     }
 }

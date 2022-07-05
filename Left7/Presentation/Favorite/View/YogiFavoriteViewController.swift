@@ -108,12 +108,17 @@ final class YogiFavoriteViewController: UIViewController, View {
     }
     
     private func configureYogiFavoriteCollectionviewDataSource() {
-        dataSource = DiffableDataSource(collectionView: yogiFavoriteCollectionView) {
+        dataSource = DiffableDataSource(collectionView: yogiFavoriteCollectionView) { [unowned self]
             (collectionView: UICollectionView, indexPath: IndexPath, product: Product) in
             let cell = collectionView.dequeueReusableCell(
                 withClass: YogiFavoriteCollectionViewCell.self,
                 indextPath: indexPath
             )
+            
+            cell.favoriteButtonTap
+                .map { Reactor.Action.didTapFavoriteButton(product) }
+                .bind(to: self.reactor!.action)
+                .disposed(by: cell.disposeBag)
             
             cell.setData(product: product)
             
