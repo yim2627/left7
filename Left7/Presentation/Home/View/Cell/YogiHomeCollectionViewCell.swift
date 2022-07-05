@@ -14,7 +14,7 @@ import RxCocoa
 
 final class YogiHomeCollectionViewCell: UICollectionViewCell {
     private let productImageView = YogiProductImageView(frame: .zero)
-    private let rateStackView = YogiRateStackView(frame: .zero)
+    private let productRateStackView = YogiRateStackView(frame: .zero)
     private let productNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
@@ -44,7 +44,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     
     func setData(product: Product) {
         productImageView.setImage(with: product.thumbnailPath)
-        rateStackView.setRateValue(rate: product.rate)
+        productRateStackView.setRateValue(rate: product.rate)
         configureFavoriteButton(isFavorite: product.isFavorite)
         productNameLabel.text = product.name
     }
@@ -64,8 +64,8 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureRateStackView() {
-        contentView.addSubview(rateStackView)
-        rateStackView.snp.makeConstraints {
+        contentView.addSubview(productRateStackView)
+        productRateStackView.snp.makeConstraints {
             $0.top.equalTo(productImageView.snp.bottom).inset(-8)
             $0.leading.equalTo(productImageView.snp.leading)
             $0.trailing.equalTo(productImageView.snp.trailing)
@@ -75,9 +75,9 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell {
     private func configureProductNameLabel() {
         contentView.addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints {
-            $0.top.equalTo(rateStackView.snp.bottom).inset(-8)
-            $0.leading.equalTo(rateStackView.snp.leading)
-            $0.trailing.equalTo(rateStackView.snp.trailing)
+            $0.top.equalTo(productRateStackView.snp.bottom).inset(-8)
+            $0.leading.equalTo(productRateStackView.snp.leading)
+            $0.trailing.equalTo(productRateStackView.snp.trailing)
             $0.bottom.lessThanOrEqualToSuperview()
         }
     }
