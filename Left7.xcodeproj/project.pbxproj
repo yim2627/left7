@@ -130,7 +130,7 @@
 		A6075D802871911400913FD4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
+				A6367A052874C09200F480A1 /* View */,
 				A6367A002874BCC000F480A1 /* Reactor */,
 			);
 			path = Cell;
@@ -188,6 +188,30 @@
 				A63679FE2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift */,
 			);
 			path = Reactor;
+			sourceTree = "<group>";
+		};
+		A6367A032874C08700F480A1 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				A6367A012874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		A6367A042874C08D00F480A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF96AD2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6367A052874C09200F480A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6443953287053B8009E9F74 /* YogiHomeCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
@@ -439,8 +463,8 @@
 		A6AF96B02872E1CB000E21B2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				A6AF96AD2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift */,
-				A6367A012874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift */,
+				A6367A042874C08D00F480A1 /* View */,
+				A6367A032874C08700F480A1 /* Reactor */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
