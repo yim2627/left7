@@ -23,8 +23,8 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     
     private let productNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "가나다라마바사아자차카타파하파타카차자아사바마라다나가"
         label.numberOfLines = 0
+        label.textAlignment = .right
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .black
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -43,15 +43,14 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     private let productFavoriteTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "즐겨찾기 등록 시간"
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .lightGray
         return label
     }()
     
     private let productFavoriteRegistrationTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "22.07.04 17:58"
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .lightGray
         return label
     }()
@@ -70,7 +69,6 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        productImageView.setImage(with: "https://gccompany.co.kr/App/thumbnail/thumb_img_1.jpg")
         configureYogiFavoriteCollectionViewCell()
     }
     
@@ -109,5 +107,13 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
         self.productInformationStackView.addArrangedSubview(productNameLabel)
         self.productInformationStackView.addArrangedSubview(productRateStackView)
         self.productInformationStackView.addArrangedSubview(productFavoriteLableStackView)
+    }
+    
+    func setData(product: Product) {
+        productNameLabel.text = product.name
+        productImageView.setImage(with: product.thumbnailPath)
+        productImageView.setFavoriteState(state: product.isFavorite)
+        productRateStackView.setRateValue(rate: product.rate)
+        productFavoriteRegistrationTimeLabel.text = "\(product.favoriteRegistrationTime!)"
     }
 }
