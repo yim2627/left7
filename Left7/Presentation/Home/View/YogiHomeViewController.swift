@@ -15,7 +15,16 @@ import ReactorKit
 import SnapKit
 
 final class YogiHomeViewController: UIViewController, View {
-    private var yogiHomeCollectionView: UICollectionView!
+    private lazy var yogiHomeCollectionView: UICollectionView = {
+        let layout = configureYogiHomeCollectionViewCompositionalLayout()
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        
+        return collectionView
+    }()
+    
     var disposeBag = DisposeBag()
     
     private enum HomeSection: Hashable {
@@ -29,12 +38,10 @@ final class YogiHomeViewController: UIViewController, View {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureYogiHomeCollectionView()
-        self.reactor = YogiHomeViewReactor()
     }
     
     func bind(reactor: YogiHomeViewReactor) {
-        self.rx.viewWillAppear
-            .take(1)
+        self.rx.viewDidLoad
             .map { Reactor.Action.fetchProducts }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -78,11 +85,6 @@ final class YogiHomeViewController: UIViewController, View {
     }
     
     private func configureYogiHomeCollectionView() {
-        let layout = configureYogiHomeCollectionViewCompositionalLayout()
-        yogiHomeCollectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: layout
-        )
         configureYogiHomeCollectionViewCell()
         
         view.addSubview(yogiHomeCollectionView)
