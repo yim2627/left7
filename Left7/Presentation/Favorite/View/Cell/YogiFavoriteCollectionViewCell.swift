@@ -12,7 +12,9 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
+import ReactorKit
+
+final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
     private let productInformationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -77,6 +79,18 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
+    func bind(reactor: YogiFavoriteCollectionViewCellReactor) {
+        guard let currentProduct = reactor.initialState.product else {
+            return
+        }
+        
+        productNameLabel.text = currentProduct.name
+        productImageView.setImage(with: currentProduct.thumbnailPath)
+        productImageView.setFavoriteState(state: currentProduct.isFavorite)
+        productRateStackView.setRateValue(rate: currentProduct.rate)
+        productFavoriteRegistrationTimeLabel.text = YogiDateFormatter.shared.toDateString(date: currentProduct.favoriteRegistrationTime ?? Date())
+    }
+    
     private func configureYogiFavoriteCollectionViewCell() {
         configureProductImageView()
         configureProductFavoriteLableStackView()
@@ -108,13 +122,5 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
         self.productInformationStackView.addArrangedSubview(productNameLabel)
         self.productInformationStackView.addArrangedSubview(productRateStackView)
         self.productInformationStackView.addArrangedSubview(productFavoriteLableStackView)
-    }
-    
-    func setData(product: Product) {
-        productNameLabel.text = product.name
-        productImageView.setImage(with: product.thumbnailPath)
-        productImageView.setFavoriteState(state: product.isFavorite)
-        productRateStackView.setRateValue(rate: product.rate)
-        productFavoriteRegistrationTimeLabel.text = YogiDateFormatter.shared.toDateString(date: product.favoriteRegistrationTime ?? Date())
     }
 }
