@@ -180,12 +180,17 @@ final class YogiFavoriteViewController: UIViewController, View {
                 indextPath: indexPath
             )
             
-            cell.favoriteButtonTap
-                .map { Reactor.Action.didTapFavoriteButton(product) }
-                .bind(to: self.reactor!.action)
-                .disposed(by: cell.disposeBag)
+            let initialState = YogiFavoriteCollectionViewCellReactor.State(product: product)
+            let cellReactor = YogiFavoriteCollectionViewCellReactor(state: initialState)
             
-            cell.setData(product: product)
+            cell.reactor = cellReactor
+            
+            reactor.flatMap { reactor in
+                cell.favoriteButtonTap
+                    .map { Reactor.Action.didTapFavoriteButton(product) }
+                    .bind(to: reactor.action)
+                    .disposed(by: cell.disposeBag)
+            }
             
             return cell
         }
