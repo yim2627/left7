@@ -50,6 +50,7 @@ final class YogiDetailViewReactor: Reactor {
         switch action {
         case .didInit:
             return Observable.just(Mutation.setProduct)
+            
         case .didTapFavoriteButton:
             return Observable.just(Mutation.toggleFavoriteState)
         }

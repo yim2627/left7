@@ -16,9 +16,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-//        let vc =  YogiHomeViewController()
-        let vc =  YogiFavoriteViewController()
-        window?.rootViewController = UINavigationController(rootViewController: vc)
+        
+        let tab = UITabBarController()
+        
+        let homeVC = YogiHomeViewController()
+        let homeTabBarSelectedImage = UIImage(systemName: "house.fill")
+        homeVC.tabBarItem = UITabBarItem(
+            title: "홈",
+            image: UIImage(systemName: "house"),
+            selectedImage: homeTabBarSelectedImage
+        )
+        let favoriteGoodVC = YogiFavoriteViewController()
+        let favoriteTabBarSelecetedImage = UIImage(systemName: "suit.heart.fill")
+        favoriteGoodVC.tabBarItem = UITabBarItem(
+            title: "좋아요",
+            image: UIImage(systemName: "suit.heart"),
+            selectedImage: favoriteTabBarSelecetedImage
+        )
+        
+        tab.viewControllers = [homeVC, favoriteGoodVC]
+        tab.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
+        tab.tabBar.unselectedItemTintColor = .systemGray2
+        
+        window?.rootViewController = UINavigationController(rootViewController: tab)
         window?.makeKeyAndVisible()
     }
 
