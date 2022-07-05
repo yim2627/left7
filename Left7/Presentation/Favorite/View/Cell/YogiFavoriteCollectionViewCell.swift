@@ -12,7 +12,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class YogiFavoriteCollectionViewCell: UICollectionViewCell {
+final class YogiFavoriteCollectionViewCell: UICollectionViewCell {
     private let productInformationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
