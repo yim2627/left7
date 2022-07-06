@@ -101,4 +101,20 @@ class FavoriteViewReactorTests: XCTestCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func test_isUpdate_true() {
+        let usecase = StubFavoriteUsecase()
+        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        
+        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.fetchFavoriteProducts), true)
+    }
+    
+    func test_isUpdate_false() {
+        let usecase = StubFavoriteUsecase()
+        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        
+        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapFavoriteButton(.empty)), false)
+        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapSortOrderByLastRegisteredAction), false)
+        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapSortOrderByRateAction), false)
+    }
 }
