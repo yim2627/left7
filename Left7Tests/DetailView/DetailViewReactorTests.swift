@@ -26,4 +26,13 @@ final class DetailViewReactorTests: XCTestCase {
         
         XCTAssertEqual(reactor.currentState.product?.isFavorite, false)
     }
+    
+    func test_didTapFavoriteButton_with_abnormal_product() {
+        let usecase = StubDetailUsecase()
+        reactor = YogiDetailViewReactor(useCase: usecase, selectedProduct: nil)
+        
+        reactor.action.onNext(.didTapFavoriteButton)
+        
+        XCTAssertEqual(reactor.currentState.product, .empty)
+    }
 }
