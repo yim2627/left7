@@ -275,7 +275,6 @@
 				A6367A2F2875B12100F480A1 /* DetailView */,
 				A6367A2D2875AA5500F480A1 /* HomeView */,
 				A6367A1A28755F4000F480A1 /* NetworkTests */,
-				A6367A3D2875F70300F480A1 /* HomeUseCaseTests.swift */,
 			);
 			path = Left7Tests;
 			sourceTree = "<group>";
@@ -322,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				A6367A2228757CFB00F480A1 /* HomeViewReactorTests.swift */,
+				A6367A3D2875F70300F480A1 /* HomeUseCaseTests.swift */,
 				A6367A2E2875ABBC00F480A1 /* TestDouble */,
 			);
 			path = HomeView;
