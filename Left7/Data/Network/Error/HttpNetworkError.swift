@@ -8,7 +8,6 @@
 import Foundation
 
 enum HttpNetworkError: LocalizedError {
-    case invalidRequest
     case invalidResponse
     case invalidURL
     case abnormalStatusCode(_ statusCode: Int)
@@ -16,8 +15,6 @@ enum HttpNetworkError: LocalizedError {
     
     var errorDescription: String? {
         switch self {
-        case .invalidRequest:
-            return "ERROR: Invalid Request"
         case .invalidResponse:
             return "ERROR: Invalid Response"
         case .invalidURL:
