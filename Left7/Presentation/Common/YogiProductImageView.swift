@@ -41,12 +41,10 @@ final class YogiProductImageView: UIImageView {
     }
     
     func setFavoriteState(state: Bool) {
-        if state == true {
-            self.favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
-            self.favoriteButton.tintColor = .systemRed
-        } else  {
-            self.favoriteButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-            self.favoriteButton.tintColor = .white
-        }
+        favoriteButton.setImage(
+            state ? UIImage(systemName: "suit.heart.fill") : UIImage(systemName: "suit.heart"),
+            for: .normal
+        )
+        favoriteButton.tintColor = state ? .systemRed : .white
     }
 }
