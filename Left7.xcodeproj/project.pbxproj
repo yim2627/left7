@@ -341,8 +341,8 @@
 			isa = PBXGroup;
 			children = (
 				A6367A322875B21000F480A1 /* DetailViewReactorTests.swift */,
-				A6367A342875CB0700F480A1 /* TestDouble */,
 				A6367A452876060100F480A1 /* DetailUseCaseTests.swift */,
+				A6367A342875CB0700F480A1 /* TestDouble */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
