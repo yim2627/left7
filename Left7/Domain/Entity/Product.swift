@@ -15,6 +15,6 @@ struct Product: Hashable {
     let descriptionSubject: String
     let price: Int
     let rate: Double
-    let isFavorite: Bool
-    let favoriteRegistrationTime: Date?
+    var isFavorite: Bool
+    var favoriteRegistrationTime: Date?
 }
