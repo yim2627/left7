@@ -20,4 +20,9 @@ extension Reactive where Base: UIViewController {
         let viewWillAppearEvent = self.methodInvoked(#selector(base.viewWillAppear)).map { _ in }
         return ControlEvent(events: viewWillAppearEvent)
     }
+    
+    var viewDidDisappear: ControlEvent<Void> {
+        let viewDidDisappearEvent = self.methodInvoked(#selector(base.viewDidDisappear)).map { _ in }
+        return ControlEvent(events: viewDidDisappearEvent)
+    }
 }
