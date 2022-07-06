@@ -327,10 +327,18 @@
 		A6367A2F2875B12100F480A1 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				A6367A302875B16C00F480A1 /* StubDetailUsecase.swift */,
 				A6367A322875B21000F480A1 /* DetailViewReactorTests.swift */,
+				A6367A342875CB0700F480A1 /* TestDouble */,
 			);
 			path = DetailView;
+			sourceTree = "<group>";
+		};
+		A6367A342875CB0700F480A1 /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				A6367A302875B16C00F480A1 /* StubDetailUsecase.swift */,
+			);
+			path = TestDouble;
 			sourceTree = "<group>";
 		};
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
