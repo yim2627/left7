@@ -306,9 +306,17 @@
 			isa = PBXGroup;
 			children = (
 				A6367A2228757CFB00F480A1 /* HomeViewReactorTests.swift */,
-				A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */,
+				A6367A2E2875ABBC00F480A1 /* TestDouble */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A6367A2E2875ABBC00F480A1 /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */,
+			);
+			path = TestDouble;
 			sourceTree = "<group>";
 		};
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
