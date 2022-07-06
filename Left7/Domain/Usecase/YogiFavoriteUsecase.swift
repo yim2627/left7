@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class YogiFavoriteUsecase {
+final class YogiFavoriteUsecase: YogiFavoriteUsecaseType {
     private let favoriteProductRepository: CoreDataRepository
     
     init(favoriteProductRepository: CoreDataRepository = YogiFavoriteProductRepository()) {

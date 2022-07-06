@@ -13,10 +13,11 @@ import RxCocoa
 import ReactorKit
 
 final class YogiDetailViewReactor: Reactor {
-    private let useCase = YogiDetailUsecase()
+    private let useCase: YogiDetailUsecaseType
     var initialState: State
     
-    init(selectedProduct: Product) {
+    init(useCase: YogiDetailUsecaseType = YogiDetailUsecase(), selectedProduct: Product) {
+        self.useCase = useCase
         self.initialState = State(product: selectedProduct)
     }
     
