@@ -78,4 +78,27 @@ class FavoriteViewReactorTests: XCTestCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func test_didTapSortOrderByRateAction() {
+        let usecase = StubFavoriteUsecase()
+        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        
+        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        
+        // 기존 프로젝트 정렬을 위해 미리 프로젝트 세팅
+        reactor.action.onNext(.fetchFavoriteProducts)
+        
+        XCTAssertEqual(reactor.currentState.products.count, 3)
+        
+        reactor.action.onNext(.didTapSortOrderByRateAction)
+        
+        reactor.state
+            .map { $0.products }
+            .subscribe(onNext: {
+                XCTAssertEqual($0[0].id, -3)
+                XCTAssertEqual($0[1].id, -2)
+                XCTAssertEqual($0[2].id, -1)
+            })
+            .disposed(by: disposeBag)
+    }
 }

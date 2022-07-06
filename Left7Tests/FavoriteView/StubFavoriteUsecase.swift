@@ -31,7 +31,7 @@ final class StubFavoriteUsecase: YogiFavoriteUsecaseType {
                 descriptionImagePath: "",
                 descriptionSubject: "",
                 price: -1,
-                rate: -1,
+                rate: 0,
                 isFavorite: true,
                 favoriteRegistrationTime: Date(timeIntervalSince1970: 20000)
             ),
@@ -42,7 +42,7 @@ final class StubFavoriteUsecase: YogiFavoriteUsecaseType {
                 descriptionImagePath: "",
                 descriptionSubject: "",
                 price: -1,
-                rate: -1,
+                rate: 1,
                 isFavorite: true,
                 favoriteRegistrationTime: Date(timeIntervalSince1970: 30000)
             )
