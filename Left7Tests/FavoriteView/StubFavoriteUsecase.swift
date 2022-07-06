@@ -21,7 +21,9 @@ final class StubFavoriteUsecase: YogiFavoriteUsecaseType {
                 descriptionSubject: "",
                 price: -1,
                 rate: -1,
-                isFavorite: true),
+                isFavorite: true,
+                favoriteRegistrationTime: Date(timeIntervalSince1970: 10000)
+            ),
             Product(
                 id: -2,
                 name: "",
@@ -30,7 +32,9 @@ final class StubFavoriteUsecase: YogiFavoriteUsecaseType {
                 descriptionSubject: "",
                 price: -1,
                 rate: -1,
-                isFavorite: true),
+                isFavorite: true,
+                favoriteRegistrationTime: Date(timeIntervalSince1970: 20000)
+            ),
             Product(
                 id: -3,
                 name: "",
@@ -39,7 +43,9 @@ final class StubFavoriteUsecase: YogiFavoriteUsecaseType {
                 descriptionSubject: "",
                 price: -1,
                 rate: -1,
-                isFavorite: true)
+                isFavorite: true,
+                favoriteRegistrationTime: Date(timeIntervalSince1970: 30000)
+            )
         ])
     }
     
