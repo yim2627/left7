@@ -28,4 +28,24 @@ final class DetailUseCaseTests: XCTestCase {
         useCase.updateFavoriteProduct(product)
         coreDataRepository.verifySaveFavoriteProduct(product: product)
     }
+    
+    func test_updateFavoriteProduct_whenIsNotFavoriteProduct() {
+        let coreDataRepository = MockFavoriteProductRepository()
+        
+        let useCase = YogiDetailUsecase(favoriteProductRepository: coreDataRepository)
+        
+        let product = Product(
+            id: -4,
+            name: "",
+            thumbnailPath: "",
+            descriptionImagePath: "",
+            descriptionSubject: "",
+            price: -4,
+            rate: -4,
+            isFavorite: false
+        )
+    
+        useCase.updateFavoriteProduct(product)
+        coreDataRepository.verifyDeleteFavoriteProduct(product: product)
+    }
 }
