@@ -36,6 +36,7 @@
 		A6367A412875FF9000F480A1 /* MockProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A402875FF9000F480A1 /* MockProductRepository.swift */; };
 		A6367A432876006300F480A1 /* MockFavoriteProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A422876006300F480A1 /* MockFavoriteProductRepository.swift */; };
 		A6367A462876060100F480A1 /* DetailUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A452876060100F480A1 /* DetailUseCaseTests.swift */; };
+		A6367A4828760A2F00F480A1 /* FavoriteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A4728760A2F00F480A1 /* FavoriteUseCaseTests.swift */; };
 		A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644392D286EDC58009E9F74 /* YogiResponse.swift */; };
 		A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */; };
 		A6443938286EE56F009E9F74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A6443937286EE56F009E9F74 /* SnapKit */; };
@@ -114,6 +115,7 @@
 		A6367A402875FF9000F480A1 /* MockProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductRepository.swift; sourceTree = "<group>"; };
 		A6367A422876006300F480A1 /* MockFavoriteProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoriteProductRepository.swift; sourceTree = "<group>"; };
 		A6367A452876060100F480A1 /* DetailUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCaseTests.swift; sourceTree = "<group>"; };
+		A6367A4728760A2F00F480A1 /* FavoriteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUseCaseTests.swift; sourceTree = "<group>"; };
 		A644392D286EDC58009E9F74 /* YogiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiResponse.swift; sourceTree = "<group>"; };
 		A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A6443943286EE783009E9F74 /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				A6367A3A2875CDD400F480A1 /* FavoriteViewReactorTests.swift */,
+				A6367A4728760A2F00F480A1 /* FavoriteUseCaseTests.swift */,
 				A6367A3C2875DB2100F480A1 /* TestDouble */,
 			);
 			path = FavoriteView;
@@ -767,6 +770,7 @@
 				A6367A2C28759F6D00F480A1 /* StubHomeUsecase.swift in Sources */,
 				A6367A462876060100F480A1 /* DetailUseCaseTests.swift in Sources */,
 				A6367A2328757CFB00F480A1 /* HomeViewReactorTests.swift in Sources */,
+				A6367A4828760A2F00F480A1 /* FavoriteUseCaseTests.swift in Sources */,
 				A6367A3B2875CDD400F480A1 /* FavoriteViewReactorTests.swift in Sources */,
 				A6367A1D2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift in Sources */,
 				A6367A1428755E1F00F480A1 /* StubURLSessionWithStatusCode.swift in Sources */,
