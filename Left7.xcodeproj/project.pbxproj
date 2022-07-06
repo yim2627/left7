@@ -18,6 +18,10 @@
 		A63679FF2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679FE2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift */; };
 		A6367A022874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A012874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift */; };
 		A6367A0D2875535E00F480A1 /* EndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A0C2875535E00F480A1 /* EndPointTests.swift */; };
+		A6367A1428755E1F00F480A1 /* StubURLSessionWithStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A1328755E1F00F480A1 /* StubURLSessionWithStatusCode.swift */; };
+		A6367A1628755E5B00F480A1 /* StubURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A1528755E5B00F480A1 /* StubURLSessionDataTask.swift */; };
+		A6367A1828755ECC00F480A1 /* HttpNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A1728755ECC00F480A1 /* HttpNetworkTests.swift */; };
+		A6367A1D2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A1C2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift */; };
 		A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644392D286EDC58009E9F74 /* YogiResponse.swift */; };
 		A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */; };
 		A6443938286EE56F009E9F74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A6443937286EE56F009E9F74 /* SnapKit */; };
@@ -78,6 +82,10 @@
 		A6367A012874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteCollectionViewCellReactor.swift; sourceTree = "<group>"; };
 		A6367A0A2875535E00F480A1 /* Left7Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Left7Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6367A0C2875535E00F480A1 /* EndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTests.swift; sourceTree = "<group>"; };
+		A6367A1328755E1F00F480A1 /* StubURLSessionWithStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSessionWithStatusCode.swift; sourceTree = "<group>"; };
+		A6367A1528755E5B00F480A1 /* StubURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSessionDataTask.swift; sourceTree = "<group>"; };
+		A6367A1728755ECC00F480A1 /* HttpNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkTests.swift; sourceTree = "<group>"; };
+		A6367A1C2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSessionWithInvalidResponse.swift; sourceTree = "<group>"; };
 		A644392D286EDC58009E9F74 /* YogiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiResponse.swift; sourceTree = "<group>"; };
 		A6443934286EE0F3009E9F74 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A6443943286EE783009E9F74 /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
@@ -237,9 +245,37 @@
 		A6367A0B2875535E00F480A1 /* Left7Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A6367A0C2875535E00F480A1 /* EndPointTests.swift */,
+				A6367A1A28755F4000F480A1 /* NetworkTests */,
 			);
 			path = Left7Tests;
+			sourceTree = "<group>";
+		};
+		A6367A1928755F3300F480A1 /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				A6367A1328755E1F00F480A1 /* StubURLSessionWithStatusCode.swift */,
+				A6367A1C2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift */,
+				A6367A1528755E5B00F480A1 /* StubURLSessionDataTask.swift */,
+			);
+			path = TestDouble;
+			sourceTree = "<group>";
+		};
+		A6367A1A28755F4000F480A1 /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6367A1928755F3300F480A1 /* TestDouble */,
+				A6367A1B28755F4D00F480A1 /* Support */,
+				A6367A1728755ECC00F480A1 /* HttpNetworkTests.swift */,
+			);
+			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		A6367A1B28755F4D00F480A1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A6367A0C2875535E00F480A1 /* EndPointTests.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		A6443933286EDCA2009E9F74 /* ResponseModel */ = {
@@ -613,7 +649,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6367A1D2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift in Sources */,
+				A6367A1428755E1F00F480A1 /* StubURLSessionWithStatusCode.swift in Sources */,
 				A6367A0D2875535E00F480A1 /* EndPointTests.swift in Sources */,
+				A6367A1828755ECC00F480A1 /* HttpNetworkTests.swift in Sources */,
+				A6367A1628755E5B00F480A1 /* StubURLSessionDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
