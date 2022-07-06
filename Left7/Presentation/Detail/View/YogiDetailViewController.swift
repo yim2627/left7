@@ -72,6 +72,11 @@ final class YogiDetailViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -149,7 +154,10 @@ final class YogiDetailViewController: UIViewController, View {
         productImageView.setImage(with: product.descriptionImagePath)
         productNameLabel.text = product.name
         productRateStackView.setRateValue(rate: product.rate)
-        productPriceLabel.text = "\(product.price)원"
+        
+        let productPrice = YogiNumberFormatter.shared.toString(number: product.price)
+        productPriceLabel.text = "\(productPrice) 원"
+        
         productSubjectLabel.text = product.descriptionSubject
         setFavoriteState(state: product.isFavorite)
     }

@@ -34,6 +34,11 @@ final class YogiHomeViewController: UIViewController, View {
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<HomeSection, Product>
     private var dataSource: DiffableDataSource?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
