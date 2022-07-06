@@ -80,6 +80,12 @@ final class YogiDetailViewController: UIViewController, View {
     }
     
     func bind(reactor: YogiDetailViewReactor) {
+        self.rx.viewDidDisappear
+            .subscribe(onNext: { [weak self] in
+                self?.removeFromParent()
+            })
+            .disposed(by: disposeBag)
+        
         favoriteButton.rx.tap
             .map { _ in Reactor.Action.didTapFavoriteButton }
             .bind(to: reactor.action)
