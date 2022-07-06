@@ -38,10 +38,12 @@ final class YogiDetailViewReactor: Reactor {
         switch mutation {
         case .setProduct:
             return state
+            
         case .toggleFavoriteState:
             var newState = state
             let updatedProduct = toggleFavoriteState(previousState: state)
             newState.product = updatedProduct
+            
             return newState
         }
     }
@@ -59,17 +61,12 @@ final class YogiDetailViewReactor: Reactor {
 
 extension YogiDetailViewReactor {
     func toggleFavoriteState(previousState: State) -> Product {
-        let product = Product(
-            id: previousState.product?.id ?? 0,
-            name: previousState.product?.name ?? "",
-            thumbnailPath: previousState.product?.thumbnailPath ?? "",
-            descriptionImagePath: previousState.product?.descriptionImagePath ?? "",
-            descriptionSubject: previousState.product?.descriptionSubject ?? "",
-            price: previousState.product?.price ?? 0,
-            rate: previousState.product?.rate ?? 0,
-            isFavorite: !(previousState.product?.isFavorite ?? false),
-            favoriteRegistrationTime: !(previousState.product?.isFavorite ?? false) ? Date() : nil
-        )
+        guard var product = previousState.product else {
+            return .empty
+        }
+        
+        product.isFavorite.toggle()
+        product.favoriteRegistrationTime = product.isFavorite ? Date() : nil
         
         useCase.updateFavoriteProduct(product)
         

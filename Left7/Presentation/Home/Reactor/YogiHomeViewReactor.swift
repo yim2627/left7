@@ -42,25 +42,34 @@ final class YogiHomeViewReactor: Reactor {
         case let .setProducts(products):
             var newState = state
             newState.products = products
+            
             return newState
+            
         case let .setFavoriteProducts(products):
             var newState = state
             let updatedProduct = updateProducts(previousState: state, favoriteProjects: products)
             newState.products = updatedProduct
+            
             return newState
+            
         case let .appendProducts(products, page: page):
             var newState = state
             newState.products.append(contentsOf: products)	
             newState.page = page
+            
             return newState
+            
         case let .setLoadingNextPage(isLoadingNextPage):
             var newState = state
             newState.isLoadingNextPage = isLoadingNextPage
+            
             return newState
+            
         case let .toggleFavoriteState(index: index):
             var newState = state
             let updatedProduct = toggleFavoriteState(previousState: newState, index: index)
             newState.products[index] = updatedProduct
+            
             return newState
         }
     }
@@ -99,17 +108,10 @@ final class YogiHomeViewReactor: Reactor {
 
 private extension YogiHomeViewReactor {
     func toggleFavoriteState(previousState: State, index: Int) -> Product {
-        let product = Product(
-            id: previousState.products[index].id,
-            name: previousState.products[index].name,
-            thumbnailPath: previousState.products[index].thumbnailPath,
-            descriptionImagePath: previousState.products[index].descriptionImagePath,
-            descriptionSubject: previousState.products[index].descriptionSubject,
-            price: previousState.products[index].price,
-            rate: previousState.products[index].rate,
-            isFavorite: !previousState.products[index].isFavorite,
-            favoriteRegistrationTime: !previousState.products[index].isFavorite ? Date() : nil
-        )
+        var product = previousState.products[index]
+        
+        product.isFavorite.toggle()
+        product.favoriteRegistrationTime = product.isFavorite ? Date() : nil
         
         useCase.updateFavoriteProduct(product)
         
@@ -121,17 +123,10 @@ private extension YogiHomeViewReactor {
         let favoriteProjectId = favoriteProjects.map { $0.id }
         
         return previousState.products.map {
-            return Product(
-                id: $0.id,
-                name: $0.name,
-                thumbnailPath: $0.thumbnailPath,
-                descriptionImagePath: $0.descriptionImagePath,
-                descriptionSubject: $0.descriptionSubject,
-                price: $0.price,
-                rate: $0.rate,
-                isFavorite: favoriteProjectId.contains($0.id),
-                favoriteRegistrationTime: $0.favoriteRegistrationTime
-            )
+            var product = $0
+            product.isFavorite = favoriteProjectId.contains(product.id)
+            
+            return product
         }
     }
 }

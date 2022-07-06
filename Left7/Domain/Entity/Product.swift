@@ -8,6 +8,18 @@
 import Foundation
 
 struct Product: Hashable {
+    static let empty: Self = .init(
+        id: -1,
+        name: "",
+        thumbnailPath: "",
+        descriptionImagePath: "",
+        descriptionSubject: "",
+        price: -1,
+        rate: -1,
+        isFavorite: false,
+        favoriteRegistrationTime: nil
+    )
+    
     let id: Int
     let name: String
     let thumbnailPath: String
@@ -15,6 +27,6 @@ struct Product: Hashable {
     let descriptionSubject: String
     let price: Int
     let rate: Double
-    let isFavorite: Bool
-    let favoriteRegistrationTime: Date?
+    var isFavorite: Bool
+    var favoriteRegistrationTime: Date?
 }
