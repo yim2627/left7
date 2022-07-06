@@ -54,4 +54,24 @@ class FavoriteUseCaseTests: XCTestCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func test_deleteFavoriteProduct() {
+        let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
+        
+        let useCase = YogiFavoriteUsecase(favoriteProductRepository: coreDataRepository)
+        
+        let product = Product(
+            id: -4,
+            name: "",
+            thumbnailPath: "",
+            descriptionImagePath: "",
+            descriptionSubject: "",
+            price: -4,
+            rate: -4,
+            isFavorite: false
+        )
+        
+        useCase.deleteFavoriteProduct(product)
+        coreDataRepository.verifyDeleteFavoriteProduct(product: product)
+    }
 }
