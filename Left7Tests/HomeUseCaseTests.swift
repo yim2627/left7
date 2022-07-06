@@ -95,6 +95,23 @@ class HomeUseCaseTests: XCTestCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func test_fetchFavoriteProduct() {
+        let networkRepository = MockProductRepository(data: testProducts)
+        let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
+        
+        let useCase = YogiHomeUsecase(
+            productRepository: networkRepository,
+            favoriteProductRepository: coreDataRepository
+        )
+        
+        useCase.fetchFavoriteProduct()
+            .subscribe(onNext: { favoriteProducts in
+                XCTAssertEqual(self.testFavoriteProducts, favoriteProducts)
+                coreDataRepository.verifyFetchFavoriteProduct()
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 
