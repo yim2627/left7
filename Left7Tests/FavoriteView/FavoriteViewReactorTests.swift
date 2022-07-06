@@ -32,4 +32,27 @@ class FavoriteViewReactorTests: XCTestCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func test_didTapFavoriteButton() {
+        let usecase = StubFavoriteUsecase()
+        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        
+        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        
+        // 기존 프로젝트 isFavorite toggle 확인을 위해 미리 프로젝트 세팅
+        reactor.action.onNext(.fetchFavoriteProducts)
+        
+        XCTAssertEqual(reactor.currentState.products.count, 3)
+        
+        let defaultProduct: Product = .empty
+        
+        reactor.action.onNext(.didTapFavoriteButton(defaultProduct))
+        
+        reactor.state
+            .map { $0.products }
+            .subscribe(onNext: {
+                XCTAssertEqual($0.map { $0.id }.contains(defaultProduct.id), false)
+            })
+            .disposed(by: disposeBag)
+    }
 }
