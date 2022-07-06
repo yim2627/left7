@@ -16,7 +16,7 @@ final class YogiDetailViewReactor: Reactor {
     private let useCase: YogiDetailUsecaseType
     var initialState: State
     
-    init(useCase: YogiDetailUsecaseType = YogiDetailUsecase(), selectedProduct: Product) {
+    init(useCase: YogiDetailUsecaseType = YogiDetailUsecase(), selectedProduct: Product?) {
         self.useCase = useCase
         self.initialState = State(product: selectedProduct)
     }
