@@ -42,25 +42,34 @@ final class YogiHomeViewReactor: Reactor {
         case let .setProducts(products):
             var newState = state
             newState.products = products
+            
             return newState
+            
         case let .setFavoriteProducts(products):
             var newState = state
             let updatedProduct = updateProducts(previousState: state, favoriteProjects: products)
             newState.products = updatedProduct
+            
             return newState
+            
         case let .appendProducts(products, page: page):
             var newState = state
             newState.products.append(contentsOf: products)	
             newState.page = page
+            
             return newState
+            
         case let .setLoadingNextPage(isLoadingNextPage):
             var newState = state
             newState.isLoadingNextPage = isLoadingNextPage
+            
             return newState
+            
         case let .toggleFavoriteState(index: index):
             var newState = state
             let updatedProduct = toggleFavoriteState(previousState: newState, index: index)
             newState.products[index] = updatedProduct
+            
             return newState
         }
     }

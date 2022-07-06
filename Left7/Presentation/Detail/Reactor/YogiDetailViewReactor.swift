@@ -38,10 +38,12 @@ final class YogiDetailViewReactor: Reactor {
         switch mutation {
         case .setProduct:
             return state
+            
         case .toggleFavoriteState:
             var newState = state
             let updatedProduct = toggleFavoriteState(previousState: state)
             newState.product = updatedProduct
+            
             return newState
         }
     }
