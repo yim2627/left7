@@ -112,6 +112,54 @@ class HomeUseCaseTests: XCTestCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func test_updateFavoriteProduct_whenIsFavoriteProduct() {
+        let networkRepository = MockProductRepository(data: testProducts)
+        let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
+        
+        let useCase = YogiHomeUsecase(
+            productRepository: networkRepository,
+            favoriteProductRepository: coreDataRepository
+        )
+        
+        let product = Product(
+            id: -4,
+            name: "",
+            thumbnailPath: "",
+            descriptionImagePath: "",
+            descriptionSubject: "",
+            price: -4,
+            rate: -4,
+            isFavorite: true
+        )
+        
+        useCase.updateFavoriteProduct(product)
+        coreDataRepository.verifySaveFavoriteProduct(product: product)
+    }
+    
+    func test_updateFavoriteProduct_whenIsNotFavoriteProduct() {
+        let networkRepository = MockProductRepository(data: testProducts)
+        let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
+        
+        let useCase = YogiHomeUsecase(
+            productRepository: networkRepository,
+            favoriteProductRepository: coreDataRepository
+        )
+        
+        let product = Product(
+            id: -4,
+            name: "",
+            thumbnailPath: "",
+            descriptionImagePath: "",
+            descriptionSubject: "",
+            price: -4,
+            rate: -4,
+            isFavorite: false
+        )
+    
+        useCase.updateFavoriteProduct(product)
+        coreDataRepository.verifyDeleteFavoriteProduct(product: product)
+    }
 }
 
 
