@@ -19,7 +19,7 @@ final class MockFavoriteProductRepository: CoreDataRepository {
     private var saveFavoriteProductCallCount: Int = 0
     private var deleteFavoriteProductCallCount: Int = 0
     
-    init(data: [Product]) {
+    init(data: [Product] = []) {
         self.data = data
     }
     
