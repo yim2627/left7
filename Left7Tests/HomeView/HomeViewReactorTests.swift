@@ -10,7 +10,7 @@ import XCTest
 
 import RxSwift
 
-class HomeViewReactorTests: XCTestCase {
+final class HomeViewReactorTests: XCTestCase {
     var disposeBag: DisposeBag = DisposeBag()
     var reactor: YogiHomeViewReactor!
     
