@@ -8,7 +8,11 @@
 import Foundation
 import RxSwift
 
-final class HttpNetwork {
+protocol HttpNetworkType {
+    func fetch(endPoint: EndPoint) -> Observable<Data>
+}
+
+final class HttpNetwork: HttpNetworkType {
     private let session: URLSessionProtocol
     
     init(session: URLSessionProtocol = URLSession.shared) {
