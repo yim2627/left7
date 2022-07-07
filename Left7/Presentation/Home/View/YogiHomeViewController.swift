@@ -15,6 +15,14 @@ import ReactorKit
 import SnapKit
 
 final class YogiHomeViewController: UIViewController, View {
+    private enum HomeSection: Hashable {
+        case home
+    }
+    
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<HomeSection, Product>
+    
+    //MARK: - Properties
+
     private lazy var yogiHomeCollectionView: UICollectionView = {
         let layout = configureYogiHomeCollectionViewCompositionalLayout()
         let collectionView = UICollectionView(
@@ -25,15 +33,12 @@ final class YogiHomeViewController: UIViewController, View {
         return collectionView
     }()
     
-    var disposeBag = DisposeBag()
-    
-    private enum HomeSection: Hashable {
-        case home
-    }
-
-    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<HomeSection, Product>
     private var dataSource: DiffableDataSource?
     
+    var disposeBag = DisposeBag()
+    
+    //MARK: - View Life Cycle
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
@@ -45,7 +50,14 @@ final class YogiHomeViewController: UIViewController, View {
         configureYogiHomeCollectionView()
     }
     
+    //MARK: - Binding
+    
     func bind(reactor: YogiHomeViewReactor) {
+        bindAction(reactor)
+        bindState(reactor)
+    }
+    
+    private func bindAction(_ reactor: YogiHomeViewReactor) {
         self.rx.viewDidLoad
             .map { Reactor.Action.fetchProducts }
             .bind(to: reactor.action)
@@ -69,14 +81,6 @@ final class YogiHomeViewController: UIViewController, View {
             .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-
-        reactor.state
-            .map { $0.products }
-            .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { [weak self] products in
-                self?.applySnapShot(products: products)
-            })
-            .disposed(by: disposeBag)
         
         yogiHomeCollectionView.rx.itemSelected
             .subscribe(onNext: { [unowned self, unowned reactor] indexPath in
@@ -89,7 +93,32 @@ final class YogiHomeViewController: UIViewController, View {
             .disposed(by: disposeBag)
     }
     
-    private func configureYogiHomeCollectionView() {
+    private func bindState(_ reactor: YogiHomeViewReactor) {
+        reactor.state
+            .map { $0.products }
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] products in
+                self?.applySnapShot(products: products)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    //MARK: - CollectionView SnapShot
+
+    private func applySnapShot(products: [Product]) {
+        var snapShot = NSDiffableDataSourceSnapshot<HomeSection, Product>()
+        
+        snapShot.appendSections([.home])
+        snapShot.appendItems(products, toSection: .home)
+        
+        dataSource?.apply(snapShot)
+    }
+}
+
+//MARK: - Configure CollectionView
+
+private extension YogiHomeViewController {
+    func configureYogiHomeCollectionView() {
         configureYogiHomeCollectionViewCell()
         
         view.addSubview(yogiHomeCollectionView)
@@ -97,7 +126,7 @@ final class YogiHomeViewController: UIViewController, View {
         configureYogiHomeCollectionviewDataSource()
     }
     
-    private func configureYogiHomeCollectionViewLayout() {
+    func configureYogiHomeCollectionViewLayout() {
         yogiHomeCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
@@ -105,7 +134,7 @@ final class YogiHomeViewController: UIViewController, View {
         }
     }
     
-    private func configureYogiHomeCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    func configureYogiHomeCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let sectionProvider = { [weak self] (sectionIndex: Int, enviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let section = self?.makeCollectionViewYogiProductSection()
             
@@ -114,7 +143,7 @@ final class YogiHomeViewController: UIViewController, View {
         return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
     }
     
-    private func makeCollectionViewYogiProductSection() -> NSCollectionLayoutSection? {
+    func makeCollectionViewYogiProductSection() -> NSCollectionLayoutSection? {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: Design.collectionViewCompositionalLayoutItemWidth,
             heightDimension: Design.collectionViewCompositionalLayoutItemHeight
@@ -137,11 +166,11 @@ final class YogiHomeViewController: UIViewController, View {
         return section
     }
     
-    private func configureYogiHomeCollectionViewCell() {
+    func configureYogiHomeCollectionViewCell() {
         yogiHomeCollectionView.registerCell(withClass: YogiHomeCollectionViewCell.self)
     }
     
-    private func configureYogiHomeCollectionviewDataSource() {
+    func configureYogiHomeCollectionviewDataSource() {
         dataSource = DiffableDataSource(collectionView: yogiHomeCollectionView) { [unowned self]
             (collectionView: UICollectionView, indexPath: IndexPath, product: Product) in
             let cell = collectionView.dequeueReusableCell(
@@ -164,16 +193,9 @@ final class YogiHomeViewController: UIViewController, View {
             return cell
         }
     }
-    
-    private func applySnapShot(products: [Product]) {
-        var snapShot = NSDiffableDataSourceSnapshot<HomeSection, Product>()
-        
-        snapShot.appendSections([.home])
-        snapShot.appendItems(products, toSection: .home)
-        
-        dataSource?.apply(snapShot)
-    }
 }
+
+//MARK: - Design
 
 private extension YogiHomeViewController {
     enum Design {
