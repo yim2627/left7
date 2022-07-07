@@ -15,6 +15,8 @@ import RxCocoa
 import ReactorKit
 
 final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
+    //MARK: - Properties
+
     private let productImageView = YogiProductImageView(frame: .zero)
     private let productRateStackView = YogiRateStackView(frame: .zero)
     private let productNameLabel: UILabel = {
@@ -22,6 +24,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         label.numberOfLines = Design.productNameLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .black
+        
         return label
     }()
     
@@ -31,6 +34,8 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     
     var disposeBag = DisposeBag()
     
+    //MARK: - Init
+
     override func prepareForReuse() {
         disposeBag = DisposeBag()
     }
@@ -44,6 +49,8 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         super.init(coder: coder)
     }
     
+    //MARK: - Binding
+
     func bind(reactor: YogiHomeCollectionViewCellReactor) {
         guard let currentProduct = reactor.currentState.product else {
             return
@@ -54,14 +61,18 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         configureFavoriteButton(isFavorite: currentProduct.isFavorite)
         productNameLabel.text = currentProduct.name
     }
-    
-    private func configureYogiHomeCollectionViewCell() {
+}
+
+//MARK: - Configure CollectionViewCell
+
+private extension YogiHomeCollectionViewCell {
+    func configureYogiHomeCollectionViewCell() {
         configureImageView()
         configureRateStackView()
         configureProductNameLabel()
     }
     
-    private func configureImageView() {
+    func configureImageView() {
         contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -69,7 +80,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         }
     }
     
-    private func configureRateStackView() {
+    func configureRateStackView() {
         contentView.addSubview(productRateStackView)
         productRateStackView.snp.makeConstraints {
             $0.top.equalTo(productImageView.snp.bottom).offset(Design.productRateStackViewTopMargin)
@@ -78,7 +89,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         }
     }
     
-    private func configureProductNameLabel() {
+    func configureProductNameLabel() {
         contentView.addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints {
             $0.top.equalTo(productRateStackView.snp.bottom).offset(Design.productNameLabelTopMargin)
@@ -88,10 +99,12 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         }
     }
     
-    private func configureFavoriteButton(isFavorite: Bool) {
+    func configureFavoriteButton(isFavorite: Bool) {
         productImageView.setFavoriteState(state: isFavorite)
     }
 }
+
+//MARK: - Design
 
 private extension YogiHomeCollectionViewCell {
     enum Design {
