@@ -13,13 +13,19 @@ import RxCocoa
 import ReactorKit
 
 final class YogiHomeViewReactor: Reactor {
+    //MARK: - Properties
+
     private let useCase: YogiHomeUsecaseType
     var initialState: State = State()
     
+    //MARK: - Init
+
     init(useCase: YogiHomeUsecaseType = YogiHomeUsecase()) {
         self.useCase = useCase
     }
     
+    //MARK: - Model
+
     enum Action {
         case fetchProducts
         case fetchFavoriteProducts
@@ -41,6 +47,8 @@ final class YogiHomeViewReactor: Reactor {
         var isLoadingNextPage: Bool = false
     }
     
+    //MARK: - Reduce
+
     func reduce(state: State, mutation: Mutation) -> State {
         switch mutation {
         case let .setProducts(products):
@@ -78,6 +86,8 @@ final class YogiHomeViewReactor: Reactor {
         }
     }
     
+    //MARK: - Mutate
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .fetchProducts:
@@ -135,7 +145,7 @@ private extension YogiHomeViewReactor {
     }
 }
 
-extension YogiHomeViewReactor.Action {
+private extension YogiHomeViewReactor.Action {
     static func isUpdate(_ action: YogiHomeViewReactor.Action) -> Bool {
         if case .fetchProducts = action {
             return true
