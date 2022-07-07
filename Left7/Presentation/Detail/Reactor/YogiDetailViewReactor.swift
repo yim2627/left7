@@ -20,7 +20,7 @@ final class YogiDetailViewReactor: Reactor {
     
     //MARK: - Init
 
-    init(useCase: YogiDetailUsecaseType = YogiDetailUsecase(), selectedProduct: Product?) {
+    init(useCase: YogiDetailUsecaseType = YogiDetailUseCase(), selectedProduct: Product?) {
         self.useCase = useCase
         self.initialState = State(product: selectedProduct)
     }

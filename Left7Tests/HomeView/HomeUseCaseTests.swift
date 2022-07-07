@@ -80,7 +80,7 @@ class HomeUseCaseTests: XCTestCase {
         let networkRepository = MockProductRepository(data: testProducts)
         let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
         
-        let useCase = YogiHomeUsecase(
+        let useCase = YogiHomeUseCase(
             productRepository: networkRepository,
             favoriteProductRepository: coreDataRepository
         )
@@ -100,7 +100,7 @@ class HomeUseCaseTests: XCTestCase {
         let networkRepository = MockProductRepository(data: testProducts)
         let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
         
-        let useCase = YogiHomeUsecase(
+        let useCase = YogiHomeUseCase(
             productRepository: networkRepository,
             favoriteProductRepository: coreDataRepository
         )
@@ -117,7 +117,7 @@ class HomeUseCaseTests: XCTestCase {
         let networkRepository = MockProductRepository(data: testProducts)
         let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
         
-        let useCase = YogiHomeUsecase(
+        let useCase = YogiHomeUseCase(
             productRepository: networkRepository,
             favoriteProductRepository: coreDataRepository
         )
@@ -141,7 +141,7 @@ class HomeUseCaseTests: XCTestCase {
         let networkRepository = MockProductRepository(data: testProducts)
         let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
         
-        let useCase = YogiHomeUsecase(
+        let useCase = YogiHomeUseCase(
             productRepository: networkRepository,
             favoriteProductRepository: coreDataRepository
         )

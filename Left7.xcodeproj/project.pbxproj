@@ -14,7 +14,7 @@
 		A63679F32874172900F480A1 /* YogiDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F22874172900F480A1 /* YogiDateFormatter.swift */; };
 		A63679F5287417E500F480A1 /* YogiNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */; };
 		A63679F728741B1500F480A1 /* YogiFavoriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F628741B1500F480A1 /* YogiFavoriteViewReactor.swift */; };
-		A63679F928741D8A00F480A1 /* YogiFavoriteUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F828741D8A00F480A1 /* YogiFavoriteUsecase.swift */; };
+		A63679F928741D8A00F480A1 /* YogiFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679F828741D8A00F480A1 /* YogiFavoriteUseCase.swift */; };
 		A63679FF2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63679FE2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift */; };
 		A6367A022874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A012874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift */; };
 		A6367A0D2875535E00F480A1 /* EndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A0C2875535E00F480A1 /* EndPointTests.swift */; };
@@ -24,7 +24,7 @@
 		A6367A1D2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A1C2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift */; };
 		A6367A212875702300F480A1 /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A202875702300F480A1 /* HttpMethodTests.swift */; };
 		A6367A2328757CFB00F480A1 /* HomeViewReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2228757CFB00F480A1 /* HomeViewReactorTests.swift */; };
-		A6367A2528759A5300F480A1 /* YogiHomeUsecaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2428759A5200F480A1 /* YogiHomeUsecaseType.swift */; };
+		A6367A2528759A5300F480A1 /* YogiHomeUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2428759A5200F480A1 /* YogiHomeUseCaseType.swift */; };
 		A6367A2828759A8D00F480A1 /* YogiDetailUsecaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2728759A8D00F480A1 /* YogiDetailUsecaseType.swift */; };
 		A6367A2A28759AA900F480A1 /* YogiFavoriteUsecaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2928759AA900F480A1 /* YogiFavoriteUsecaseType.swift */; };
 		A6367A2C28759F6D00F480A1 /* StubHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */; };
@@ -64,7 +64,7 @@
 		A64813582876AB8E0070F7ED /* CoreDataErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64813572876AB8E0070F7ED /* CoreDataErrorTests.swift */; };
 		A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C75287089B300DF06DB /* YogiProductRepository.swift */; };
 		A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7728708C4300DF06DB /* NetworkRepository.swift */; };
-		A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */; };
+		A67F1C7D28709FEE00DF06DB /* YogiHomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7C28709FEE00DF06DB /* YogiHomeUseCase.swift */; };
 		A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7F2870A18600DF06DB /* YogiHomeViewReactor.swift */; };
 		A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9766286EC80E009968B1 /* AppDelegate.swift */; };
 		A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD9768286EC80E009968B1 /* SceneDelegate.swift */; };
@@ -72,7 +72,7 @@
 		A6AD9770286EC810009968B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6AD976F286EC810009968B1 /* Assets.xcassets */; };
 		A6AD9773286EC810009968B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */; };
 		A6AF968C2871D234000E21B2 /* YogiDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */; };
-		A6AF96902871F2F4000E21B2 /* YogiDetailUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF968F2871F2F4000E21B2 /* YogiDetailUsecase.swift */; };
+		A6AF96902871F2F4000E21B2 /* YogiDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF968F2871F2F4000E21B2 /* YogiDetailUseCase.swift */; };
 		A6AF96962871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */; };
 		A6AF96992871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96972871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift */; };
 		A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */; };
@@ -101,7 +101,7 @@
 		A63679F22874172900F480A1 /* YogiDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDateFormatter.swift; sourceTree = "<group>"; };
 		A63679F4287417E500F480A1 /* YogiNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiNumberFormatter.swift; sourceTree = "<group>"; };
 		A63679F628741B1500F480A1 /* YogiFavoriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteViewReactor.swift; sourceTree = "<group>"; };
-		A63679F828741D8A00F480A1 /* YogiFavoriteUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteUsecase.swift; sourceTree = "<group>"; };
+		A63679F828741D8A00F480A1 /* YogiFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteUseCase.swift; sourceTree = "<group>"; };
 		A63679FE2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeCollectionViewCellReactor.swift; sourceTree = "<group>"; };
 		A6367A012874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteCollectionViewCellReactor.swift; sourceTree = "<group>"; };
 		A6367A0A2875535E00F480A1 /* Left7Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Left7Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,7 +112,7 @@
 		A6367A1C2875684000F480A1 /* StubURLSessionWithInvalidResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSessionWithInvalidResponse.swift; sourceTree = "<group>"; };
 		A6367A202875702300F480A1 /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
 		A6367A2228757CFB00F480A1 /* HomeViewReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactorTests.swift; sourceTree = "<group>"; };
-		A6367A2428759A5200F480A1 /* YogiHomeUsecaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUsecaseType.swift; sourceTree = "<group>"; };
+		A6367A2428759A5200F480A1 /* YogiHomeUseCaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUseCaseType.swift; sourceTree = "<group>"; };
 		A6367A2728759A8D00F480A1 /* YogiDetailUsecaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailUsecaseType.swift; sourceTree = "<group>"; };
 		A6367A2928759AA900F480A1 /* YogiFavoriteUsecaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteUsecaseType.swift; sourceTree = "<group>"; };
 		A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubHomeUsecase.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		A64813572876AB8E0070F7ED /* CoreDataErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataErrorTests.swift; sourceTree = "<group>"; };
 		A67F1C75287089B300DF06DB /* YogiProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiProductRepository.swift; sourceTree = "<group>"; };
 		A67F1C7728708C4300DF06DB /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
-		A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUsecase.swift; sourceTree = "<group>"; };
+		A67F1C7C28709FEE00DF06DB /* YogiHomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUseCase.swift; sourceTree = "<group>"; };
 		A67F1C7F2870A18600DF06DB /* YogiHomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeViewReactor.swift; sourceTree = "<group>"; };
 		A6AD9763286EC80E009968B1 /* Left7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AD9766286EC80E009968B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		A6AD9772286EC810009968B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6AD9774286EC810009968B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6AF968B2871D234000E21B2 /* YogiDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailViewReactor.swift; sourceTree = "<group>"; };
-		A6AF968F2871F2F4000E21B2 /* YogiDetailUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailUsecase.swift; sourceTree = "<group>"; };
+		A6AF968F2871F2F4000E21B2 /* YogiDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailUseCase.swift; sourceTree = "<group>"; };
 		A6AF96952871F523000E21B2 /* YogiCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YogiCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A6AF96972871F7E2000E21B2 /* ProductDataObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDataObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A6AF96982871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDataObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		A6367A2628759A6500F480A1 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				A6367A2428759A5200F480A1 /* YogiHomeUsecaseType.swift */,
+				A6367A2428759A5200F480A1 /* YogiHomeUseCaseType.swift */,
 				A6367A2728759A8D00F480A1 /* YogiDetailUsecaseType.swift */,
 				A6367A2928759AA900F480A1 /* YogiFavoriteUsecaseType.swift */,
 			);
@@ -611,9 +611,9 @@
 		A67F1C7E2870A04500DF06DB /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
-				A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */,
-				A6AF968F2871F2F4000E21B2 /* YogiDetailUsecase.swift */,
-				A63679F828741D8A00F480A1 /* YogiFavoriteUsecase.swift */,
+				A67F1C7C28709FEE00DF06DB /* YogiHomeUseCase.swift */,
+				A6AF968F2871F2F4000E21B2 /* YogiDetailUseCase.swift */,
+				A63679F828741D8A00F480A1 /* YogiFavoriteUseCase.swift */,
 				A6367A2628759A6500F480A1 /* Protocol */,
 			);
 			path = Usecase;
@@ -880,19 +880,19 @@
 				A6367A022874BE2100F480A1 /* YogiFavoriteCollectionViewCellReactor.swift in Sources */,
 				A63679F728741B1500F480A1 /* YogiFavoriteViewReactor.swift in Sources */,
 				A6AF96962871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld in Sources */,
-				A63679F928741D8A00F480A1 /* YogiFavoriteUsecase.swift in Sources */,
+				A63679F928741D8A00F480A1 /* YogiFavoriteUseCase.swift in Sources */,
 				A67F1C802870A18600DF06DB /* YogiHomeViewReactor.swift in Sources */,
 				A63679F5287417E500F480A1 /* YogiNumberFormatter.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */,
 				A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */,
-				A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */,
+				A67F1C7D28709FEE00DF06DB /* YogiHomeUseCase.swift in Sources */,
 				A63679FF2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift in Sources */,
-				A6AF96902871F2F4000E21B2 /* YogiDetailUsecase.swift in Sources */,
+				A6AF96902871F2F4000E21B2 /* YogiDetailUseCase.swift in Sources */,
 				A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */,
 				A6367A2A28759AA900F480A1 /* YogiFavoriteUsecaseType.swift in Sources */,
-				A6367A2528759A5300F480A1 /* YogiHomeUsecaseType.swift in Sources */,
+				A6367A2528759A5300F480A1 /* YogiHomeUseCaseType.swift in Sources */,
 				A6443954287053B8009E9F74 /* YogiHomeCollectionViewCell.swift in Sources */,
 				A6075D822871997200913FD4 /* YogiDetailViewController.swift in Sources */,
 				A6443935286EE0F3009E9F74 /* URLSessionProtocol.swift in Sources */,

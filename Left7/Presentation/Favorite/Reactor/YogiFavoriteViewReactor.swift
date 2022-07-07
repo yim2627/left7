@@ -20,7 +20,7 @@ final class YogiFavoriteViewReactor: Reactor {
     
     //MARK: - Init
 
-    init(useCase: YogiFavoriteUsecaseType = YogiFavoriteUsecase()) {
+    init(useCase: YogiFavoriteUsecaseType = YogiFavoriteUseCase()) {
         self.useCase = useCase
     }
     

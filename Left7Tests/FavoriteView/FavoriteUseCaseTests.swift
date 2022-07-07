@@ -45,7 +45,7 @@ class FavoriteUseCaseTests: XCTestCase {
     func test_fetchFavoriteProducts() {
         let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
         
-        let useCase = YogiFavoriteUsecase(favoriteProductRepository: coreDataRepository)
+        let useCase = YogiFavoriteUseCase(favoriteProductRepository: coreDataRepository)
         
         useCase.fetchFavoriteProduct()
             .subscribe(onNext: { favoriteProducts in
@@ -58,7 +58,7 @@ class FavoriteUseCaseTests: XCTestCase {
     func test_deleteFavoriteProduct() {
         let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
         
-        let useCase = YogiFavoriteUsecase(favoriteProductRepository: coreDataRepository)
+        let useCase = YogiFavoriteUseCase(favoriteProductRepository: coreDataRepository)
         
         let product = Product(
             id: -4,

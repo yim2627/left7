@@ -7,13 +7,19 @@
 
 import Foundation
 
-final class YogiDetailUsecase: YogiDetailUsecaseType {
+final class YogiDetailUseCase: YogiDetailUsecaseType {
+    //MARK: - Properties
+
     private let favoriteProductRepository: CoreDataRepository
     
+    //MARK: - Init
+
     init(favoriteProductRepository: CoreDataRepository = YogiFavoriteProductRepository()) {
         self.favoriteProductRepository = favoriteProductRepository
     }
     
+    //MARK: - Method
+
     func updateFavoriteProduct(_ product: Product?) {
         guard let product = product else {
             return
