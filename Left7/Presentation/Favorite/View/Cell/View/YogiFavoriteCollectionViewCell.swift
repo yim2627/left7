@@ -15,11 +15,14 @@ import RxCocoa
 import ReactorKit
 
 final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
+    //MARK: - Properties
+
     private let productInformationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .trailing
         stackView.spacing = Design.productInformationStackViewSpacing
+        
         return stackView
     }()
     
@@ -30,6 +33,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .black
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        
         return label
     }()
     
@@ -40,6 +44,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         stackView.spacing = Design.productFavoriteLableStackViewSpacing
         stackView.alignment = .trailing
         stackView.axis = .vertical
+        
         return stackView
     }()
     
@@ -48,6 +53,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         label.text = Design.productFavoriteTitleLabelText
         label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .lightGray
+        
         return label
     }()
     
@@ -55,6 +61,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .lightGray
+        
         return label
     }()
     
@@ -66,6 +73,8 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
     
     var disposeBag = DisposeBag()
     
+    //MARK: - Init
+
     override func prepareForReuse() {
         disposeBag = DisposeBag()
     }
@@ -79,6 +88,8 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         super.init(coder: coder)
     }
     
+    //MARK: - Binding
+
     func bind(reactor: YogiFavoriteCollectionViewCellReactor) {
         guard let currentProduct = reactor.initialState.product else {
             return
@@ -90,15 +101,19 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         productRateStackView.setRateValue(rate: currentProduct.rate)
         productFavoriteRegistrationTimeLabel.text = YogiDateFormatter.shared.toDateString(date: currentProduct.favoriteRegistrationTime ?? Date())
     }
-    
-    private func configureYogiFavoriteCollectionViewCell() {
+}
+
+//MARK: - Configure CollectionViewCell
+
+private extension YogiFavoriteCollectionViewCell {
+    func configureYogiFavoriteCollectionViewCell() {
         configureProductImageView()
         configureProductFavoriteLableStackView()
         configureProductInformationStackView()
     }
     
-    private func configureProductImageView() {
-        self.contentView.addSubview(productImageView)
+    func configureProductImageView() {
+        contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
             $0.leading.top.equalToSuperview().inset(Design.productImageViewLeadingTopInset)
             $0.width.equalTo(Design.productImageViewWidth)
@@ -106,24 +121,26 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         }
     }
     
-    private func configureProductFavoriteLableStackView() {
-        self.productFavoriteLableStackView.addArrangedSubview(productFavoriteTitleLabel)
-        self.productFavoriteLableStackView.addArrangedSubview(productFavoriteRegistrationTimeLabel)
+    func configureProductFavoriteLableStackView() {
+        productFavoriteLableStackView.addArrangedSubview(productFavoriteTitleLabel)
+        productFavoriteLableStackView.addArrangedSubview(productFavoriteRegistrationTimeLabel)
     }
     
-    private func configureProductInformationStackView() {
-        self.contentView.addSubview(productInformationStackView)
+    func configureProductInformationStackView() {
+        contentView.addSubview(productInformationStackView)
         productInformationStackView.snp.makeConstraints {
             $0.top.equalTo(productImageView.snp.top)
             $0.leading.equalTo(productImageView.snp.trailing).offset(Design.productInformationStackViewLeadingMargin)
             $0.trailing.equalToSuperview().inset(Design.productInformationStackViewTrailingInset)
         }
         
-        self.productInformationStackView.addArrangedSubview(productNameLabel)
-        self.productInformationStackView.addArrangedSubview(productRateStackView)
-        self.productInformationStackView.addArrangedSubview(productFavoriteLableStackView)
+        productInformationStackView.addArrangedSubview(productNameLabel)
+        productInformationStackView.addArrangedSubview(productRateStackView)
+        productInformationStackView.addArrangedSubview(productFavoriteLableStackView)
     }
 }
+
+//MARK: - Design
 
 private extension YogiFavoriteCollectionViewCell {
     enum Design {
