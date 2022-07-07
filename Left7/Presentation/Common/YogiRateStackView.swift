@@ -10,10 +10,13 @@ import UIKit
 import SnapKit
 
 final class YogiRateStackView: UIStackView {
+    //MARK: - Properties
+
     private let starImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: Design.starImageViewSystemImageName)
         imageView.tintColor = .systemYellow
+        
         return imageView
     }()
     
@@ -22,9 +25,12 @@ final class YogiRateStackView: UIStackView {
         label.textColor = .darkGray
         label.textAlignment = .left
         label.font = .preferredFont(forTextStyle: .subheadline)
+        
         return label
     }()
     
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureYogiRateStackView()
@@ -34,7 +40,17 @@ final class YogiRateStackView: UIStackView {
         super.init(coder: coder)
     }
     
-    private func configureYogiRateStackView() {
+    //MARK: - Set Data
+
+    func setRateValue(rate: Double) {
+        rateLabel.text = "\(rate)"
+    }
+}
+
+//MARK: - Configure View
+
+private extension YogiRateStackView {
+    func configureYogiRateStackView() {
         self.axis = .horizontal
         self.spacing = Design.yogiRateStackViewSpacing
         
@@ -43,11 +59,9 @@ final class YogiRateStackView: UIStackView {
         
         starImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
-    
-    func setRateValue(rate: Double) {
-        rateLabel.text = "\(rate)"
-    }
 }
+
+//MARK: - Design
 
 private extension YogiRateStackView {
     enum Design {
