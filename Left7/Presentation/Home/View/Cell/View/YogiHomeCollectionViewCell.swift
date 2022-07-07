@@ -29,7 +29,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     }()
     
     var favoriteButtonTap: Observable<Void> {
-        return self.productImageView.favoriteButton.rx.tap.asObservable()
+        return productImageView.favoriteButton.rx.tap.asObservable()
     }
     
     var disposeBag = DisposeBag()

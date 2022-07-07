@@ -109,7 +109,9 @@ final class YogiHomeViewReactor: Reactor {
                 useCase.fetchProducts(page: self.currentState.page + 1)
                     .take(until: self.action.filter(Action.isUpdate))
                     .filter { $0.isEmpty == false }
-                    .map { Mutation.appendProducts($0, page: self.currentState.page + 1) },
+                    .map { [unowned self] in
+                        Mutation.appendProducts($0, page: self.currentState.page + 1)
+                    },
                 
                 Observable.just(Mutation.setLoadingNextPage(false))
             ])
