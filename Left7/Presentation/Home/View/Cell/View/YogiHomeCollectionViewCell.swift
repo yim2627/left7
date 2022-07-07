@@ -19,7 +19,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     private let productRateStackView = YogiRateStackView(frame: .zero)
     private let productNameLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
+        label.numberOfLines = Design.productNameLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .black
         return label
@@ -65,14 +65,14 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
         contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(120)
+            $0.height.equalTo(Design.productImageViewHeight)
         }
     }
     
     private func configureRateStackView() {
         contentView.addSubview(productRateStackView)
         productRateStackView.snp.makeConstraints {
-            $0.top.equalTo(productImageView.snp.bottom).inset(-8)
+            $0.top.equalTo(productImageView.snp.bottom).offset(Design.productRateStackViewTopInset)
             $0.leading.equalTo(productImageView.snp.leading)
             $0.trailing.equalTo(productImageView.snp.trailing)
         }
@@ -81,7 +81,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     private func configureProductNameLabel() {
         contentView.addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints {
-            $0.top.equalTo(productRateStackView.snp.bottom).inset(-8)
+            $0.top.equalTo(productRateStackView.snp.bottom).offset(Design.productNameLabelTopInset)
             $0.leading.equalTo(productRateStackView.snp.leading)
             $0.trailing.equalTo(productRateStackView.snp.trailing)
             $0.bottom.lessThanOrEqualToSuperview()
@@ -90,5 +90,16 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     
     private func configureFavoriteButton(isFavorite: Bool) {
         productImageView.setFavoriteState(state: isFavorite)
+    }
+}
+
+private extension YogiHomeCollectionViewCell {
+    enum Design {
+        static let productNameLabelNumberOfLine = 2
+        static let productNameLabelTopInset = 8
+        
+        static let productImageViewHeight = 120
+        
+        static let productRateStackViewTopInset = 8
     }
 }
