@@ -59,6 +59,7 @@
 		A648134728769B9A0070F7ED /* HomeCollectionViewCellReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648134628769B9A0070F7ED /* HomeCollectionViewCellReactorTests.swift */; };
 		A648134A28769C9D0070F7ED /* FavoriteCollectionViewCellReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648134928769C9D0070F7ED /* FavoriteCollectionViewCellReactorTests.swift */; };
 		A648135228769F4C0070F7ED /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648135128769F4C0070F7ED /* NumberFormatterTests.swift */; };
+		A64813542876A09D0070F7ED /* DateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64813532876A09D0070F7ED /* DateFormatterTests.swift */; };
 		A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C75287089B300DF06DB /* YogiProductRepository.swift */; };
 		A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7728708C4300DF06DB /* NetworkRepository.swift */; };
 		A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */; };
@@ -139,6 +140,7 @@
 		A648134628769B9A0070F7ED /* HomeCollectionViewCellReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCellReactorTests.swift; sourceTree = "<group>"; };
 		A648134928769C9D0070F7ED /* FavoriteCollectionViewCellReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCellReactorTests.swift; sourceTree = "<group>"; };
 		A648135128769F4C0070F7ED /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
+		A64813532876A09D0070F7ED /* DateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterTests.swift; sourceTree = "<group>"; };
 		A67F1C75287089B300DF06DB /* YogiProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiProductRepository.swift; sourceTree = "<group>"; };
 		A67F1C7728708C4300DF06DB /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUsecase.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				A648135128769F4C0070F7ED /* NumberFormatterTests.swift */,
+				A64813532876A09D0070F7ED /* DateFormatterTests.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				A648133E2876107A0070F7ED /* MockHttpNetwork.swift in Sources */,
 				A6367A312875B16C00F480A1 /* StubDetailUsecase.swift in Sources */,
 				A6481340287696130070F7ED /* YogiResponse+Encodable.swift in Sources */,
+				A64813542876A09D0070F7ED /* DateFormatterTests.swift in Sources */,
 				A648135228769F4C0070F7ED /* NumberFormatterTests.swift in Sources */,
 				A6367A392875CC6400F480A1 /* StubFavoriteUsecase.swift in Sources */,
 				A6367A1628755E5B00F480A1 /* StubURLSessionDataTask.swift in Sources */,
