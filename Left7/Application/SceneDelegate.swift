@@ -7,6 +7,18 @@
 
 import UIKit
 
+private extension SceneDelegate {
+    enum Design {
+        static let homeTabBarSelectedImageSystemName = "house.fill"
+        static let homeTabBarImageSystemName = "house"
+        static let homeTabBarTitle = "홈"
+        
+        static let favoriteTabBarSelecetedImageSystemName = "suit.heart.fill"
+        static let favoriteTabBarImageSystemName = "suit.heart"
+        static let favoriteTabBarTitle = "좋아요"
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -16,32 +28,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let tabVC = UITabBarController()
-        let homeVC = YogiHomeViewController()
-        homeVC.reactor = YogiHomeViewReactor()
-        let homeNavVC = UINavigationController(rootViewController: homeVC)
-        let homeTabBarSelectedImage = UIImage(systemName: "house.fill")
-        homeVC.tabBarItem = UITabBarItem(
-            title: "홈",
-            image: UIImage(systemName: "house"),
+        let tabBarViewController = UITabBarController()
+        
+        let homeViewController = YogiHomeViewController()
+        homeViewController.reactor = YogiHomeViewReactor()
+        
+        let homeTabBarSelectedImage = UIImage(systemName: Design.homeTabBarSelectedImageSystemName)
+        homeViewController.tabBarItem = UITabBarItem(
+            title: Design.homeTabBarTitle,
+            image: UIImage(systemName: Design.homeTabBarImageSystemName),
             selectedImage: homeTabBarSelectedImage
         )
         
-        let favoriteVC = YogiFavoriteViewController()
-        favoriteVC.reactor = YogiFavoriteViewReactor()
-        let favoriteNavVC = UINavigationController(rootViewController: favoriteVC)
-        let favoriteTabBarSelecetedImage = UIImage(systemName: "suit.heart.fill")
-        favoriteVC.tabBarItem = UITabBarItem(
-            title: "좋아요",
-            image: UIImage(systemName: "suit.heart"),
+        let favoriteViewController = YogiFavoriteViewController()
+        favoriteViewController.reactor = YogiFavoriteViewReactor()
+        
+        let favoriteTabBarSelecetedImage = UIImage(systemName: Design.favoriteTabBarSelecetedImageSystemName)
+        favoriteViewController.tabBarItem = UITabBarItem(
+            title: Design.favoriteTabBarTitle,
+            image: UIImage(systemName: Design.favoriteTabBarImageSystemName),
             selectedImage: favoriteTabBarSelecetedImage
         )
         
-        tabVC.viewControllers = [homeNavVC, favoriteNavVC]
-        tabVC.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
-        tabVC.tabBar.unselectedItemTintColor = .systemGray2
+        let homeNavigationViewController = UINavigationController(rootViewController: homeViewController)
+        let favoriteNavigationViewController = UINavigationController(rootViewController: favoriteViewController)
         
-        window?.rootViewController = tabVC
+        tabBarViewController.viewControllers = [homeNavigationViewController, favoriteNavigationViewController]
+        tabBarViewController.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
+        tabBarViewController.tabBar.unselectedItemTintColor = .systemGray2
+        
+        window?.rootViewController = tabBarViewController
         window?.makeKeyAndVisible()
     }
 
