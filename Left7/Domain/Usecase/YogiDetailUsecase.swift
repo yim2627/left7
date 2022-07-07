@@ -19,7 +19,7 @@ final class YogiDetailUsecase: YogiDetailUsecaseType {
             return
         }
         
-        if product.isFavorite == true {
+        if product.isFavorite {
             favoriteProductRepository.saveFavoriteProduct(product)
         } else {
             favoriteProductRepository.deleteFavoriteProduct(product)
