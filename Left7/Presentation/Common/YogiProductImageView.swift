@@ -10,8 +10,12 @@ import UIKit
 import SnapKit
 
 final class YogiProductImageView: UIImageView {
+    //MARK: - Properties
+
     let favoriteButton: UIButton = UIButton()
     
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -21,25 +25,8 @@ final class YogiProductImageView: UIImageView {
         super.init(coder: coder)
     }
     
-    private func configureUI() {
-        configureImageView()
-        configureFavoriteButtonLayout()
-    }
-    
-    private func configureImageView() {
-        self.isUserInteractionEnabled = true
-        self.layer.cornerRadius = Design.yogiProductImageViewLayerCornerRadius
-        self.contentMode = .scaleAspectFill
-        self.clipsToBounds = true
-    }
-    
-    private func configureFavoriteButtonLayout() {
-        self.addSubview(favoriteButton)
-        favoriteButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(Design.favoriteButtonTopTrailingInset)
-        }
-    }
-    
+    //MARK: - Set Data
+
     func setFavoriteState(state: Bool) {
         favoriteButton.setImage(
             state ? UIImage(systemName: Design.favoriteButtonSystemImageNameWhenTrue) : UIImage(systemName: Design.favoriteButtonSystemImageNameWhenFalse),
@@ -48,6 +35,31 @@ final class YogiProductImageView: UIImageView {
         favoriteButton.tintColor = state ? .systemRed : .systemGray
     }
 }
+
+//MARK: - Configure View
+
+private extension YogiProductImageView {
+    func configureUI() {
+        configureImageView()
+        configureFavoriteButtonLayout()
+    }
+    
+    func configureImageView() {
+        isUserInteractionEnabled = true
+        layer.cornerRadius = Design.yogiProductImageViewLayerCornerRadius
+        contentMode = .scaleAspectFill
+        clipsToBounds = true
+    }
+    
+    func configureFavoriteButtonLayout() {
+        addSubview(favoriteButton)
+        favoriteButton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(Design.favoriteButtonTopTrailingInset)
+        }
+    }
+}
+
+//MARK: - Design
 
 private extension YogiProductImageView {
     enum Design {
