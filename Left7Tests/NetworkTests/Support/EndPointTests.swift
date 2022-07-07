@@ -8,7 +8,7 @@
 import XCTest
 @testable import Left7
 
-class Left7Tests: XCTestCase {
+class EndPointTests: XCTestCase {
     func test_Page1_EndPoint가_정상적으로_나오는지() {
         let endPoint = EndPoint(urlInformation: .pagination(page: 1))
         XCTAssertEqual(endPoint.url, URL(string: "http://www.gccompany.co.kr/App/json/1.json"))
