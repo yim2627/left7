@@ -250,10 +250,10 @@
 		A63679FD28746C5900F480A1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */,
 				A6AD976F286EC810009968B1 /* Assets.xcassets */,
 				A6AD9771286EC810009968B1 /* LaunchScreen.storyboard */,
 				A6AD9774286EC810009968B1 /* Info.plist */,
-				A6AF96942871F523000E21B2 /* YogiCoreDataModel.xcdatamodeld */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
