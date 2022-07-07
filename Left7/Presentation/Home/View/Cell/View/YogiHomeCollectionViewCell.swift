@@ -96,10 +96,10 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
 private extension YogiHomeCollectionViewCell {
     enum Design {
         static let productNameLabelNumberOfLine = 2
-        static let productNameLabelTopInset = 8
+        static let productNameLabelTopMargin = 8
         
         static let productImageViewHeight = 120
         
-        static let productRateStackViewTopInset = 8
+        static let productRateStackViewTopMargin = 8
     }
 }

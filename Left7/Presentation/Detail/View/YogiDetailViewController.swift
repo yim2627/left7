@@ -24,9 +24,9 @@ final class YogiDetailViewController: UIViewController, View {
     private let productDetailStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        stackView.layoutMargins = Design.productDetailStackViewLayoutMargin
         stackView.axis = .vertical
-        stackView.spacing = 12
+        stackView.spacing = Design.productDetailStackViewSpacing
         return stackView
     }()
     
@@ -37,7 +37,7 @@ final class YogiDetailViewController: UIViewController, View {
     
     private let productNameLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = Design.productNameLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .title1)
         label.textColor = .black
         return label
@@ -55,7 +55,7 @@ final class YogiDetailViewController: UIViewController, View {
     
     private let productSubjectLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = Design.productSubjectLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .black
         return label
@@ -63,7 +63,7 @@ final class YogiDetailViewController: UIViewController, View {
     
     private let seperateLineView: UIView = {
         let view = UIView(frame: .zero)
-        view.layer.borderWidth = 1.0
+        view.layer.borderWidth = Design.seperateLineViewLayerBorderWidth
         view.layer.borderColor = UIColor.lightGray.cgColor
         return view
     }()
@@ -126,12 +126,12 @@ final class YogiDetailViewController: UIViewController, View {
         self.productDetailScrollView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(300)
+            $0.height.equalTo(Design.productImageViewHeight)
         }
         
         self.productDetailScrollView.addSubview(productDetailStackView)
         productDetailStackView.snp.makeConstraints {
-            $0.top.equalTo(productImageView.snp.bottom).offset(10)
+            $0.top.equalTo(productImageView.snp.bottom).offset(Design.productDetailStackViewTopMargin)
             $0.leading.trailing.bottom.equalTo(productDetailScrollView.contentLayoutGuide)
             $0.width.equalTo(productDetailScrollView.frameLayoutGuide)
         }
@@ -144,7 +144,7 @@ final class YogiDetailViewController: UIViewController, View {
         
         self.productDetailStackView.addArrangedSubview(seperateLineView)
         seperateLineView.snp.makeConstraints {
-            $0.height.equalTo(1)
+            $0.height.equalTo(Design.seperateLineViewHeight)
         }
         
         self.productDetailStackView.addArrangedSubview(productSubjectLabel)
@@ -164,9 +164,34 @@ final class YogiDetailViewController: UIViewController, View {
     
     private func setFavoriteState(state: Bool) {
         favoriteButton.setImage(
-            state ? UIImage(systemName: "suit.heart.fill") : UIImage(systemName: "suit.heart"),
+            state ? UIImage(systemName: Design.favoriteButtonSystemImageNameWhenTrue) : UIImage(systemName: Design.favoriteButtonSystemImageNameWhenFalse),
             for: .normal
         )
         favoriteButton.tintColor = state ? .systemRed : .white
+    }
+}
+
+private extension YogiDetailViewController {
+    enum Design {
+        static let productDetailStackViewLayoutMargin = UIEdgeInsets(
+            top: 0,
+            left: 10,
+            bottom: 0,
+            right: 10
+        )
+        static let productDetailStackViewSpacing = 12.0
+        static let productDetailStackViewTopMargin = 10
+        
+        static let productNameLabelNumberOfLine = 0
+        
+        static let productSubjectLabelNumberOfLine = 0
+        
+        static let seperateLineViewLayerBorderWidth = 1.0
+        static let seperateLineViewHeight = 1
+        
+        static let productImageViewHeight = 300
+        
+        static let favoriteButtonSystemImageNameWhenTrue = "suit.heart.fill"
+        static let favoriteButtonSystemImageNameWhenFalse = "suit.heart"
     }
 }
