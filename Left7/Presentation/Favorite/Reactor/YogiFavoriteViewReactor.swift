@@ -42,6 +42,8 @@ final class YogiFavoriteViewReactor: Reactor {
     
     struct State {
         var products: [Product] = []
+        var isSortOrderByLateRegistered: Bool = false
+        var isSortOrderByRate: Bool = false
     }
     
     //MARK: - Reduce
@@ -51,6 +53,9 @@ final class YogiFavoriteViewReactor: Reactor {
         case let .setFavoriteProducts(products):
             var newState = state
             newState.products = products
+            newState.products.sort {
+                $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date()
+            }
             
             return newState
     
@@ -65,16 +70,32 @@ final class YogiFavoriteViewReactor: Reactor {
             
         case .sortOrderByLateRegistered:
             var newState = state
-            newState.products
-                .sort {
-                    $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date()
-                }
+            if state.isSortOrderByLateRegistered {  
+                newState.products
+                    .sort {
+                        $0.favoriteRegistrationTime ?? Date() < $1.favoriteRegistrationTime ?? Date()
+                    }
+            } else {
+                newState.products
+                    .sort {
+                        $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date()
+                    }
+            }
+            
+            newState.isSortOrderByLateRegistered = !state.isSortOrderByLateRegistered
             
             return newState
             
         case .sortOrderByRate:
             var newState = state
-            newState.products.sort { $0.rate > $1.rate }
+            
+            if state.isSortOrderByRate {
+                newState.products.sort { $0.rate < $1.rate }
+            } else {
+                newState.products.sort { $0.rate > $1.rate }
+            }
+            
+            newState.isSortOrderByRate = !state.isSortOrderByRate
             
             return newState
         }
