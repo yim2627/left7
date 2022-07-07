@@ -19,13 +19,13 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .trailing
-        stackView.spacing = 16
+        stackView.spacing = Design.productInformationStackViewSpacing
         return stackView
     }()
     
     private let productNameLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = Design.productNameLabelNumberOfLine
         label.textAlignment = .right
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .black
@@ -37,7 +37,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
     
     private let productFavoriteLableStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.spacing = 4
+        stackView.spacing = Design.productFavoriteLableStackViewSpacing
         stackView.alignment = .trailing
         stackView.axis = .vertical
         return stackView
@@ -45,7 +45,7 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
     
     private let productFavoriteTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "즐겨찾기 등록 시간"
+        label.text = Design.productFavoriteTitleLabelText
         label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .lightGray
         return label
@@ -100,9 +100,9 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
     private func configureProductImageView() {
         self.contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints {
-            $0.leading.top.equalToSuperview().inset(20)
-            $0.width.equalTo(150)
-            $0.height.equalTo(200)
+            $0.leading.top.equalToSuperview().inset(Design.productImageViewLeadingTopInset)
+            $0.width.equalTo(Design.productImageViewWidth)
+            $0.height.equalTo(Design.productImageViewHeight)
         }
     }
     
@@ -115,12 +115,30 @@ final class YogiFavoriteCollectionViewCell: UICollectionViewCell, View {
         self.contentView.addSubview(productInformationStackView)
         productInformationStackView.snp.makeConstraints {
             $0.top.equalTo(productImageView.snp.top)
-            $0.leading.equalTo(productImageView.snp.trailing).inset(-25)
-            $0.trailing.equalToSuperview().inset(25)
+            $0.leading.equalTo(productImageView.snp.trailing).offset(Design.productInformationStackViewLeadingMargin)
+            $0.trailing.equalToSuperview().inset(Design.productInformationStackViewTrailingInset)
         }
         
         self.productInformationStackView.addArrangedSubview(productNameLabel)
         self.productInformationStackView.addArrangedSubview(productRateStackView)
         self.productInformationStackView.addArrangedSubview(productFavoriteLableStackView)
+    }
+}
+
+private extension YogiFavoriteCollectionViewCell {
+    enum Design {
+        static let productInformationStackViewSpacing = 16.0
+        static let productInformationStackViewLeadingMargin = 25
+        static let productInformationStackViewTrailingInset = 25
+        
+        static let productNameLabelNumberOfLine = 0
+        
+        static let productFavoriteLableStackViewSpacing = 4.0
+        
+        static let productFavoriteTitleLabelText = "즐겨찾기 등록 시간"
+        
+        static let productImageViewWidth = 150
+        static let productImageViewHeight = 200
+        static let productImageViewLeadingTopInset = 20
     }
 }

@@ -72,7 +72,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     private func configureRateStackView() {
         contentView.addSubview(productRateStackView)
         productRateStackView.snp.makeConstraints {
-            $0.top.equalTo(productImageView.snp.bottom).offset(Design.productRateStackViewTopInset)
+            $0.top.equalTo(productImageView.snp.bottom).offset(Design.productRateStackViewTopMargin)
             $0.leading.equalTo(productImageView.snp.leading)
             $0.trailing.equalTo(productImageView.snp.trailing)
         }
@@ -81,7 +81,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     private func configureProductNameLabel() {
         contentView.addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints {
-            $0.top.equalTo(productRateStackView.snp.bottom).offset(Design.productNameLabelTopInset)
+            $0.top.equalTo(productRateStackView.snp.bottom).offset(Design.productNameLabelTopMargin)
             $0.leading.equalTo(productRateStackView.snp.leading)
             $0.trailing.equalTo(productRateStackView.snp.trailing)
             $0.bottom.lessThanOrEqualToSuperview()
