@@ -20,6 +20,7 @@ final class YogiDetailViewController: UIViewController, View {
     private let productDetailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
+        
         return scrollView
     }()
     
@@ -29,11 +30,13 @@ final class YogiDetailViewController: UIViewController, View {
         stackView.layoutMargins = Design.productDetailStackViewLayoutMargin
         stackView.axis = .vertical
         stackView.spacing = Design.productDetailStackViewSpacing
+        
         return stackView
     }()
     
     private let productImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
+        
         return imageView
     }()
     
@@ -42,6 +45,7 @@ final class YogiDetailViewController: UIViewController, View {
         label.numberOfLines = Design.productNameLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .title1)
         label.textColor = .black
+        
         return label
     }()
     
@@ -52,6 +56,7 @@ final class YogiDetailViewController: UIViewController, View {
         label.font = .preferredFont(forTextStyle: .headline)
         label.textAlignment = .right
         label.textColor = .black
+        
         return label
     }()
     
@@ -60,6 +65,7 @@ final class YogiDetailViewController: UIViewController, View {
         label.numberOfLines = Design.productSubjectLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .black
+        
         return label
     }()
     
@@ -67,6 +73,7 @@ final class YogiDetailViewController: UIViewController, View {
         let view = UIView(frame: .zero)
         view.layer.borderWidth = Design.seperateLineViewLayerBorderWidth
         view.layer.borderColor = UIColor.lightGray.cgColor
+        
         return view
     }()
     
