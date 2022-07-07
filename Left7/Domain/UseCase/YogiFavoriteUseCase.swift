@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class YogiFavoriteUseCase: YogiFavoriteUsecaseType {
+final class YogiFavoriteUseCase: YogiFavoriteUseCaseType {
     //MARK: - Properties
 
     private let favoriteProductRepository: CoreDataRepository

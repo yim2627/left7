@@ -15,8 +15,8 @@ final class DetailViewReactorTests: XCTestCase {
     var reactor: YogiDetailViewReactor!
     
     func test_didTapFavoriteButton() {
-        let usecase = StubDetailUsecase()
-        reactor = YogiDetailViewReactor(useCase: usecase, selectedProduct: .empty) // isFavorite: False
+        let useCase = StubDetailUseCase()
+        reactor = YogiDetailViewReactor(useCase: useCase, selectedProduct: .empty) // isFavorite: False
         
         reactor.action.onNext(.didTapFavoriteButton)
         
@@ -28,8 +28,8 @@ final class DetailViewReactorTests: XCTestCase {
     }
     
     func test_didTapFavoriteButton_with_abnormal_product() {
-        let usecase = StubDetailUsecase()
-        reactor = YogiDetailViewReactor(useCase: usecase, selectedProduct: nil)
+        let useCase = StubDetailUseCase()
+        reactor = YogiDetailViewReactor(useCase: useCase, selectedProduct: nil)
         
         reactor.action.onNext(.didTapFavoriteButton)
         

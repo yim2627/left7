@@ -15,12 +15,12 @@ import ReactorKit
 final class YogiDetailViewReactor: Reactor {
     //MARK: - Properties
     
-    private let useCase: YogiDetailUsecaseType
+    private let useCase: YogiDetailUseCaseType
     var initialState: State
     
     //MARK: - Init
 
-    init(useCase: YogiDetailUsecaseType = YogiDetailUseCase(), selectedProduct: Product?) {
+    init(useCase: YogiDetailUseCaseType = YogiDetailUseCase(), selectedProduct: Product?) {
         self.useCase = useCase
         self.initialState = State(product: selectedProduct)
     }

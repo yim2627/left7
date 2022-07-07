@@ -10,7 +10,7 @@ import Foundation
 
 import RxSwift
 
-final class StubHomeUsecase: YogiHomeUseCaseType {
+final class StubHomeUseCase: YogiHomeUseCaseType {
     func fetchProducts(page: Int) -> Observable<[Product]> {
         return Observable.just([
             Product(

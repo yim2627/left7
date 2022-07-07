@@ -15,8 +15,8 @@ final class FavoriteViewReactorTests: XCTestCase {
     var reactor: YogiFavoriteViewReactor!
     
     func test_fetchFavoriteProducts() {
-        let usecase = StubFavoriteUsecase()
-        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        let useCase = StubFavoriteUseCase()
+        reactor = YogiFavoriteViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -34,8 +34,8 @@ final class FavoriteViewReactorTests: XCTestCase {
     }
     
     func test_didTapFavoriteButton() {
-        let usecase = StubFavoriteUsecase()
-        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        let useCase = StubFavoriteUseCase()
+        reactor = YogiFavoriteViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -57,8 +57,8 @@ final class FavoriteViewReactorTests: XCTestCase {
     }
     
     func test_didTapSortOrderByLastRegisteredAction() {
-        let usecase = StubFavoriteUsecase()
-        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        let useCase = StubFavoriteUseCase()
+        reactor = YogiFavoriteViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -80,8 +80,8 @@ final class FavoriteViewReactorTests: XCTestCase {
     }
     
     func test_didTapSortOrderByRateAction() {
-        let usecase = StubFavoriteUsecase()
-        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        let useCase = StubFavoriteUseCase()
+        reactor = YogiFavoriteViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -103,15 +103,15 @@ final class FavoriteViewReactorTests: XCTestCase {
     }
     
     func test_isUpdate_true() {
-        let usecase = StubFavoriteUsecase()
-        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        let useCase = StubFavoriteUseCase()
+        reactor = YogiFavoriteViewReactor(useCase: useCase)
         
         XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.fetchFavoriteProducts), true)
     }
     
     func test_isUpdate_false() {
-        let usecase = StubFavoriteUsecase()
-        reactor = YogiFavoriteViewReactor(useCase: usecase)
+        let useCase = StubFavoriteUseCase()
+        reactor = YogiFavoriteViewReactor(useCase: useCase)
         
         XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapFavoriteButton(.empty)), false)
         XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapSortOrderByLastRegisteredAction), false)

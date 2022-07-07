@@ -15,12 +15,12 @@ import ReactorKit
 final class YogiFavoriteViewReactor: Reactor {
     //MARK: - Properties
 
-    private let useCase: YogiFavoriteUsecaseType
+    private let useCase: YogiFavoriteUseCaseType
     var initialState: State = State()
     
     //MARK: - Init
 
-    init(useCase: YogiFavoriteUsecaseType = YogiFavoriteUseCase()) {
+    init(useCase: YogiFavoriteUseCaseType = YogiFavoriteUseCase()) {
         self.useCase = useCase
     }
     

@@ -25,12 +25,12 @@
 		A6367A212875702300F480A1 /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A202875702300F480A1 /* HttpMethodTests.swift */; };
 		A6367A2328757CFB00F480A1 /* HomeViewReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2228757CFB00F480A1 /* HomeViewReactorTests.swift */; };
 		A6367A2528759A5300F480A1 /* YogiHomeUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2428759A5200F480A1 /* YogiHomeUseCaseType.swift */; };
-		A6367A2828759A8D00F480A1 /* YogiDetailUsecaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2728759A8D00F480A1 /* YogiDetailUsecaseType.swift */; };
-		A6367A2A28759AA900F480A1 /* YogiFavoriteUsecaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2928759AA900F480A1 /* YogiFavoriteUsecaseType.swift */; };
-		A6367A2C28759F6D00F480A1 /* StubHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */; };
-		A6367A312875B16C00F480A1 /* StubDetailUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A302875B16C00F480A1 /* StubDetailUsecase.swift */; };
+		A6367A2828759A8D00F480A1 /* YogiDetailUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2728759A8D00F480A1 /* YogiDetailUseCaseType.swift */; };
+		A6367A2A28759AA900F480A1 /* YogiFavoriteUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2928759AA900F480A1 /* YogiFavoriteUseCaseType.swift */; };
+		A6367A2C28759F6D00F480A1 /* StubHomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A2B28759F6D00F480A1 /* StubHomeUseCase.swift */; };
+		A6367A312875B16C00F480A1 /* StubDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A302875B16C00F480A1 /* StubDetailUseCase.swift */; };
 		A6367A332875B21000F480A1 /* DetailViewReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A322875B21000F480A1 /* DetailViewReactorTests.swift */; };
-		A6367A392875CC6400F480A1 /* StubFavoriteUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A382875CC6400F480A1 /* StubFavoriteUsecase.swift */; };
+		A6367A392875CC6400F480A1 /* StubFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A382875CC6400F480A1 /* StubFavoriteUseCase.swift */; };
 		A6367A3B2875CDD400F480A1 /* FavoriteViewReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A3A2875CDD400F480A1 /* FavoriteViewReactorTests.swift */; };
 		A6367A3E2875F70300F480A1 /* HomeUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A3D2875F70300F480A1 /* HomeUseCaseTests.swift */; };
 		A6367A412875FF9000F480A1 /* MockProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6367A402875FF9000F480A1 /* MockProductRepository.swift */; };
@@ -113,12 +113,12 @@
 		A6367A202875702300F480A1 /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
 		A6367A2228757CFB00F480A1 /* HomeViewReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactorTests.swift; sourceTree = "<group>"; };
 		A6367A2428759A5200F480A1 /* YogiHomeUseCaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUseCaseType.swift; sourceTree = "<group>"; };
-		A6367A2728759A8D00F480A1 /* YogiDetailUsecaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailUsecaseType.swift; sourceTree = "<group>"; };
-		A6367A2928759AA900F480A1 /* YogiFavoriteUsecaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteUsecaseType.swift; sourceTree = "<group>"; };
-		A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubHomeUsecase.swift; sourceTree = "<group>"; };
-		A6367A302875B16C00F480A1 /* StubDetailUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDetailUsecase.swift; sourceTree = "<group>"; };
+		A6367A2728759A8D00F480A1 /* YogiDetailUseCaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiDetailUseCaseType.swift; sourceTree = "<group>"; };
+		A6367A2928759AA900F480A1 /* YogiFavoriteUseCaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiFavoriteUseCaseType.swift; sourceTree = "<group>"; };
+		A6367A2B28759F6D00F480A1 /* StubHomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubHomeUseCase.swift; sourceTree = "<group>"; };
+		A6367A302875B16C00F480A1 /* StubDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDetailUseCase.swift; sourceTree = "<group>"; };
 		A6367A322875B21000F480A1 /* DetailViewReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactorTests.swift; sourceTree = "<group>"; };
-		A6367A382875CC6400F480A1 /* StubFavoriteUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFavoriteUsecase.swift; sourceTree = "<group>"; };
+		A6367A382875CC6400F480A1 /* StubFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFavoriteUseCase.swift; sourceTree = "<group>"; };
 		A6367A3A2875CDD400F480A1 /* FavoriteViewReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewReactorTests.swift; sourceTree = "<group>"; };
 		A6367A3D2875F70300F480A1 /* HomeUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCaseTests.swift; sourceTree = "<group>"; };
 		A6367A402875FF9000F480A1 /* MockProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductRepository.swift; sourceTree = "<group>"; };
@@ -336,8 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				A6367A2428759A5200F480A1 /* YogiHomeUseCaseType.swift */,
-				A6367A2728759A8D00F480A1 /* YogiDetailUsecaseType.swift */,
-				A6367A2928759AA900F480A1 /* YogiFavoriteUsecaseType.swift */,
+				A6367A2728759A8D00F480A1 /* YogiDetailUseCaseType.swift */,
+				A6367A2928759AA900F480A1 /* YogiFavoriteUseCaseType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -515,9 +515,9 @@
 		A648134F28769DF20070F7ED /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				A6367A2B28759F6D00F480A1 /* StubHomeUsecase.swift */,
-				A6367A302875B16C00F480A1 /* StubDetailUsecase.swift */,
-				A6367A382875CC6400F480A1 /* StubFavoriteUsecase.swift */,
+				A6367A2B28759F6D00F480A1 /* StubHomeUseCase.swift */,
+				A6367A302875B16C00F480A1 /* StubDetailUseCase.swift */,
+				A6367A382875CC6400F480A1 /* StubFavoriteUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -842,7 +842,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6367A332875B21000F480A1 /* DetailViewReactorTests.swift in Sources */,
-				A6367A2C28759F6D00F480A1 /* StubHomeUsecase.swift in Sources */,
+				A6367A2C28759F6D00F480A1 /* StubHomeUseCase.swift in Sources */,
 				A6367A462876060100F480A1 /* DetailUseCaseTests.swift in Sources */,
 				A648133C287610130070F7ED /* ProductRepositoryTests.swift in Sources */,
 				A6367A2328757CFB00F480A1 /* HomeViewReactorTests.swift in Sources */,
@@ -855,12 +855,12 @@
 				A6367A0D2875535E00F480A1 /* EndPointTests.swift in Sources */,
 				A6367A1828755ECC00F480A1 /* HttpNetworkTests.swift in Sources */,
 				A648133E2876107A0070F7ED /* MockHttpNetwork.swift in Sources */,
-				A6367A312875B16C00F480A1 /* StubDetailUsecase.swift in Sources */,
+				A6367A312875B16C00F480A1 /* StubDetailUseCase.swift in Sources */,
 				A6481340287696130070F7ED /* YogiResponse+Encodable.swift in Sources */,
 				A64813542876A09D0070F7ED /* DateFormatterTests.swift in Sources */,
 				A64813562876A9E20070F7ED /* HttpNetworkErrorTests.swift in Sources */,
 				A648135228769F4C0070F7ED /* NumberFormatterTests.swift in Sources */,
-				A6367A392875CC6400F480A1 /* StubFavoriteUsecase.swift in Sources */,
+				A6367A392875CC6400F480A1 /* StubFavoriteUseCase.swift in Sources */,
 				A6367A1628755E5B00F480A1 /* StubURLSessionDataTask.swift in Sources */,
 				A6367A3E2875F70300F480A1 /* HomeUseCaseTests.swift in Sources */,
 				A6367A432876006300F480A1 /* MockFavoriteProductRepository.swift in Sources */,
@@ -891,7 +891,7 @@
 				A63679FF2874A35300F480A1 /* YogiHomeCollectionViewCellReactor.swift in Sources */,
 				A6AF96902871F2F4000E21B2 /* YogiDetailUseCase.swift in Sources */,
 				A644395A28706E48009E9F74 /* YogiRateStackView.swift in Sources */,
-				A6367A2A28759AA900F480A1 /* YogiFavoriteUsecaseType.swift in Sources */,
+				A6367A2A28759AA900F480A1 /* YogiFavoriteUseCaseType.swift in Sources */,
 				A6367A2528759A5300F480A1 /* YogiHomeUseCaseType.swift in Sources */,
 				A6443954287053B8009E9F74 /* YogiHomeCollectionViewCell.swift in Sources */,
 				A6075D822871997200913FD4 /* YogiDetailViewController.swift in Sources */,
@@ -911,7 +911,7 @@
 				A644392E286EDC58009E9F74 /* YogiResponse.swift in Sources */,
 				A6AF969A2871F7E2000E21B2 /* ProductDataObject+CoreDataProperties.swift in Sources */,
 				A644395828706790009E9F74 /* YogiProductImageView.swift in Sources */,
-				A6367A2828759A8D00F480A1 /* YogiDetailUsecaseType.swift in Sources */,
+				A6367A2828759A8D00F480A1 /* YogiDetailUseCaseType.swift in Sources */,
 				A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */,
 				A6AF96AE2872E1C1000E21B2 /* YogiFavoriteCollectionViewCell.swift in Sources */,
 				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,

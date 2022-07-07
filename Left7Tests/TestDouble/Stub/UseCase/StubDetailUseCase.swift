@@ -8,7 +8,7 @@
 import Foundation
 @testable import Left7
 
-final class StubDetailUsecase: YogiDetailUsecaseType {
+final class StubDetailUseCase: YogiDetailUseCaseType {
     func updateFavoriteProduct(_ product: Product?) {
         return
     }

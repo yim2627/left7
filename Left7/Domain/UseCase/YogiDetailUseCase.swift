@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class YogiDetailUseCase: YogiDetailUsecaseType {
+final class YogiDetailUseCase: YogiDetailUseCaseType {
     //MARK: - Properties
 
     private let favoriteProductRepository: CoreDataRepository
