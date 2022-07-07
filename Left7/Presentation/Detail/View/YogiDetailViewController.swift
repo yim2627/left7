@@ -167,7 +167,7 @@ final class YogiDetailViewController: UIViewController, View {
             state ? UIImage(systemName: Design.favoriteButtonSystemImageNameWhenTrue) : UIImage(systemName: Design.favoriteButtonSystemImageNameWhenFalse),
             for: .normal
         )
-        favoriteButton.tintColor = state ? .systemRed : .white
+        favoriteButton.tintColor = state ? .systemRed : .systemGray
     }
 }
 
