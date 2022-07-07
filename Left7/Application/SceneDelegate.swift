@@ -28,8 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let tabBarViewController = UITabBarController()
-        
+        // HomeViewController
         let homeViewController = YogiHomeViewController()
         homeViewController.reactor = YogiHomeViewReactor()
         
@@ -40,6 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             selectedImage: homeTabBarSelectedImage
         )
         
+        // FavoriteViewController
         let favoriteViewController = YogiFavoriteViewController()
         favoriteViewController.reactor = YogiFavoriteViewReactor()
         
@@ -52,6 +52,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let homeNavigationViewController = UINavigationController(rootViewController: homeViewController)
         let favoriteNavigationViewController = UINavigationController(rootViewController: favoriteViewController)
+        
+        // TabBarController
+        let tabBarViewController = UITabBarController()
         
         tabBarViewController.viewControllers = [homeNavigationViewController, favoriteNavigationViewController]
         tabBarViewController.tabBar.tintColor = UIColor(red: 236/255, green: 94/255, blue: 101/255, alpha: 1)
