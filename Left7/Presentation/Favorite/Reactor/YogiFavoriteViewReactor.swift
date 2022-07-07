@@ -107,7 +107,7 @@ private extension YogiFavoriteViewReactor {
     }
 }
 
-private extension YogiFavoriteViewReactor.Action {
+extension YogiFavoriteViewReactor.Action {
     static func isUpdate(_ action: YogiFavoriteViewReactor.Action) -> Bool {
         if case .fetchFavoriteProducts = action {
             return true

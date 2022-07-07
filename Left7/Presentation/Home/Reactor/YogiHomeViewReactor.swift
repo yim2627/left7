@@ -147,7 +147,7 @@ private extension YogiHomeViewReactor {
     }
 }
 
-private extension YogiHomeViewReactor.Action {
+extension YogiHomeViewReactor.Action {
     static func isUpdate(_ action: YogiHomeViewReactor.Action) -> Bool {
         if case .fetchProducts = action {
             return true

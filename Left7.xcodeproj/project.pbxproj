@@ -603,12 +603,12 @@
 			children = (
 				A644395228704153009E9F74 /* Entity */,
 				A67F1C7928708F1A00DF06DB /* Interface */,
-				A67F1C7E2870A04500DF06DB /* Usecase */,
+				A67F1C7E2870A04500DF06DB /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		A67F1C7E2870A04500DF06DB /* Usecase */ = {
+		A67F1C7E2870A04500DF06DB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
 				A67F1C7C28709FEE00DF06DB /* YogiHomeUseCase.swift */,
@@ -616,7 +616,7 @@
 				A63679F828741D8A00F480A1 /* YogiFavoriteUseCase.swift */,
 				A6367A2628759A6500F480A1 /* Protocol */,
 			);
-			path = Usecase;
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		A6AD975A286EC80E009968B1 = {
