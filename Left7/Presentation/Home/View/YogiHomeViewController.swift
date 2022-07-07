@@ -64,7 +64,7 @@ final class YogiHomeViewController: UIViewController, View {
                     return false
                 }
                 
-                return self.yogiHomeCollectionView.frame.height + offset.y <= self.yogiHomeCollectionView.contentSize.height - 100
+                return self.yogiHomeCollectionView.frame.height + offset.y <= self.yogiHomeCollectionView.contentSize.height - Design.collectioViewPaginationSpot
             }
             .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)
@@ -116,21 +116,21 @@ final class YogiHomeViewController: UIViewController, View {
     
     private func makeCollectionViewYogiProductSection() -> NSCollectionLayoutSection? {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.5),
-            heightDimension: .fractionalHeight(1)
+            widthDimension: Design.collectionViewCompositionalLayoutItemWidth,
+            heightDimension: Design.collectionViewCompositionalLayoutItemHeight
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
+        item.contentInsets = Design.collectionViewCompositionalLayoutItemContensInset
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(250)
+            widthDimension: Design.collectionViewCompositionalLayoutGroupWidth,
+            heightDimension: Design.collectionViewCompositionalLayoutGroupHeight
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [item]
         )
-        group.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 16)
+        group.contentInsets = Design.collectionViewCompositionalLayoutGroupContensInset
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -172,5 +172,29 @@ final class YogiHomeViewController: UIViewController, View {
         snapShot.appendItems(products, toSection: .home)
         
         dataSource?.apply(snapShot)
+    }
+}
+
+private extension YogiHomeViewController {
+    enum Design {
+        static let collectionViewCompositionalLayoutItemWidth = NSCollectionLayoutDimension.fractionalWidth(0.5)
+        static let collectionViewCompositionalLayoutItemHeight = NSCollectionLayoutDimension.fractionalHeight(1.0)
+        static let collectionViewCompositionalLayoutItemContensInset = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 0
+        )
+        
+        static let collectionViewCompositionalLayoutGroupWidth = NSCollectionLayoutDimension.fractionalWidth(1.0)
+        static let collectionViewCompositionalLayoutGroupHeight = NSCollectionLayoutDimension.absolute(250.0)
+        static let collectionViewCompositionalLayoutGroupContensInset = NSDirectionalEdgeInsets(
+            top: 16,
+            leading: 0,
+            bottom: 0,
+            trailing: 16
+        )
+        
+        static let collectioViewPaginationSpot = 100.0
     }
 }
