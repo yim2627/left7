@@ -9,12 +9,18 @@ import Foundation
 import RxSwift
 
 final class YogiProductRepository: NetworkRepository {
+    //MARK: - Properties
+
     private let network: HttpNetworkType
     
+    //MARK: - Init
+
     init(network: HttpNetworkType = HttpNetwork()) {
         self.network = network
     }
     
+    //MARK: - Method
+
     func fetchYogiProducts(page: Int) -> Observable<[Product]> {
         let endPoint = EndPoint(urlInformation: .pagination(page: page))
         
@@ -26,6 +32,7 @@ final class YogiProductRepository: NetworkRepository {
                 let products = decodedData?.productData.products.map { product in
                     product.toDomain()
                 }
+                
                 return products ?? []
             }
     }

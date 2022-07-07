@@ -10,12 +10,18 @@ import Foundation
 import RxSwift
 
 final class YogiFavoriteProductRepository: CoreDataRepository {
+    //MARK: - Properties
+
     private let coreDataManager: CoreDataManager
     
+    //MARK: - Init
+
     init(manager: CoreDataManager = CoreDataManager.shared) {
         self.coreDataManager = manager
     }
     
+    //MARK: - Method
+
     func fetchFavoriteProduct() -> Observable<[Product]> {
         return coreDataManager.fetch()
             .map { productObject in
