@@ -12,7 +12,7 @@ import SnapKit
 final class YogiRateStackView: UIStackView {
     private let starImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "star.fill")
+        imageView.image = UIImage(systemName: Design.starImageViewSystemImageName)
         imageView.tintColor = .systemYellow
         return imageView
     }()
@@ -36,7 +36,7 @@ final class YogiRateStackView: UIStackView {
     
     private func configureYogiRateStackView() {
         self.axis = .horizontal
-        self.spacing = 4
+        self.spacing = Design.yogiRateStackViewSpacing
         
         self.addArrangedSubview(starImageView)
         self.addArrangedSubview(rateLabel)
@@ -46,5 +46,13 @@ final class YogiRateStackView: UIStackView {
     
     func setRateValue(rate: Double) {
         rateLabel.text = "\(rate)"
+    }
+}
+
+private extension YogiRateStackView {
+    enum Design {
+        static let starImageViewSystemImageName = "star.fill"
+        
+        static let yogiRateStackViewSpacing = 4.0
     }
 }

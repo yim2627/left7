@@ -28,7 +28,7 @@ final class YogiProductImageView: UIImageView {
     
     private func configureImageView() {
         self.isUserInteractionEnabled = true
-        self.layer.cornerRadius = 8
+        self.layer.cornerRadius = Design.yogiProductImageViewLayerCornerRadius
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
     }
@@ -36,15 +36,25 @@ final class YogiProductImageView: UIImageView {
     private func configureFavoriteButtonLayout() {
         self.addSubview(favoriteButton)
         favoriteButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(10)
+            $0.top.trailing.equalToSuperview().inset(Design.favoriteButtonTopTrailingInset)
         }
     }
     
     func setFavoriteState(state: Bool) {
         favoriteButton.setImage(
-            state ? UIImage(systemName: "suit.heart.fill") : UIImage(systemName: "suit.heart"),
+            state ? UIImage(systemName: Design.favoriteButtonSystemImageNameWhenTrue) : UIImage(systemName: Design.favoriteButtonSystemImageNameWhenFalse),
             for: .normal
         )
-        favoriteButton.tintColor = state ? .systemRed : .white
+        favoriteButton.tintColor = state ? .systemRed : .systemGray
+    }
+}
+
+private extension YogiProductImageView {
+    enum Design {
+        static let yogiProductImageViewLayerCornerRadius = 8.0
+        
+        static let favoriteButtonTopTrailingInset = 10
+        static let favoriteButtonSystemImageNameWhenTrue = "suit.heart.fill"
+        static let favoriteButtonSystemImageNameWhenFalse = "suit.heart"
     }
 }

@@ -41,7 +41,7 @@ final class YogiFavoriteViewController: UIViewController, View {
     
     private let sortButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.up.arrow.down.circle"), for: .normal)
+        button.setImage(UIImage(systemName: Design.sortButtonSystemImageName), for: .normal)
         button.tintColor = .black
         
         return button
@@ -105,19 +105,32 @@ final class YogiFavoriteViewController: UIViewController, View {
     
     private func showAlertController() -> Observable<SortAlertActionType> {
         return Observable.create { emmiter in
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let alertController = UIAlertController(
+                title: nil,
+                message: nil,
+                preferredStyle: .actionSheet
+            )
             
-            let orderByLastRegisteredAction = UIAlertAction(title: "최근등록순", style: .default) { _ in
+            let orderByLastRegisteredAction = UIAlertAction(
+                title: Design.orderByLastRegisteredActionTitle,
+                style: .default
+            ) { _ in
                 emmiter.onNext(.lastRegistered)
                 emmiter.onCompleted()
             }
             
-            let orderByRateAction = UIAlertAction(title: "평점순", style: .default) { _ in
+            let orderByRateAction = UIAlertAction(
+                title: Design.orderByRateActionTitle,
+                style: .default
+            ) { _ in
                 emmiter.onNext(.rate)
                 emmiter.onCompleted()
             }
             
-            let cancelAction = UIAlertAction(title: "취소", style: .destructive)
+            let cancelAction = UIAlertAction(
+                title: Design.cancelActionTitle,
+                style: .destructive
+            )
             
             alertController.addAction(orderByLastRegisteredAction)
             alertController.addAction(orderByRateAction)
@@ -158,14 +171,14 @@ final class YogiFavoriteViewController: UIViewController, View {
     
     private func makeCollectionViewYogiFavoriteProductSection() -> NSCollectionLayoutSection? {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1)
+            widthDimension: Design.collectionViewCompositionalLayoutItemWidth,
+            heightDimension: Design.collectionViewCompositionalLayoutItemHeight
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(250)
+            widthDimension: Design.collectionViewCompositionalLayoutGroupWidth,
+            heightDimension: Design.collectionViewCompositionalLayoutGroupHeight
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -212,5 +225,21 @@ final class YogiFavoriteViewController: UIViewController, View {
         snapShot.appendItems(products, toSection: .favorite)
         
         dataSource?.apply(snapShot)
+    }
+}
+
+private extension YogiFavoriteViewController {
+    enum Design {
+        static let sortButtonSystemImageName = "arrow.up.arrow.down.circle"
+        
+        static let orderByLastRegisteredActionTitle = "최근등록순"
+        static let orderByRateActionTitle = "평점순"
+        static let cancelActionTitle = "취소"
+        
+        static let collectionViewCompositionalLayoutItemWidth = NSCollectionLayoutDimension.fractionalWidth(1)
+        static let collectionViewCompositionalLayoutItemHeight = NSCollectionLayoutDimension.fractionalHeight(1)
+        
+        static let collectionViewCompositionalLayoutGroupWidth = NSCollectionLayoutDimension.fractionalWidth(1)
+        static let collectionViewCompositionalLayoutGroupHeight = NSCollectionLayoutDimension.absolute(250)
     }
 }
