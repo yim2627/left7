@@ -83,13 +83,17 @@ final class YogiFavoriteViewController: UIViewController, View {
                 let detailReactor = YogiDetailViewReactor(selectedProduct: reactor.currentState.products[indexPath.row])
                 let detailViewController = YogiDetailViewController()
                 detailViewController.reactor = detailReactor
+                
                 self.navigationController?.pushViewController(detailViewController, animated: true)
             })
             .disposed(by: disposeBag)
         
         sortButton.rx.tap
             .flatMap { [unowned self] _ in
-                self.showAlertController()
+                self.showAlertController(
+                    isSortOrderByLastRegistered: reactor.currentState.isSortOrderByLateRegistered,
+                    isSortOrderByRate: reactor.currentState.isSortOrderByRate
+                )
             }
             .map { action in
                 switch action {
@@ -113,7 +117,13 @@ final class YogiFavoriteViewController: UIViewController, View {
             .disposed(by: disposeBag)
     }
     
-    private func showAlertController() -> Observable<SortAlertActionType> {
+    private func showAlertController(
+        isSortOrderByLastRegistered: Bool,
+        isSortOrderByRate: Bool
+    ) -> Observable<SortAlertActionType> {
+        let orderByLastRegisteredActionTitle = isSortOrderByLastRegistered ? "오래된등록순" : "최근등록순"
+        let orderByRateActionTitle = isSortOrderByRate ? "평점낮은순" : "평점높은순"
+        
         return Observable.create { emmiter in
             let alertController = UIAlertController(
                 title: nil,
@@ -122,7 +132,7 @@ final class YogiFavoriteViewController: UIViewController, View {
             )
             
             let orderByLastRegisteredAction = UIAlertAction(
-                title: Design.orderByLastRegisteredActionTitle,
+                title: orderByLastRegisteredActionTitle,
                 style: .default
             ) { _ in
                 emmiter.onNext(.lastRegistered)
@@ -130,7 +140,7 @@ final class YogiFavoriteViewController: UIViewController, View {
             }
             
             let orderByRateAction = UIAlertAction(
-                title: Design.orderByRateActionTitle,
+                title: orderByRateActionTitle,
                 style: .default
             ) { _ in
                 emmiter.onNext(.rate)
@@ -139,7 +149,7 @@ final class YogiFavoriteViewController: UIViewController, View {
             
             let cancelAction = UIAlertAction(
                 title: Design.cancelActionTitle,
-                style: .destructive
+                style: .cancel
             )
             
             alertController.addAction(orderByLastRegisteredAction)
@@ -258,8 +268,6 @@ private extension YogiFavoriteViewController {
     enum Design {
         static let sortButtonSystemImageName = "arrow.up.arrow.down.circle"
         
-        static let orderByLastRegisteredActionTitle = "최근등록순"
-        static let orderByRateActionTitle = "평점순"
         static let cancelActionTitle = "취소"
         
         static let collectionViewCompositionalLayoutItemWidth = NSCollectionLayoutDimension.fractionalWidth(1)

@@ -76,7 +76,18 @@ final class FavoriteViewReactorTests: XCTestCase {
                 XCTAssertEqual($0[1].id, -2)
                 XCTAssertEqual($0[2].id, -1)
             })
-            .disposed(by: disposeBag)
+            .dispose()
+        
+        reactor.action.onNext(.didTapSortOrderByLastRegisteredAction)
+        
+        reactor.state
+            .map { $0.products }
+            .subscribe(onNext: {
+                XCTAssertEqual($0[0].id, -1)
+                XCTAssertEqual($0[1].id, -2)
+                XCTAssertEqual($0[2].id, -3)
+            })
+            .dispose()
     }
     
     func test_didTapSortOrderByRateAction() {
@@ -95,11 +106,23 @@ final class FavoriteViewReactorTests: XCTestCase {
         reactor.state
             .map { $0.products }
             .subscribe(onNext: {
+                print($0)
                 XCTAssertEqual($0[0].id, -3)
                 XCTAssertEqual($0[1].id, -2)
                 XCTAssertEqual($0[2].id, -1)
             })
-            .disposed(by: disposeBag)
+            .dispose()
+        
+        reactor.action.onNext(.didTapSortOrderByRateAction)
+        
+        reactor.state
+            .map { $0.products }
+            .subscribe(onNext: {
+                XCTAssertEqual($0[0].id, -1)
+                XCTAssertEqual($0[1].id, -2)
+                XCTAssertEqual($0[2].id, -3)
+            })
+            .dispose()
     }
     
     func test_isUpdate_true() {
