@@ -10,14 +10,6 @@ import XCTest
 
 import RxSwift
 
-extension HttpNetworkError: Equatable {
-    public static func == (
-        lhs: HttpNetworkError,
-        rhs: HttpNetworkError
-    ) -> Bool {
-        return lhs.errorDescription == rhs.errorDescription
-    }
-}
 
 class HttpNetworkTests: XCTestCase {
     var sut: HttpNetwork!
