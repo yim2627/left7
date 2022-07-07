@@ -13,8 +13,12 @@ import RxCocoa
 import ReactorKit
 
 final class YogiHomeViewReactor: Reactor {
-    private let useCase = YogiHomeUsecase()
+    private let useCase: YogiHomeUsecaseType
     var initialState: State = State()
+    
+    init(useCase: YogiHomeUsecaseType = YogiHomeUsecase()) {
+        self.useCase = useCase
+    }
     
     enum Action {
         case fetchProducts

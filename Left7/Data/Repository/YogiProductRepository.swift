@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 final class YogiProductRepository: NetworkRepository {
-    private let network: HttpNetwork
+    private let network: HttpNetworkType
     
-    init(network: HttpNetwork = HttpNetwork()) {
+    init(network: HttpNetworkType = HttpNetwork()) {
         self.network = network
     }
     

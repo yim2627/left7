@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class YogiHomeUsecase {
+final class YogiHomeUsecase: YogiHomeUsecaseType {
     private let productRepository: NetworkRepository
     private let favoriteProductRepository: CoreDataRepository
     

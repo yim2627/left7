@@ -13,8 +13,12 @@ import RxCocoa
 import ReactorKit
 
 final class YogiFavoriteViewReactor: Reactor {
-    private let useCase = YogiFavoriteUsecase()
+    private let useCase: YogiFavoriteUsecaseType
     var initialState: State = State()
+    
+    init(useCase: YogiFavoriteUsecaseType = YogiFavoriteUsecase()) {
+        self.useCase = useCase
+    }
     
     enum Action {
         case fetchFavoriteProducts
