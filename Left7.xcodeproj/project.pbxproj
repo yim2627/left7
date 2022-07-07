@@ -298,7 +298,7 @@
 				A6367A352875CC2100F480A1 /* FavoriteView */,
 				A6367A2F2875B12100F480A1 /* DetailView */,
 				A6367A4928760FCF00F480A1 /* Repository */,
-				A6367A1A28755F4000F480A1 /* NetworkTests */,
+				A6367A1A28755F4000F480A1 /* Network */,
 				A6367A1928755F3300F480A1 /* TestDouble */,
 				A64813412876964A0070F7ED /* Extension */,
 			);
@@ -314,13 +314,13 @@
 			path = TestDouble;
 			sourceTree = "<group>";
 		};
-		A6367A1A28755F4000F480A1 /* NetworkTests */ = {
+		A6367A1A28755F4000F480A1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				A6367A1B28755F4D00F480A1 /* Support */,
 				A6367A1728755ECC00F480A1 /* HttpNetworkTests.swift */,
 			);
-			path = NetworkTests;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		A6367A1B28755F4D00F480A1 /* Support */ = {
