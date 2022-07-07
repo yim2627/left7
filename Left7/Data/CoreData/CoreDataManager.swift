@@ -11,14 +11,20 @@ import CoreData
 import RxSwift
 
 final class CoreDataManager {
+    //MARK: - Properties
+
     static let shared = CoreDataManager()
     private let persistentContainer = NSPersistentContainer(name: "YogiCoreDataModel")
     private(set) lazy var context = persistentContainer.viewContext
     
+    //MARK: - Init
+
     private init() {
         loadPersistentContainer()
     }
     
+    //MARK: - Method
+
     private func loadPersistentContainer() {
         persistentContainer.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
