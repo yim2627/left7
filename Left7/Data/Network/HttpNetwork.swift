@@ -13,12 +13,18 @@ protocol HttpNetworkType {
 }
 
 final class HttpNetwork: HttpNetworkType {
+    //MARK: - Properties
+
     private let session: URLSessionProtocol
     
+    //MARK: - Init
+
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
+    //MARK: - Method
+
     func fetch(endPoint: EndPoint) -> Observable<Data> {
         guard let url = endPoint.url else {
             return .error(HttpNetworkError.invalidURL)

@@ -15,6 +15,19 @@ import ReactorKit
 import SnapKit
 
 final class YogiFavoriteViewController: UIViewController, View {
+    private enum FavoriteSection: Hashable {
+        case favorite
+    }
+    
+    private enum SortAlertActionType {
+        case lastRegistered
+        case rate
+    }
+    
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<FavoriteSection, Product>
+    
+    //MARK: - Properties
+
     private lazy var yogiFavoriteCollectionView: UICollectionView = {
         let layout = configureYogiFavoriteCollectionViewCompositionalLayout()
         let collectionView = UICollectionView(
@@ -25,20 +38,6 @@ final class YogiFavoriteViewController: UIViewController, View {
         return collectionView
     }()
     
-    var disposeBag = DisposeBag()
-    
-    private enum FavoriteSection: Hashable {
-        case favorite
-    }
-    
-    private enum SortAlertActionType {
-        case lastRegistered
-        case rate
-    }
-
-    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<FavoriteSection, Product>
-    private var dataSource: DiffableDataSource?
-    
     private let sortButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: Design.sortButtonSystemImageName), for: .normal)
@@ -47,6 +46,12 @@ final class YogiFavoriteViewController: UIViewController, View {
         return button
     }()
     
+    private var dataSource: DiffableDataSource?
+    
+    var disposeBag = DisposeBag()
+    
+    //MARK: - View Life Cycle
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
@@ -59,7 +64,14 @@ final class YogiFavoriteViewController: UIViewController, View {
         configureNavigationBar()
     }
     
+    //MARK: - Binding
+
     func bind(reactor: YogiFavoriteViewReactor) {
+        bindAction(reactor)
+        bindState(reactor)
+    }
+    
+    private func bindAction(_ reactor: YogiFavoriteViewReactor) {
         self.rx.viewWillAppear
             .map { Reactor.Action.fetchFavoriteProducts }
             .bind(to: reactor.action)
@@ -89,7 +101,9 @@ final class YogiFavoriteViewController: UIViewController, View {
             }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func bindState(_ reactor: YogiFavoriteViewReactor) {
         reactor.state
             .map { $0.products }
             .asDriver(onErrorJustReturn: [])
@@ -97,10 +111,6 @@ final class YogiFavoriteViewController: UIViewController, View {
                 self?.applySnapShot(products: products)
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func configureNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sortButton)
     }
     
     private func showAlertController() -> Observable<SortAlertActionType> {
@@ -144,7 +154,30 @@ final class YogiFavoriteViewController: UIViewController, View {
         }
     }
     
-    private func configureYogiFavoriteCollectionView() {
+    //MARK: - CollectionView SnapShot
+    
+    private func applySnapShot(products: [Product]) {
+        var snapShot = NSDiffableDataSourceSnapshot<FavoriteSection, Product>()
+        
+        snapShot.appendSections([.favorite])
+        snapShot.appendItems(products, toSection: .favorite)
+        
+        dataSource?.apply(snapShot)
+    }
+}
+
+//MARK: - Configure NavigationBar
+
+private extension YogiFavoriteViewController {
+    func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sortButton)
+    }
+}
+
+//MARK: - Configure CollectionView
+
+private extension YogiFavoriteViewController {
+    func configureYogiFavoriteCollectionView() {
         configureYogiFavoriteCollectionViewCell()
         
         view.addSubview(yogiFavoriteCollectionView)
@@ -152,15 +185,15 @@ final class YogiFavoriteViewController: UIViewController, View {
         configureYogiFavoriteCollectionviewDataSource()
     }
     
-    private func configureYogiFavoriteCollectionViewLayout() {
+    func configureYogiFavoriteCollectionViewLayout() {
         yogiFavoriteCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.leading.trailing.equalToSuperview()
         }
     }
     
-    private func configureYogiFavoriteCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    func configureYogiFavoriteCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let sectionProvider = { [weak self] (sectionIndex: Int, enviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let section = self?.makeCollectionViewYogiFavoriteProductSection()
             
@@ -169,7 +202,7 @@ final class YogiFavoriteViewController: UIViewController, View {
         return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
     }
     
-    private func makeCollectionViewYogiFavoriteProductSection() -> NSCollectionLayoutSection? {
+    func makeCollectionViewYogiFavoriteProductSection() -> NSCollectionLayoutSection? {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: Design.collectionViewCompositionalLayoutItemWidth,
             heightDimension: Design.collectionViewCompositionalLayoutItemHeight
@@ -190,11 +223,11 @@ final class YogiFavoriteViewController: UIViewController, View {
         return section
     }
     
-    private func configureYogiFavoriteCollectionViewCell() {
+    func configureYogiFavoriteCollectionViewCell() {
         yogiFavoriteCollectionView.registerCell(withClass: YogiFavoriteCollectionViewCell.self)
     }
     
-    private func configureYogiFavoriteCollectionviewDataSource() {
+    func configureYogiFavoriteCollectionviewDataSource() {
         dataSource = DiffableDataSource(collectionView: yogiFavoriteCollectionView) { [unowned self]
             (collectionView: UICollectionView, indexPath: IndexPath, product: Product) in
             let cell = collectionView.dequeueReusableCell(
@@ -217,16 +250,9 @@ final class YogiFavoriteViewController: UIViewController, View {
             return cell
         }
     }
-    
-    private func applySnapShot(products: [Product]) {
-        var snapShot = NSDiffableDataSourceSnapshot<FavoriteSection, Product>()
-        
-        snapShot.appendSections([.favorite])
-        snapShot.appendItems(products, toSection: .favorite)
-        
-        dataSource?.apply(snapShot)
-    }
 }
+
+//MARK: - Design
 
 private extension YogiFavoriteViewController {
     enum Design {

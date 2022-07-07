@@ -9,10 +9,14 @@ import Foundation
 
 import RxSwift
 
-final class YogiHomeUsecase: YogiHomeUsecaseType {
+final class YogiHomeUseCase: YogiHomeUseCaseType {
+    //MARK: - Properties
+
     private let productRepository: NetworkRepository
     private let favoriteProductRepository: CoreDataRepository
     
+    //MARK: - Init
+
     init(
         productRepository: NetworkRepository = YogiProductRepository(),
         favoriteProductRepository: CoreDataRepository = YogiFavoriteProductRepository()
@@ -21,6 +25,8 @@ final class YogiHomeUsecase: YogiHomeUsecaseType {
         self.favoriteProductRepository = favoriteProductRepository
     }
     
+    //MARK: - Method
+
     func fetchProducts(page: Int) -> Observable<[Product]> {
         return Observable.zip(
             productRepository.fetchYogiProducts(page: page),
@@ -54,7 +60,7 @@ final class YogiHomeUsecase: YogiHomeUsecaseType {
             return
         }
         
-        if product.isFavorite == true {
+        if product.isFavorite {
             favoriteProductRepository.saveFavoriteProduct(product)
         } else {
             favoriteProductRepository.deleteFavoriteProduct(product)

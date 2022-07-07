@@ -15,9 +15,12 @@ import ReactorKit
 import SnapKit
 
 final class YogiDetailViewController: UIViewController, View {
+    //MARK: - Properties
+
     private let productDetailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
+        
         return scrollView
     }()
     
@@ -27,11 +30,13 @@ final class YogiDetailViewController: UIViewController, View {
         stackView.layoutMargins = Design.productDetailStackViewLayoutMargin
         stackView.axis = .vertical
         stackView.spacing = Design.productDetailStackViewSpacing
+        
         return stackView
     }()
     
     private let productImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
+        
         return imageView
     }()
     
@@ -40,6 +45,7 @@ final class YogiDetailViewController: UIViewController, View {
         label.numberOfLines = Design.productNameLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .title1)
         label.textColor = .black
+        
         return label
     }()
     
@@ -50,6 +56,7 @@ final class YogiDetailViewController: UIViewController, View {
         label.font = .preferredFont(forTextStyle: .headline)
         label.textAlignment = .right
         label.textColor = .black
+        
         return label
     }()
     
@@ -58,6 +65,7 @@ final class YogiDetailViewController: UIViewController, View {
         label.numberOfLines = Design.productSubjectLabelNumberOfLine
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .black
+        
         return label
     }()
     
@@ -65,6 +73,7 @@ final class YogiDetailViewController: UIViewController, View {
         let view = UIView(frame: .zero)
         view.layer.borderWidth = Design.seperateLineViewLayerBorderWidth
         view.layer.borderColor = UIColor.lightGray.cgColor
+        
         return view
     }()
     
@@ -72,6 +81,8 @@ final class YogiDetailViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
+    //MARK: - View Life Cycle
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -84,12 +95,21 @@ final class YogiDetailViewController: UIViewController, View {
         configureNavigationBar()
     }
     
+    //MARK: - Binding
+
     func bind(reactor: YogiDetailViewReactor) {
+        bindAction(reactor)
+        bindState(reactor)
+    }
+    
+    private func bindAction(_ reactor: YogiDetailViewReactor) {
         favoriteButton.rx.tap
             .map { _ in Reactor.Action.didTapFavoriteButton }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func bindState(_ reactor: YogiDetailViewReactor) {
         reactor.state
             .compactMap { $0.product }
             .subscribe(onNext: { [weak self] in
@@ -105,52 +125,12 @@ final class YogiDetailViewController: UIViewController, View {
             })
             .disposed(by: disposeBag)
     }
-    
-    private func configureNavigationBar() {
-        navigationController?.navigationBar.tintColor = .label
-        navigationController?.navigationBar.topItem?.title = String()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
-    }
-    
-    private func configureYogiProductDetailView() {
-        configureProductDetailScrollView()
-        configureProductDetailStackView()
-    }
-    
-    private func configureProductDetailScrollView() {
-        self.view.addSubview(productDetailScrollView)
-        productDetailScrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        self.productDetailScrollView.addSubview(productImageView)
-        productImageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(Design.productImageViewHeight)
-        }
-        
-        self.productDetailScrollView.addSubview(productDetailStackView)
-        productDetailStackView.snp.makeConstraints {
-            $0.top.equalTo(productImageView.snp.bottom).offset(Design.productDetailStackViewTopMargin)
-            $0.leading.trailing.bottom.equalTo(productDetailScrollView.contentLayoutGuide)
-            $0.width.equalTo(productDetailScrollView.frameLayoutGuide)
-        }
-    }
-    
-    private func configureProductDetailStackView() {
-        self.productDetailStackView.addArrangedSubview(productNameLabel)
-        self.productDetailStackView.addArrangedSubview(productRateStackView)
-        self.productDetailStackView.addArrangedSubview(productPriceLabel)
-        
-        self.productDetailStackView.addArrangedSubview(seperateLineView)
-        seperateLineView.snp.makeConstraints {
-            $0.height.equalTo(Design.seperateLineViewHeight)
-        }
-        
-        self.productDetailStackView.addArrangedSubview(productSubjectLabel)
-    }
-    
-    private func setData(product: Product) {
+}
+
+//MARK: - Set Data
+
+private extension YogiDetailViewController {
+    func setData(product: Product) {
         productImageView.setImage(with: product.descriptionImagePath)
         productNameLabel.text = product.name
         productRateStackView.setRateValue(rate: product.rate)
@@ -162,7 +142,7 @@ final class YogiDetailViewController: UIViewController, View {
         setFavoriteState(state: product.isFavorite)
     }
     
-    private func setFavoriteState(state: Bool) {
+    func setFavoriteState(state: Bool) {
         favoriteButton.setImage(
             state ? UIImage(systemName: Design.favoriteButtonSystemImageNameWhenTrue) : UIImage(systemName: Design.favoriteButtonSystemImageNameWhenFalse),
             for: .normal
@@ -170,6 +150,60 @@ final class YogiDetailViewController: UIViewController, View {
         favoriteButton.tintColor = state ? .systemRed : .systemGray
     }
 }
+
+//MARK: - Configure NavigationBar
+
+private extension YogiDetailViewController {
+    func configureNavigationBar() {
+        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.topItem?.title = String()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
+    }
+}
+
+//MARK: - Configure View
+
+private extension YogiDetailViewController {
+    func configureYogiProductDetailView() {
+        configureProductDetailScrollView()
+        configureProductDetailStackView()
+    }
+    
+    func configureProductDetailScrollView() {
+        view.addSubview(productDetailScrollView)
+        productDetailScrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        productDetailScrollView.addSubview(productImageView)
+        productImageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Design.productImageViewHeight)
+        }
+        
+        productDetailScrollView.addSubview(productDetailStackView)
+        productDetailStackView.snp.makeConstraints {
+            $0.top.equalTo(productImageView.snp.bottom).offset(Design.productDetailStackViewTopMargin)
+            $0.leading.trailing.bottom.equalTo(productDetailScrollView.contentLayoutGuide)
+            $0.width.equalTo(productDetailScrollView.frameLayoutGuide)
+        }
+    }
+    
+    func configureProductDetailStackView() {
+        productDetailStackView.addArrangedSubview(productNameLabel)
+        productDetailStackView.addArrangedSubview(productRateStackView)
+        productDetailStackView.addArrangedSubview(productPriceLabel)
+        
+        productDetailStackView.addArrangedSubview(seperateLineView)
+        seperateLineView.snp.makeConstraints {
+            $0.height.equalTo(Design.seperateLineViewHeight)
+        }
+        
+        productDetailStackView.addArrangedSubview(productSubjectLabel)
+    }
+}
+
+//MARK: - Design
 
 private extension YogiDetailViewController {
     enum Design {

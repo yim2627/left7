@@ -31,8 +31,8 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_loadNextPage() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         reactor.initialState.page = 1
         
         XCTAssertEqual(reactor.currentState.page, 1)
@@ -55,8 +55,8 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_fetchProducts() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -71,8 +71,8 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_fetchFavoriteProducts() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -87,8 +87,8 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_updateFavoriteProducts() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         XCTAssertEqual(reactor.currentState.products.isEmpty, true)
         
@@ -114,8 +114,8 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_isLoadNextPage_true() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         reactor.initialState.isLoadingNextPage = true
         
@@ -123,8 +123,8 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_isLoadNextPage_false() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         reactor.initialState.isLoadingNextPage = false
         
@@ -132,15 +132,15 @@ final class HomeViewReactorTests: XCTestCase {
     }
     
     func test_isUpdate_true() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         XCTAssertEqual(YogiHomeViewReactor.Action.isUpdate(.fetchProducts), true)
     }
     
     func test_isUpdate_false() {
-        let usecase = StubHomeUsecase()
-        reactor = YogiHomeViewReactor(useCase: usecase)
+        let useCase = StubHomeUseCase()
+        reactor = YogiHomeViewReactor(useCase: useCase)
         
         XCTAssertEqual(YogiHomeViewReactor.Action.isUpdate(.didTapFavoriteButton(0)), false)
     }

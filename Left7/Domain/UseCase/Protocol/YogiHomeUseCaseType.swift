@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-protocol YogiHomeUsecaseType {
+protocol YogiHomeUseCaseType {
     func fetchProducts(page: Int) -> Observable<[Product]>
     func fetchFavoriteProduct() -> Observable<[Product]>
     func updateFavoriteProduct(_ product: Product?)

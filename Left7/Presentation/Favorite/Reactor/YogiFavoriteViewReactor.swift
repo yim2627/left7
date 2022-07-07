@@ -13,13 +13,19 @@ import RxCocoa
 import ReactorKit
 
 final class YogiFavoriteViewReactor: Reactor {
-    private let useCase: YogiFavoriteUsecaseType
+    //MARK: - Properties
+
+    private let useCase: YogiFavoriteUseCaseType
     var initialState: State = State()
     
-    init(useCase: YogiFavoriteUsecaseType = YogiFavoriteUsecase()) {
+    //MARK: - Init
+
+    init(useCase: YogiFavoriteUseCaseType = YogiFavoriteUseCase()) {
         self.useCase = useCase
     }
     
+    //MARK: - Model
+
     enum Action {
         case fetchFavoriteProducts
         case didTapFavoriteButton(Product)
@@ -38,6 +44,8 @@ final class YogiFavoriteViewReactor: Reactor {
         var products: [Product] = []
     }
     
+    //MARK: - Reduce
+
     func reduce(state: State, mutation: Mutation) -> State {
         switch mutation {
         case let .setFavoriteProducts(products):
@@ -72,6 +80,8 @@ final class YogiFavoriteViewReactor: Reactor {
         }
     }
     
+    //MARK: - Mutate
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .fetchFavoriteProducts:
@@ -91,7 +101,7 @@ final class YogiFavoriteViewReactor: Reactor {
     }
 }
 
-extension YogiFavoriteViewReactor {
+private extension YogiFavoriteViewReactor {
     func removeFavoriteProduct(previousState: State, product: Product) {
         useCase.deleteFavoriteProduct(product)
     }

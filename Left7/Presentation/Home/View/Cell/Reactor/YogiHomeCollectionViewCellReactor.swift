@@ -15,12 +15,18 @@ import ReactorKit
 final class YogiHomeCollectionViewCellReactor: Reactor {
     typealias Action = NoAction
     
+    //MARK: - Properties
+
     var initialState: State
     
+    //MARK: - Model
+
     struct State {
         var product: Product?
     }
     
+    //MARK: - Init
+
     init(state: State) {
         self.initialState = state
     }

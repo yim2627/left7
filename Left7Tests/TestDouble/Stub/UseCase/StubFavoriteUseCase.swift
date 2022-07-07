@@ -10,7 +10,7 @@ import Foundation
 
 import RxSwift
 
-final class StubFavoriteUsecase: YogiFavoriteUsecaseType {
+final class StubFavoriteUseCase: YogiFavoriteUseCaseType {
     func fetchFavoriteProduct() -> Observable<[Product]> {
         return Observable.just([
             Product(

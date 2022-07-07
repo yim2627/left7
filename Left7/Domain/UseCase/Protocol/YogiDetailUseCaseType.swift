@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol YogiDetailUsecaseType {
+protocol YogiDetailUseCaseType {
     func updateFavoriteProduct(_ product: Product?)
 }

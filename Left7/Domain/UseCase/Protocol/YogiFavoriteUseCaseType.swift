@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-protocol YogiFavoriteUsecaseType {
+protocol YogiFavoriteUseCaseType {
     func fetchFavoriteProduct() -> Observable<[Product]>
     func deleteFavoriteProduct(_ product: Product)
 }

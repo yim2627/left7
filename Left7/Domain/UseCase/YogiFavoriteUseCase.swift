@@ -9,13 +9,19 @@ import Foundation
 
 import RxSwift
 
-final class YogiFavoriteUsecase: YogiFavoriteUsecaseType {
+final class YogiFavoriteUseCase: YogiFavoriteUseCaseType {
+    //MARK: - Properties
+
     private let favoriteProductRepository: CoreDataRepository
     
+    //MARK: - Init
+
     init(favoriteProductRepository: CoreDataRepository = YogiFavoriteProductRepository()) {
         self.favoriteProductRepository = favoriteProductRepository
     }
     
+    //MARK: - Method
+
     func fetchFavoriteProduct() -> Observable<[Product]> {
         favoriteProductRepository.fetchFavoriteProduct()
     }

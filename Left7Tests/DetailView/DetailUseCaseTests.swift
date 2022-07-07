@@ -12,7 +12,7 @@ final class DetailUseCaseTests: XCTestCase {
     func test_updateFavoriteProduct_whenIsFavoriteProduct() {
         let coreDataRepository = MockFavoriteProductRepository()
         
-        let useCase = YogiDetailUsecase(favoriteProductRepository: coreDataRepository)
+        let useCase = YogiDetailUseCase(favoriteProductRepository: coreDataRepository)
         
         let product = Product(
             id: -4,
@@ -32,7 +32,7 @@ final class DetailUseCaseTests: XCTestCase {
     func test_updateFavoriteProduct_whenIsNotFavoriteProduct() {
         let coreDataRepository = MockFavoriteProductRepository()
         
-        let useCase = YogiDetailUsecase(favoriteProductRepository: coreDataRepository)
+        let useCase = YogiDetailUseCase(favoriteProductRepository: coreDataRepository)
         
         let product = Product(
             id: -4,
