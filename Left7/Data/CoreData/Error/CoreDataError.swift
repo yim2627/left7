@@ -7,11 +7,16 @@
 
 import Foundation
 
-enum CoreDataError: String, LocalizedError {
-    case FetchFail = "ERROR: CoreData Fetch Fail"
-    case SaveFail = "ERROR: CoreData Save Fail"
+enum CoreDataError: LocalizedError {
+    case FetchFail
+    case SaveFail
     
-    var errorDescription: String {
-        return self.rawValue
+    var errorDescription: String? {
+        switch self {
+        case .FetchFail:
+            return "ERROR: CoreData Fetch Fail"
+        case .SaveFail:
+            return "ERROR: CoreData Save Fail"
+        }
     }
 }   

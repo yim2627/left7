@@ -61,6 +61,7 @@
 		A648135228769F4C0070F7ED /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648135128769F4C0070F7ED /* NumberFormatterTests.swift */; };
 		A64813542876A09D0070F7ED /* DateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64813532876A09D0070F7ED /* DateFormatterTests.swift */; };
 		A64813562876A9E20070F7ED /* HttpNetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64813552876A9E20070F7ED /* HttpNetworkErrorTests.swift */; };
+		A64813582876AB8E0070F7ED /* CoreDataErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64813572876AB8E0070F7ED /* CoreDataErrorTests.swift */; };
 		A67F1C76287089B300DF06DB /* YogiProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C75287089B300DF06DB /* YogiProductRepository.swift */; };
 		A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7728708C4300DF06DB /* NetworkRepository.swift */; };
 		A67F1C7D28709FEE00DF06DB /* YogiHomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */; };
@@ -143,6 +144,7 @@
 		A648135128769F4C0070F7ED /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		A64813532876A09D0070F7ED /* DateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterTests.swift; sourceTree = "<group>"; };
 		A64813552876A9E20070F7ED /* HttpNetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkErrorTests.swift; sourceTree = "<group>"; };
+		A64813572876AB8E0070F7ED /* CoreDataErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataErrorTests.swift; sourceTree = "<group>"; };
 		A67F1C75287089B300DF06DB /* YogiProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiProductRepository.swift; sourceTree = "<group>"; };
 		A67F1C7728708C4300DF06DB /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		A67F1C7C28709FEE00DF06DB /* YogiHomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiHomeUsecase.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				A648135128769F4C0070F7ED /* NumberFormatterTests.swift */,
 				A64813532876A09D0070F7ED /* DateFormatterTests.swift */,
 				A64813552876A9E20070F7ED /* HttpNetworkErrorTests.swift */,
+				A64813572876AB8E0070F7ED /* CoreDataErrorTests.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				A6367A432876006300F480A1 /* MockFavoriteProductRepository.swift in Sources */,
 				A648134A28769C9D0070F7ED /* FavoriteCollectionViewCellReactorTests.swift in Sources */,
 				A6367A412875FF9000F480A1 /* MockProductRepository.swift in Sources */,
+				A64813582876AB8E0070F7ED /* CoreDataErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
