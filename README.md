@@ -95,3 +95,8 @@ MVVM에서의 ViewModel이 ReactorKit의 Reactor와 같은 역할을 하기 때�
 - KingFisher
 - SnapKit
 
+## Coverage
+
+<img width="1103" alt="image" src="https://user-images.githubusercontent.com/70251136/180831251-28c0d70b-9433-4323-90a1-e2ca322f6146.png">
+
+
