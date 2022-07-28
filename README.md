@@ -71,7 +71,7 @@
 
 ### ReactorKit + CleanArchitecture
 
-<img width="969" alt="image" src="https://user-images.githubusercontent.com/70251136/177837177-1b6e66f8-9842-4bb9-be51-2441218bfee2.png">
+<img width="968" alt="image" src="https://user-images.githubusercontent.com/70251136/181432560-5c2baac8-f259-4839-845a-b6b4c3989048.png">
 
 ### ReactorKit
 View는 Action만 Reactor로 보내고 Reactor에 비즈니스 로직이 위치해 로직을 적용한 State를 반환하므로 완전히 분리되어 로직만을 가진 Reactor는 테스트하기 용이하다라고 생각하여 적용하였고, 모든 Reactor를 테스트하였습니다.
