@@ -111,7 +111,7 @@ final class FavoriteViewReactorTests: XCTestCase {
                 XCTAssertEqual($0[1].id, -2)
                 XCTAssertEqual($0[2].id, -1)
             })
-            .dispose()
+            .dispose() // 같은 State를 구독하는 곳이 두 곳이므로 평점 높은 순으로 정렬시 구독하는 두 곳중 하나의 테스트는 틀리게되므로 바로 구독을 끊도록 dispose를 사용하였음
         
         reactor.action.onNext(.didTapSortOrderByRateAction)
         

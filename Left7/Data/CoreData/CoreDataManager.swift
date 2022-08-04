@@ -15,7 +15,7 @@ final class CoreDataManager {
 
     static let shared = CoreDataManager()
     private let persistentContainer = NSPersistentContainer(name: "YogiCoreDataModel")
-    private(set) lazy var context = persistentContainer.viewContext
+    private(set) lazy var context = persistentContainer.viewContext // 용량이 적어서, 용량이 크면 백그라운드 테스크 쓸듯
     
     //MARK: - Init
 
@@ -33,13 +33,13 @@ final class CoreDataManager {
         })
     }
     
-    func fetch() -> Observable<[ProductDataObject]> {
+    func fetch<T: NSManagedObject>(type: T.Type) -> Observable<[T]> {
         return Observable.create { [weak self] emitter in
-            guard let products = try? self?.context.fetch(ProductDataObject.fetchRequest()) else {
+            guard let products = try? self?.context.fetch(T.fetchRequest()) as? [T] else {
                 emitter.onError(CoreDataError.FetchFail)
                 return Disposables.create()
             }
-            
+
             emitter.onNext(products)
             emitter.onCompleted()
             

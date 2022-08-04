@@ -33,7 +33,7 @@ final class YogiHomeUseCase: YogiHomeUseCaseType {
             favoriteProductRepository.fetchFavoriteProduct()
         )
         .map { products, favoriteProducts in
-            let favoriteProductsId = favoriteProducts.map { $0.id }
+            let favoriteProductsId = favoriteProducts.map { $0.id } // 로컬에 저장된 찜한 프로덕트의 id값과 서버에서 내려오는 프로덕트들의 id값이 포함되어있을시 isfavorite true로 변환하여 내려주는 것
             
             return products.map {
                 return Product(

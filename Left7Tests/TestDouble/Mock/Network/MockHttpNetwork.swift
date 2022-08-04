@@ -34,7 +34,7 @@ final class MockHttpNetwork: HttpNetworkType  {
     }
     
     func verifyFetch(endPoint: EndPoint, callCount: Int = 1) {
-        XCTAssertEqual(self.endPoint?.url, endPoint.url)
+        XCTAssertEqual(self.endPoint, endPoint)
         XCTAssertEqual(self.callCount, callCount)
     }
 }

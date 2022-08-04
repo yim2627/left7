@@ -112,7 +112,8 @@ final class YogiDetailViewController: UIViewController, View {
     private func bindState(_ reactor: YogiDetailViewReactor) {
         reactor.state
             .compactMap { $0.product }
-            .subscribe(onNext: { [weak self] in
+            .asDriver(onErrorJustReturn: .empty)
+            .drive(onNext: { [weak self] in
                 self?.setData(product: $0)
             })
             .disposed(by: disposeBag)

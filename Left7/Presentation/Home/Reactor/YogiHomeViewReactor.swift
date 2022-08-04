@@ -8,7 +8,7 @@
 import Foundation
 
 import RxSwift
-import RxCocoa
+
 
 import ReactorKit
 
@@ -107,7 +107,7 @@ final class YogiHomeViewReactor: Reactor {
                 Observable.just(Mutation.setLoadingNextPage(true)),
                 
                 useCase.fetchProducts(page: self.currentState.page + 1)
-                    .take(until: self.action.filter(Action.isUpdate))
+                    .take(until: self.action.filter(Action.isUpdate)) // take는 Trigger 시퀀스의 방출이 시작되기 전까지의 요소들만 방출
                     .filter { $0.isEmpty == false }
                     .map { [unowned self] in
                         Mutation.appendProducts($0, page: self.currentState.page + 1)
@@ -148,6 +148,7 @@ private extension YogiHomeViewReactor {
 }
 
 extension YogiHomeViewReactor.Action {
+    // 새로 fetchProducts Action이 들어올 때 기존에 업데이트 하고 있는 걸 취소할 때 쓰임
     static func isUpdate(_ action: YogiHomeViewReactor.Action) -> Bool {
         if case .fetchProducts = action {
             return true

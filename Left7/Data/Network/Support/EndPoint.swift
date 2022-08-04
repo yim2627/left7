@@ -8,11 +8,12 @@
 import Foundation
 
 struct EndPoint {
+    
     //MARK: - Properties
 
     private let urlInformation: URLInformation
     private let scheme: String = "http"
-    private let host: String = "www.gccompany.co.kr"
+    private let host: String = ""
     
     var url: URL? {
         var components = URLComponents()
@@ -35,7 +36,7 @@ struct EndPoint {
         var path: String {
             switch self {
             case .pagination(let page):
-                return "/App/json/\(page).json"
+                return ""
             }
         }
     }

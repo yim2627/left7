@@ -8,7 +8,6 @@
 import Foundation
 
 import RxSwift
-import RxCocoa
 
 import ReactorKit
 
@@ -54,7 +53,7 @@ final class YogiFavoriteViewReactor: Reactor {
             var newState = state
             newState.products = products
             newState.products.sort {
-                $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date()
+                $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date() // 초기 정렬
             }
             
             return newState
@@ -70,15 +69,15 @@ final class YogiFavoriteViewReactor: Reactor {
             
         case .sortOrderByLateRegistered:
             var newState = state
-            if state.isSortOrderByLateRegistered {  
+            if state.isSortOrderByLateRegistered { // 오래된순
                 newState.products
                     .sort {
-                        $0.favoriteRegistrationTime ?? Date() < $1.favoriteRegistrationTime ?? Date()
+                        $0.favoriteRegistrationTime ?? Date() < $1.favoriteRegistrationTime ?? Date() // 오름차순
                     }
             } else {
-                newState.products
+                newState.products // 최신순
                     .sort {
-                        $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date()
+                        $0.favoriteRegistrationTime ?? Date() > $1.favoriteRegistrationTime ?? Date() // 내림차순
                     }
             }
             
@@ -89,10 +88,10 @@ final class YogiFavoriteViewReactor: Reactor {
         case .sortOrderByRate:
             var newState = state
             
-            if state.isSortOrderByRate {
-                newState.products.sort { $0.rate < $1.rate }
-            } else {
-                newState.products.sort { $0.rate > $1.rate }
+            if state.isSortOrderByRate { // 낮은순
+                newState.products.sort { $0.rate < $1.rate } // 오름차순
+            } else { // 높은순
+                newState.products.sort { $0.rate > $1.rate } // 내림차순
             }
             
             newState.isSortOrderByRate = !state.isSortOrderByRate

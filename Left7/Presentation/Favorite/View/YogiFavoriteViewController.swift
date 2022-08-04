@@ -91,8 +91,8 @@ final class YogiFavoriteViewController: UIViewController, View {
         sortButton.rx.tap
             .flatMap { [unowned self] _ in
                 self.showAlertController(
-                    isSortOrderByLastRegistered: reactor.currentState.isSortOrderByLateRegistered,
-                    isSortOrderByRate: reactor.currentState.isSortOrderByRate
+                    isSortOrderByLastRegistered: reactor.currentState.isSortOrderByLateRegistered, // 초기엔 정렬되있지 않으므로 기본값 False
+                    isSortOrderByRate: reactor.currentState.isSortOrderByRate // 초기엔 정렬되있지 않으므로 기본값 False
                 )
             }
             .map { action in

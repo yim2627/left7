@@ -8,6 +8,7 @@
 import Foundation
 
 import RxSwift
+import CoreData
 
 final class YogiFavoriteProductRepository: CoreDataRepository {
     //MARK: - Properties
@@ -23,9 +24,11 @@ final class YogiFavoriteProductRepository: CoreDataRepository {
     //MARK: - Method
 
     func fetchFavoriteProduct() -> Observable<[Product]> {
-        return coreDataManager.fetch()
-            .map { productObject in
-                productObject.map { $0.toDomain() }
+        return coreDataManager.fetch(type: ProductDataObject.self) // 저장되어있는 데이터의 타입과 내가 부를 데이터의 타입이 서로 상속관계여도 타입이 완전히 동일하지않으면 뒤진다.
+            .map {
+                $0.map {
+                    $0.toDomain()
+                }
             }
     }
     

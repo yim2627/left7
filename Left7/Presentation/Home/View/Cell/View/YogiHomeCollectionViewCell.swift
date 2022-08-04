@@ -37,6 +37,7 @@ final class YogiHomeCollectionViewCell: UICollectionViewCell, View {
     //MARK: - Init
 
     override func prepareForReuse() {
+        
         disposeBag = DisposeBag()
     }
     
