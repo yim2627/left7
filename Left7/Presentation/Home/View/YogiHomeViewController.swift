@@ -193,7 +193,7 @@ private extension YogiHomeViewController {
 //                    .map {
 //                        YogiHomeCollectionViewCellReactor.Action.dd
 //                    }
-                    // HomeViewController의 Reactor가 아닌 Cell의 Reactor로 액션을 보내서 Cell이 가진 Product를 변경하고 favorite 상태에 따라 로컬 저장소를 업데이트 한뒤 Cell에서 reactor의 state를 구독하고 있으면 될듯
+                    // HomeViewController의 Reactor가 아닌 Cell의 Reactor로 액션을 보내서 Cell이 가진 Product를 변경하고 favorite 상태에 따라 로컬 저장소를 업데이트 한뒤 Cell에서 reactor의 state를 구독하고 있으면 될듯 
                     .bind(to: reactor.action)
                     .disposed(by: cell.disposeBag)
             }
