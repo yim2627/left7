@@ -29,8 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         // HomeViewController
-        let homeViewController = YogiHomeViewController()
-        homeViewController.reactor = YogiHomeViewReactor()
+        let homeViewController = HomeViewController()
+        homeViewController.reactor = HomeViewReactor()
         
         let homeTabBarSelectedImage = UIImage(systemName: Design.homeTabBarSelectedImageSystemName)
         homeViewController.tabBarItem = UITabBarItem(
@@ -40,8 +40,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         // FavoriteViewController
-        let favoriteViewController = YogiFavoriteViewController()
-        favoriteViewController.reactor = YogiFavoriteViewReactor()
+        let favoriteViewController = FavoriteViewController()
+        favoriteViewController.reactor = FavoriteViewReactor()
         
         let favoriteTabBarSelecetedImage = UIImage(systemName: Design.favoriteTabBarSelecetedImageSystemName)
         favoriteViewController.tabBarItem = UITabBarItem(

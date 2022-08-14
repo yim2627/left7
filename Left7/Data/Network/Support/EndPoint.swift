@@ -13,7 +13,7 @@ struct EndPoint {
 
     private let urlInformation: URLInformation
     private let scheme: String = "http"
-    private let host: String = ""
+    private let host: String = "www.gccompany.co.kr"
     
     var url: URL? {
         var components = URLComponents()
@@ -36,7 +36,7 @@ struct EndPoint {
         var path: String {
             switch self {
             case .pagination(let page):
-                return ""
+                return "/App/json/\(page).json"
             }
         }
     }

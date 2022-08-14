@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol NetworkRepository {
-    func fetchYogiProducts(page: Int) -> Observable<[Product]>
+    func fetchMovies(page: Int) -> Observable<[Movie]>
 }

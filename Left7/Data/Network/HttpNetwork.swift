@@ -30,7 +30,7 @@ final class HttpNetwork: HttpNetworkType {
             return .error(HttpNetworkError.invalidURL)
         }
         
-        let urlRequest = URLRequest(url: url, method: .get)
+        let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/now_playing?page=1&api_key=13002531cbc59fc376da2b25a2fb918a")!, method: .get)
         
         return Observable<Data>.create { [weak self] emmiter in
             let task = self?.session.dataTask(with: urlRequest) { data, response, error in

@@ -9,12 +9,12 @@ import XCTest
 @testable import Left7
 
 final class HomeCollectionViewCellReactorTests: XCTestCase {
-    func test_initReactor_with_product() {
-        let testProduct: Product = .empty
+    func test_initReactor_with_movie() {
+        let testMovie: Movie = .empty
         
-        let initialState = YogiHomeCollectionViewCellReactor.State(product: testProduct)
-        let reactor = YogiHomeCollectionViewCellReactor(state: initialState)
+        let initialState = HomeCollectionViewCellReactor.State(movie: testMovie)
+        let reactor = HomeCollectionViewCellReactor(state: initialState)
         
-        XCTAssertEqual(reactor.currentState.product, testProduct) 
+        XCTAssertEqual(reactor.currentState.movie, testMovie)
     }
 }

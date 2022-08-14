@@ -1,16 +1,15 @@
 //
-//  CoreDataRepository.swift
+//  FavoriteUseCaseType.swift
 //  Left7
 //
-//  Created by 임지성 on 2022/07/04.
+//  Created by 임지성 on 2022/07/06.
 //
 
 import Foundation
 
 import RxSwift
 
-protocol CoreDataRepository {
+protocol FavoriteUseCaseType {
     func fetchFavoriteMovies() -> Observable<[Movie]>
-    func saveFavoriteMovie(_ movie: Movie)
     func deleteFavoriteMovie(_ movie: Movie)
 }

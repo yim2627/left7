@@ -10,38 +10,32 @@ import Foundation
 
 import RxSwift
 
-final class StubFavoriteUseCase: YogiFavoriteUseCaseType {
-    func fetchFavoriteProduct() -> Observable<[Product]> {
+final class StubFavoriteUseCase: FavoriteUseCaseType {
+    func fetchFavoriteMovies() -> Observable<[Movie]> {
         return Observable.just([
-            Product(
+            Movie(
                 id: -1,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: true,
                 favoriteRegistrationTime: Date(timeIntervalSince1970: 10000)
             ),
-            Product(
+            Movie(
                 id: -2,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: 0,
                 isFavorite: true,
                 favoriteRegistrationTime: Date(timeIntervalSince1970: 20000)
             ),
-            Product(
+            Movie(
                 id: -3,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: 1,
                 isFavorite: true,
                 favoriteRegistrationTime: Date(timeIntervalSince1970: 30000)
@@ -49,7 +43,7 @@ final class StubFavoriteUseCase: YogiFavoriteUseCaseType {
         ])
     }
     
-    func deleteFavoriteProduct(_ product: Product) {
+    func deleteFavoriteMovie(_ movie: Movie) {
         return 
     }
 }

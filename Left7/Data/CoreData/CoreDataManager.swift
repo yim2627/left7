@@ -14,7 +14,7 @@ final class CoreDataManager {
     //MARK: - Properties
 
     static let shared = CoreDataManager()
-    private let persistentContainer = NSPersistentContainer(name: "YogiCoreDataModel")
+    private let persistentContainer = NSPersistentContainer(name: "Left7CoreDataModel")
     private(set) lazy var context = persistentContainer.viewContext // 용량이 적어서, 용량이 크면 백그라운드 테스크 쓸듯
     
     //MARK: - Init
@@ -35,12 +35,12 @@ final class CoreDataManager {
     
     func fetch<T: NSManagedObject>(type: T.Type) -> Observable<[T]> {
         return Observable.create { [weak self] emitter in
-            guard let products = try? self?.context.fetch(T.fetchRequest()) as? [T] else {
+            guard let movies = try? self?.context.fetch(T.fetchRequest()) as? [T] else {
                 emitter.onError(CoreDataError.FetchFail)
                 return Disposables.create()
             }
 
-            emitter.onNext(products)
+            emitter.onNext(movies)
             emitter.onCompleted()
             
             return Disposables.create()
@@ -48,7 +48,7 @@ final class CoreDataManager {
     }
     
     func delete(with id: Int) {
-        let request = ProductDataObject.fetchRequest()
+        let request = MovieDataObject.fetchRequest()
         let predicate = NSPredicate(format: "id == %@", String(id))
         request.predicate = predicate
         

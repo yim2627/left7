@@ -11,29 +11,25 @@ import XCTest
 import RxSwift
 
 class FavoriteUseCaseTests: XCTestCase {
-    private var testFavoriteProducts: [Product]!
+    private var testFavoriteMovies: [Movie]!
     
     private var disposeBag: DisposeBag!
     
     override func setUpWithError() throws {
-        testFavoriteProducts = [
-            Product(
+        testFavoriteMovies = [
+            Movie(
                 id: -1,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: true
             ),
-            Product(
+            Movie(
                 id: -3,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -3,
                 rate: -3,
                 isFavorite: true
             )
@@ -42,36 +38,34 @@ class FavoriteUseCaseTests: XCTestCase {
         disposeBag = DisposeBag()
     }
     
-    func test_fetchFavoriteProducts() {
-        let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
+    func test_fetchFavoriteMovies() {
+        let coreDataRepository = MockFavoriteMovieRepository(data: testFavoriteMovies)
         
-        let useCase = YogiFavoriteUseCase(favoriteProductRepository: coreDataRepository)
+        let useCase = FavoriteUseCase(favoriteMovieRepository: coreDataRepository)
         
-        useCase.fetchFavoriteProduct()
-            .subscribe(onNext: { favoriteProducts in
-                XCTAssertEqual(self.testFavoriteProducts, favoriteProducts)
-                coreDataRepository.verifyFetchFavoriteProduct()
+        useCase.fetchFavoriteMovies()
+            .subscribe(onNext: { favoriteMovies in
+                XCTAssertEqual(self.testFavoriteMovies, favoriteMovies)
+                coreDataRepository.verifyFetchFavoriteMovie()
             })
             .disposed(by: disposeBag)
     }
     
-    func test_deleteFavoriteProduct() {
-        let coreDataRepository = MockFavoriteProductRepository(data: testFavoriteProducts)
+    func test_deleteFavoriteMovie() {
+        let coreDataRepository = MockFavoriteMovieRepository(data: testFavoriteMovies)
         
-        let useCase = YogiFavoriteUseCase(favoriteProductRepository: coreDataRepository)
+        let useCase = FavoriteUseCase(favoriteMovieRepository: coreDataRepository)
         
-        let product = Product(
+        let movie = Movie(
             id: -4,
             name: "",
-            thumbnailPath: "",
-            descriptionImagePath: "",
+            posterPath: "",
             descriptionSubject: "",
-            price: -4,
             rate: -4,
             isFavorite: false
         )
         
-        useCase.deleteFavoriteProduct(product)
-        coreDataRepository.verifyDeleteFavoriteProduct(product: product)
+        useCase.deleteFavoriteMovie(movie)
+        coreDataRepository.verifyDeleteFavoriteMovie(movie: movie)
     }
 }

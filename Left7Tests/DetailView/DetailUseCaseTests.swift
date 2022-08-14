@@ -9,43 +9,39 @@ import XCTest
 @testable import Left7
 
 final class DetailUseCaseTests: XCTestCase {
-    func test_updateFavoriteProduct_whenIsFavoriteProduct() {
-        let coreDataRepository = MockFavoriteProductRepository()
+    func test_updateFavoriteMovie_whenIsFavoriteMovie() {
+        let coreDataRepository = MockFavoriteMovieRepository()
         
-        let useCase = YogiDetailUseCase(favoriteProductRepository: coreDataRepository)
+        let useCase = DetailUseCase(favoriteMovieRepository: coreDataRepository)
         
-        let product = Product(
+        let movie = Movie(
             id: -4,
             name: "",
-            thumbnailPath: "",
-            descriptionImagePath: "",
+            posterPath: "",
             descriptionSubject: "",
-            price: -4,
             rate: -4,
             isFavorite: true
         )
         
-        useCase.updateFavoriteProduct(product)
-        coreDataRepository.verifySaveFavoriteProduct(product: product)
+        useCase.updateFavoriteMovie(movie)
+        coreDataRepository.verifySaveFavoriteMovie(movie: movie)
     }
     
-    func test_updateFavoriteProduct_whenIsNotFavoriteProduct() {
-        let coreDataRepository = MockFavoriteProductRepository()
+    func test_updateFavoriteMovie_whenIsNotFavoriteMovie() {
+        let coreDataRepository = MockFavoriteMovieRepository()
         
-        let useCase = YogiDetailUseCase(favoriteProductRepository: coreDataRepository)
+        let useCase = DetailUseCase(favoriteMovieRepository: coreDataRepository)
         
-        let product = Product(
+        let movie = Movie(
             id: -4,
             name: "",
-            thumbnailPath: "",
-            descriptionImagePath: "",
+            posterPath: "",
             descriptionSubject: "",
-            price: -4,
             rate: -4,
             isFavorite: false
         )
     
-        useCase.updateFavoriteProduct(product)
-        coreDataRepository.verifyDeleteFavoriteProduct(product: product)
+        useCase.updateFavoriteMovie(movie)
+        coreDataRepository.verifyDeleteFavoriteMovie(movie: movie)
     }
 }

@@ -8,8 +8,8 @@
 import Foundation
 @testable import Left7
 
-final class StubDetailUseCase: YogiDetailUseCaseType {
-    func updateFavoriteProduct(_ product: Product?) {
+final class StubDetailUseCase: DetailUseCaseType {
+    func updateFavoriteMovie(_ movie: Movie?) {
         return
     }
 }

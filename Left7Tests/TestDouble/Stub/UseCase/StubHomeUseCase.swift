@@ -10,63 +10,53 @@ import Foundation
 
 import RxSwift
 
-final class StubHomeUseCase: YogiHomeUseCaseType {
-    func fetchProducts(page: Int) -> Observable<[Product]> {
+final class StubHomeUseCase: HomeUseCaseType {
+    func fetchMovies(page: Int) -> Observable<[Movie]> {
         return Observable.just([
-            Product(
+            Movie(
                 id: -1,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: false),
-            Product(
+            Movie(
                 id: -2,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: false),
-            Product(
+            Movie(
                 id: -3,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: false)
         ])
     }
     
-    func fetchFavoriteProduct() -> Observable<[Product]> {
+    func fetchFavoriteMovies() -> Observable<[Movie]> {
         return Observable.just([
-            Product(
+            Movie(
                 id: -1,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: true),
-            Product(
+            Movie(
                 id: -2,
                 name: "",
-                thumbnailPath: "",
-                descriptionImagePath: "",
+                posterPath: "",
                 descriptionSubject: "",
-                price: -1,
                 rate: -1,
                 isFavorite: true)
         ])
     }
     
-    func updateFavoriteProduct(_ product: Product?) {
+    func updateFavoriteMovies(_ movie: Movie?) {
         return
     }
 }

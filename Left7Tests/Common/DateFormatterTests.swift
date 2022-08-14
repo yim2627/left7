@@ -10,7 +10,7 @@ import XCTest
 
 final class DateFormatterTests: XCTestCase {
     func test_toDateString() {
-        let dateFormatter = YogiDateFormatter.shared
+        let dateFormatter = Left7DateFormatter.shared
         
         let testDate = Date(timeIntervalSince1970: 10000) // 1970/01/01 11:46
         

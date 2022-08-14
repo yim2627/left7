@@ -10,7 +10,7 @@ import XCTest
 
 final class NumberFormatterTests: XCTestCase {
     func test_toString() {
-        let numberFormatter = YogiNumberFormatter.shared
+        let numberFormatter = Left7NumberFormatter.shared
         
         XCTAssertEqual(numberFormatter.toString(number: 1000), "1,000")
     }

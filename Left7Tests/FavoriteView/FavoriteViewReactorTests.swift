@@ -12,18 +12,18 @@ import RxSwift
 
 final class FavoriteViewReactorTests: XCTestCase {
     var disposeBag: DisposeBag = DisposeBag()
-    var reactor: YogiFavoriteViewReactor!
+    var reactor: FavoriteViewReactor!
     
-    func test_fetchFavoriteProducts() {
+    func test_fetchFavoriteMovies() {
         let useCase = StubFavoriteUseCase()
-        reactor = YogiFavoriteViewReactor(useCase: useCase)
+        reactor = FavoriteViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
-        reactor.action.onNext(.fetchFavoriteProducts)
+        reactor.action.onNext(.fetchFavoriteMovies)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0.count, 3)
                 XCTAssertEqual($0[0].isFavorite, true)
@@ -35,42 +35,42 @@ final class FavoriteViewReactorTests: XCTestCase {
     
     func test_didTapFavoriteButton() {
         let useCase = StubFavoriteUseCase()
-        reactor = YogiFavoriteViewReactor(useCase: useCase)
+        reactor = FavoriteViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
         // 기존 프로젝트 isFavorite toggle 확인을 위해 미리 프로젝트 세팅
-        reactor.action.onNext(.fetchFavoriteProducts)
+        reactor.action.onNext(.fetchFavoriteMovies)
         
-        XCTAssertEqual(reactor.currentState.products.count, 3)
+        XCTAssertEqual(reactor.currentState.movies.count, 3)
         
-        let defaultProduct: Product = .empty
+        let defaultMovie: Movie = .empty
         
-        reactor.action.onNext(.didTapFavoriteButton(defaultProduct))
+        reactor.action.onNext(.didTapFavoriteButton(defaultMovie))
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
-                XCTAssertEqual($0.map { $0.id }.contains(defaultProduct.id), false)
+                XCTAssertEqual($0.map { $0.id }.contains(defaultMovie.id), false)
             })
             .disposed(by: disposeBag)
     }
     
     func test_didTapSortOrderByLastRegisteredAction() {
         let useCase = StubFavoriteUseCase()
-        reactor = YogiFavoriteViewReactor(useCase: useCase)
+        reactor = FavoriteViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
-        // 기존 프로젝트 정렬을 위해 미리 프로젝트 세팅
-        reactor.action.onNext(.fetchFavoriteProducts)
+        // 기존 Movie 정렬을 위해 미리 Movie 세팅
+        reactor.action.onNext(.fetchFavoriteMovies)
         
-        XCTAssertEqual(reactor.currentState.products.count, 3)
+        XCTAssertEqual(reactor.currentState.movies.count, 3)
         
         reactor.action.onNext(.didTapSortOrderByLastRegisteredAction)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0[0].id, -3)
                 XCTAssertEqual($0[1].id, -2)
@@ -81,7 +81,7 @@ final class FavoriteViewReactorTests: XCTestCase {
         reactor.action.onNext(.didTapSortOrderByLastRegisteredAction)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0[0].id, -1)
                 XCTAssertEqual($0[1].id, -2)
@@ -92,19 +92,19 @@ final class FavoriteViewReactorTests: XCTestCase {
     
     func test_didTapSortOrderByRateAction() {
         let useCase = StubFavoriteUseCase()
-        reactor = YogiFavoriteViewReactor(useCase: useCase)
+        reactor = FavoriteViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
-        // 기존 프로젝트 정렬을 위해 미리 프로젝트 세팅
-        reactor.action.onNext(.fetchFavoriteProducts)
+        // 기존 Movie 정렬을 위해 미리 Movie 세팅
+        reactor.action.onNext(.fetchFavoriteMovies)
         
-        XCTAssertEqual(reactor.currentState.products.count, 3)
+        XCTAssertEqual(reactor.currentState.movies.count, 3)
         
         reactor.action.onNext(.didTapSortOrderByRateAction)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 print($0)
                 XCTAssertEqual($0[0].id, -3)
@@ -116,7 +116,7 @@ final class FavoriteViewReactorTests: XCTestCase {
         reactor.action.onNext(.didTapSortOrderByRateAction)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0[0].id, -1)
                 XCTAssertEqual($0[1].id, -2)
@@ -127,17 +127,17 @@ final class FavoriteViewReactorTests: XCTestCase {
     
     func test_isUpdate_true() {
         let useCase = StubFavoriteUseCase()
-        reactor = YogiFavoriteViewReactor(useCase: useCase)
+        reactor = FavoriteViewReactor(useCase: useCase)
         
-        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.fetchFavoriteProducts), true)
+        XCTAssertEqual(FavoriteViewReactor.Action.isUpdate(.fetchFavoriteMovies), true)
     }
     
     func test_isUpdate_false() {
         let useCase = StubFavoriteUseCase()
-        reactor = YogiFavoriteViewReactor(useCase: useCase)
+        reactor = FavoriteViewReactor(useCase: useCase)
         
-        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapFavoriteButton(.empty)), false)
-        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapSortOrderByLastRegisteredAction), false)
-        XCTAssertEqual(YogiFavoriteViewReactor.Action.isUpdate(.didTapSortOrderByRateAction), false)
+        XCTAssertEqual(FavoriteViewReactor.Action.isUpdate(.didTapFavoriteButton(.empty)), false)
+        XCTAssertEqual(FavoriteViewReactor.Action.isUpdate(.didTapSortOrderByLastRegisteredAction), false)
+        XCTAssertEqual(FavoriteViewReactor.Action.isUpdate(.didTapSortOrderByRateAction), false)
     }
 }

@@ -12,27 +12,27 @@ import RxSwift
 
 final class DetailViewReactorTests: XCTestCase {
     var disposeBag: DisposeBag = DisposeBag()
-    var reactor: YogiDetailViewReactor!
+    var reactor: DetailViewReactor!
     
     func test_didTapFavoriteButton() {
         let useCase = StubDetailUseCase()
-        reactor = YogiDetailViewReactor(useCase: useCase, selectedProduct: .empty) // isFavorite: False
+        reactor = DetailViewReactor(useCase: useCase, selectedMovie: .empty) // isFavorite: False
         
         reactor.action.onNext(.didTapFavoriteButton)
         
-        XCTAssertEqual(reactor.currentState.product?.isFavorite, true)
+        XCTAssertEqual(reactor.currentState.movie?.isFavorite, true)
         
         reactor.action.onNext(.didTapFavoriteButton)
         
-        XCTAssertEqual(reactor.currentState.product?.isFavorite, false)
+        XCTAssertEqual(reactor.currentState.movie?.isFavorite, false)
     }
     
-    func test_didTapFavoriteButton_with_abnormal_product() {
+    func test_didTapFavoriteButton_with_abnormal_movie() {
         let useCase = StubDetailUseCase()
-        reactor = YogiDetailViewReactor(useCase: useCase, selectedProduct: nil)
+        reactor = DetailViewReactor(useCase: useCase, selectedMovie: nil)
         
         reactor.action.onNext(.didTapFavoriteButton)
         
-        XCTAssertEqual(reactor.currentState.product, .empty)
+        XCTAssertEqual(reactor.currentState.movie, .empty)
     }
 }

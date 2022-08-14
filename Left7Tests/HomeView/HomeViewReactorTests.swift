@@ -12,27 +12,28 @@ import RxSwift
 
 final class HomeViewReactorTests: XCTestCase {
     var disposeBag: DisposeBag = DisposeBag()
-    var reactor: YogiHomeViewReactor!
+    var reactor: HomeViewReactor!
     
     func test_didTapFavoriteButton() {
-        reactor = YogiHomeViewReactor()
+        let useCase = StubHomeUseCase()
+        reactor = HomeViewReactor(useCase: useCase)
         
-        reactor.initialState.products = [
+        reactor.initialState.movies = [
             .empty
         ]
         
         reactor.action.onNext(.didTapFavoriteButton(0))
         
-        XCTAssertEqual(reactor.currentState.products[0].isFavorite, true)
+        XCTAssertEqual(reactor.currentState.movies[0].isFavorite, true)
         
         reactor.action.onNext(.didTapFavoriteButton(0))
         
-        XCTAssertEqual(reactor.currentState.products[0].isFavorite, false)
+        XCTAssertEqual(reactor.currentState.movies[0].isFavorite, false)
     }
     
     func test_loadNextPage() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         reactor.initialState.page = 1
         
         XCTAssertEqual(reactor.currentState.page, 1)
@@ -47,64 +48,64 @@ final class HomeViewReactorTests: XCTestCase {
             .disposed(by: disposeBag)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0.count, 3)
             })
             .disposed(by: disposeBag)
     }
     
-    func test_fetchProducts() {
+    func test_fetchMovies() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
-        reactor.action.onNext(.fetchProducts)
+        reactor.action.onNext(.fetchMovies)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0.count, 3)
             })
             .disposed(by: disposeBag)
     }
     
-    func test_fetchFavoriteProducts() {
+    func test_fetchFavoriteMovies() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
-        reactor.action.onNext(.fetchFavoriteProducts)
+        reactor.action.onNext(.fetchFavoriteMovies)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0.isEmpty, true) // 새 모델을 내리기위해 비교할 모델이 없으므로 empty
             })
             .disposed(by: disposeBag)
     }
     
-    func test_updateFavoriteProducts() {
+    func test_updateFavoriteMovies() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
-        XCTAssertEqual(reactor.currentState.products.isEmpty, true)
+        XCTAssertEqual(reactor.currentState.movies.isEmpty, true)
         
-        reactor.action.onNext(.fetchProducts)
+        reactor.action.onNext(.fetchMovies)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0.count, 3)
             })
             .disposed(by: disposeBag)
         
-        reactor.action.onNext(.fetchFavoriteProducts)
+        reactor.action.onNext(.fetchFavoriteMovies)
         
         reactor.state
-            .map { $0.products }
+            .map { $0.movies }
             .subscribe(onNext: {
                 XCTAssertEqual($0[0].isFavorite, true)
                 XCTAssertEqual($0[1].isFavorite, true)
@@ -115,7 +116,7 @@ final class HomeViewReactorTests: XCTestCase {
     
     func test_isLoadNextPage_true() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
         reactor.initialState.isLoadingNextPage = true
         
@@ -124,7 +125,7 @@ final class HomeViewReactorTests: XCTestCase {
     
     func test_isLoadNextPage_false() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
         reactor.initialState.isLoadingNextPage = false
         
@@ -133,16 +134,16 @@ final class HomeViewReactorTests: XCTestCase {
     
     func test_isUpdate_true() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
-        XCTAssertEqual(YogiHomeViewReactor.Action.isUpdate(.fetchProducts), true)
+        XCTAssertEqual(HomeViewReactor.Action.isUpdate(.fetchMovies), true)
     }
     
     func test_isUpdate_false() {
         let useCase = StubHomeUseCase()
-        reactor = YogiHomeViewReactor(useCase: useCase)
+        reactor = HomeViewReactor(useCase: useCase)
         
-        XCTAssertEqual(YogiHomeViewReactor.Action.isUpdate(.didTapFavoriteButton(0)), false)
+        XCTAssertEqual(HomeViewReactor.Action.isUpdate(.didTapFavoriteButton(0)), false)
     }
 }
 
