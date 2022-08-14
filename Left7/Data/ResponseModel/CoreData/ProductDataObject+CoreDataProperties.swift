@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import SwiftUI
 
 extension ProductDataObject {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ProductDataObject> {
