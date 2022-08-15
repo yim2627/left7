@@ -70,15 +70,23 @@ final class MovieRepositoryTests: XCTestCase {
         let testPage = 1
         
         let network = MockHttpNetwork(data: testModelData)
-        let endPoint = EndPoint(urlInformation: .pagination(page: testPage))
+        
+        let queryParams = NowPlayingRequestModel(
+            apiKey: "13002531cbc59fc376da2b25a2fb918a",
+            page: 1)
+        let url = try! EndPoint(
+            urlInformation: .nowPlayingList,
+            queryParameters: queryParams
+        ).generateURL().get()
+        
         let repository = MovieRepository(network: network)
         
-        let movies = self.testModel.movies.map { $0.toDomain() }
+        let movies = self.testModel.movies?.compactMap { $0.toDomain() }
         
         repository.fetchMovies(page: testPage)
             .subscribe(onNext: { models in
                 XCTAssertEqual(movies, models)
-                network.verifyFetch(endPoint: endPoint)
+                network.verifyFetch(url: url)
             })
             .disposed(by: disposeBag)
     }

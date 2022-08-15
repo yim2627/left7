@@ -8,26 +8,23 @@
 import Foundation
 @testable import Left7
 
-final class StubURLSessionWithStatusCode: URLSessionProtocol {
+final class StubRequesterWithStatusCode: Requsetable {
     private let isSuccess: Bool
     
     init(isSuccess: Bool = true) {
         self.isSuccess = isSuccess
     }
     
-    func dataTask(
-        with request: URLRequest,
-        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
-    ) -> URLSessionDataTask {
+    func retrieveDataTask(with urlRequest: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         let successResponse = HTTPURLResponse(
-            url: request.url!,
+            url: urlRequest.url!,
             statusCode: 200,
             httpVersion: "1.1",
             headerFields: nil
         )
         
         let failureResponse = HTTPURLResponse(
-            url: request.url!,
+            url: urlRequest.url!,
             statusCode: 400,
             httpVersion: "1.1",
             headerFields: nil
@@ -35,6 +32,7 @@ final class StubURLSessionWithStatusCode: URLSessionProtocol {
         
         let dataString = #""OK""#
         let data = dataString.data(using: .utf8)!
+        
         let sessionDataTask = StubURLSessionDataTask()
         
         if isSuccess {

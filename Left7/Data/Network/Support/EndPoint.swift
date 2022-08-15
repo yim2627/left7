@@ -20,7 +20,7 @@ struct EndPoint {
     init(
         baseURL: String = "https://api.themoviedb.org/3",
         urlInformation: URLInformation,
-        queryParameters: Encodable?
+        queryParameters: Encodable? = nil
     ) {
         self.baseURL = baseURL
         self.urlInformation = urlInformation

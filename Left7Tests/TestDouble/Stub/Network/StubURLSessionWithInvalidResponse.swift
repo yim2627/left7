@@ -8,7 +8,7 @@
 import Foundation
 @testable import Left7
 
-final class StubURLSessionWithInvalidResponse: URLSessionProtocol {
+final class StubRequesterWithInvalidResponse: Requsetable {
     enum ResponseError {
         case data
         case emptyResponse
@@ -20,12 +20,9 @@ final class StubURLSessionWithInvalidResponse: URLSessionProtocol {
         self.errorKind = errorKind
     }
     
-    func dataTask(
-        with request: URLRequest,
-        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
-    ) -> URLSessionDataTask {
+    func retrieveDataTask(with urlRequest: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         let failureResponseWithData = HTTPURLResponse(
-            url: URL(string: "1")!,
+            url: urlRequest.url!,
             statusCode: 200,
             httpVersion: "1.1",
             headerFields: nil

@@ -9,18 +9,20 @@ import XCTest
 @testable import Left7
 
 class EndPointTests: XCTestCase {
-    func test_Page1_EndPoint가_정상적으로_나오는지() {
-        let endPoint = EndPoint(urlInformation: .pagination(page: 1))
-        XCTAssertEqual(endPoint.url, URL(string: "http://www.gccompany.co.kr/App/json/1.json"))
-    }
-    
-    func test_Page2_EndPoint가_정상적으로_나오는지() {
-        let endPoint = EndPoint(urlInformation: .pagination(page: 2))
-        XCTAssertEqual(endPoint.url, URL(string: "http://www.gccompany.co.kr/App/json/2.json"))
-    }
-    
-    func test_Page3_EndPoint가_정상적으로_나오는지() {
-        let endPoint = EndPoint(urlInformation: .pagination(page: 3))
-        XCTAssertEqual(endPoint.url, URL(string: "http://www.gccompany.co.kr/App/json/3.json"))
+    func test_Page_EndPoint() {
+        let queryParams = NowPlayingRequestModel(
+            apiKey: "13002531cbc59fc376da2b25a2fb918a",
+            page: 1)
+        let endPoint = EndPoint(
+            urlInformation: .nowPlayingList,
+            queryParameters: queryParams
+        ).generateURL()
+        
+        switch endPoint {
+        case .success(let url):
+            XCTAssertEqual(url, URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=13002531cbc59fc376da2b25a2fb918a&page=1"))
+        case .failure(_):
+            XCTFail()
+        }
     }
 }

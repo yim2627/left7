@@ -13,7 +13,7 @@ import RxSwift
 
 class HttpNetworkTests: XCTestCase {
     var sut: HttpNetwork!
-    var stubURLSession: URLSessionProtocol!
+    var stubRequester: Requsetable!
     var disposeBag: DisposeBag!
     
     override func setUpWithError() throws {
@@ -28,15 +28,15 @@ class HttpNetworkTests: XCTestCase {
     }
     
     func test_SuccessCase() {
-        stubURLSession = StubURLSessionWithStatusCode()
-        sut = HttpNetwork(session: stubURLSession)
+        stubRequester = StubRequesterWithStatusCode()
+        sut = HttpNetwork(requester: stubRequester)
         
         var resultOfTask: String?
-        let endPoint = EndPoint(urlInformation: .pagination(page: 1))
+        let url = try! EndPoint(urlInformation: .nowPlayingList).generateURL().get()
         
         let expectation = XCTestExpectation(description: "Success")
         
-        sut.fetch(endPoint: endPoint)
+        sut.fetch(with: url)
             .subscribe(onNext: {
                 resultOfTask = String(data: $0, encoding: .utf8)
                 expectation.fulfill()
@@ -50,14 +50,14 @@ class HttpNetworkTests: XCTestCase {
     }
     
     func test_FailureCase_with_Abnormal_StatusCode() {
-        stubURLSession = StubURLSessionWithStatusCode(isSuccess: false)
-        sut = HttpNetwork(session: stubURLSession)
+        stubRequester = StubRequesterWithStatusCode(isSuccess: false)
+        sut = HttpNetwork(requester: stubRequester)
     
-        let endPoint = EndPoint(urlInformation: .pagination(page: 1))
+        let url = try! EndPoint(urlInformation: .nowPlayingList).generateURL().get()
         
         let expectation = XCTestExpectation(description: "Fail")
         
-        sut.fetch(endPoint: endPoint)
+        sut.fetch(with: url)
             .subscribe(onError: {
                 let statusError = HttpNetworkError.abnormalStatusCode(400)
                 XCTAssertEqual($0 as? HttpNetworkError, statusError)
@@ -70,14 +70,14 @@ class HttpNetworkTests: XCTestCase {
     }
     
     func test_FailureCase_with_InvalidResponse_data() {
-        stubURLSession = StubURLSessionWithInvalidResponse(errorKind: .data)
-        sut = HttpNetwork(session: stubURLSession)
+        stubRequester = StubRequesterWithInvalidResponse(errorKind: .data)
+        sut = HttpNetwork(requester: stubRequester)
     
-        let endPoint = EndPoint(urlInformation: .pagination(page: 1)) // 임시
+        let url = try! EndPoint(urlInformation: .nowPlayingList).generateURL().get() // 임시
         
         let expectation = XCTestExpectation(description: "Invalid Response with Data")
         
-        sut.fetch(endPoint: endPoint)
+        sut.fetch(with: url)
             .subscribe(onError: {
                 let error = HttpNetworkError.invalidResponse
                 XCTAssertEqual($0 as? HttpNetworkError, error)
@@ -90,14 +90,14 @@ class HttpNetworkTests: XCTestCase {
     }
     
     func test_FailureCase_with_InvalidResponse_empty() {
-        stubURLSession = StubURLSessionWithInvalidResponse(errorKind: .emptyResponse)
-        sut = HttpNetwork(session: stubURLSession)
+        stubRequester = StubRequesterWithInvalidResponse(errorKind: .emptyResponse)
+        sut = HttpNetwork(requester: stubRequester)
     
-        let endPoint = EndPoint(urlInformation: .pagination(page: 1)) // 임시
+        let url = try! EndPoint(urlInformation: .nowPlayingList).generateURL().get() // 임시
         
         let expectation = XCTestExpectation(description: "Empty Respones")
         
-        sut.fetch(endPoint: endPoint)
+        sut.fetch(with: url)
             .subscribe(onError: {
                 let error = HttpNetworkError.invalidResponse
                 XCTAssertEqual($0 as? HttpNetworkError, error)
