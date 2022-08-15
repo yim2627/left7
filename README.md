@@ -1,5 +1,13 @@
 # left7
 
+<div align="center">
+    
+현재 세계에서 상영중인 목록을 보여주는 ReactorKit + CleanArchitecture를 도입한 개인 프로젝트입니다.
+    
+<img width="300" alt="gif" src="https://user-images.githubusercontent.com/70251136/184620933-f08b7572-e193-4b44-ae5d-a2db4301963a.gif">
+    
+</div>
+
 ## Directory Tree
 
 ```
