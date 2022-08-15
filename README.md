@@ -97,6 +97,6 @@ MVVM에서의 ViewModel이 ReactorKit의 Reactor와 같은 역할을 하기 때�
 
 ## Coverage
 
-<img width="1103" alt="image" src="https://user-images.githubusercontent.com/70251136/180831251-28c0d70b-9433-4323-90a1-e2ca322f6146.png">
+<img width="1093" alt="image" src="https://user-images.githubusercontent.com/70251136/184620406-364164b8-e7f0-44b2-ba19-77afbeaf7e4f.png">
 
 
