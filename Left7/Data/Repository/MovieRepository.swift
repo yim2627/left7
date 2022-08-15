@@ -22,18 +22,22 @@ final class MovieRepository: NetworkRepository {
     //MARK: - Method
 
     func fetchMovies(page: Int) -> Observable<[Movie]> {
-        let endPoint = EndPoint(urlInformation: .pagination(page: page))
+        let url = EndPointStorage.movieList(page: page).generateURL()
         
-        return network.fetch(endPoint: endPoint)
-            .map { data -> [Movie] in
-                let jsonDecoder = JSONDecoder()
-                let decodedData = try? jsonDecoder.decode(MovieResponseModel.self, from: data)
-                
-                let movies = decodedData?.movies.map { movie in
-                    movie.toDomain()
+        switch url {
+        case .success(let url):
+            return network.fetch(with: url)
+                .map { data -> [Movie] in
+                    let jsonDecoder = JSONDecoder()
+                    guard let decodedData = try? jsonDecoder.decode(MovieResponseModel.self, from: data),
+                          let movies = decodedData.movies else {
+                        throw HttpNetworkError.decodeError
+                    }
+                    
+                    return movies.compactMap { $0.toDomain() }
                 }
-                
-                return movies ?? []
-            }
+        case .failure(let error):
+            return .error(error)
+        }
     }
 }

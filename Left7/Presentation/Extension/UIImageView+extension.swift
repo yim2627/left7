@@ -13,7 +13,6 @@ extension UIImageView {
     func setImage(with urlString: String) {
         let cache = ImageCache.default
         let url = "https://image.tmdb.org/t/p/w300" + urlString + "?api_key=13002531cbc59fc376da2b25a2fb918a"
-        print(url)
         cache.retrieveImage(forKey: url, options: nil) { result in
             switch result {
             case .success(let value):

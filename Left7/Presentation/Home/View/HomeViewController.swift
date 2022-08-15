@@ -70,6 +70,7 @@ final class HomeViewController: UIViewController, View {
             .disposed(by: disposeBag)
         
         homeCollectionView.rx.contentOffset
+            .skip(3)
             .withUnretained(self)
             .filter { (self, offset) in
                 guard self.homeCollectionView.frame.height > 0 else {
@@ -77,7 +78,7 @@ final class HomeViewController: UIViewController, View {
                 }
                 
                 // contentsize의 특정 경계점을 정해놓은 뒤 스크롤이 얼마나 됐는지의 수치인 offset을 기존 collectionView의 높이에 더해 경계점을 넘으면 이벤트를 보내 데이터를 추가적으로 받아오게 하였음
-                return self.homeCollectionView.frame.height + offset.y <= self.homeCollectionView.contentSize.height - Design.collectioViewPaginationSpot
+                return self.homeCollectionView.frame.height + offset.y >= self.homeCollectionView.contentSize.height - Design.collectioViewPaginationSpot
             }
             .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)

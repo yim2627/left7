@@ -8,11 +8,11 @@
 import Foundation
 
 struct MovieResponseModel: Decodable {
-    let dates: MoviePlayLimitDate
-    let page: Int
-    let movies: [MovieListItem]
-    let totalPages: Int
-    let totalResults: Int
+    let dates: MoviePlayLimitDate?
+    let page: Int?
+    let movies: [MovieListItem]?
+    let totalPages: Int?
+    let totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
         case dates, page
@@ -24,20 +24,20 @@ struct MovieResponseModel: Decodable {
 
 extension MovieResponseModel {
     struct MovieListItem: Decodable {
-        let adult: Bool
-        let id: Int
-        let overview: String
-        let popularity: Double
-        let title: String
-        let video: Bool
-        let backdropPath: String
-        let genreIds: [Int]
-        let originalLanguage: String
-        let originalTitle: String
-        let posterPath: String
-        let releaseDate: String
-        let voteAverage: Double
-        let voteCount: Int
+        let adult: Bool?
+        let id: Int?
+        let overview: String?
+        let popularity: Double?
+        let title: String?
+        let video: Bool?
+        let backdropPath: String?
+        let genreIds: [Int]?
+        let originalLanguage: String?
+        let originalTitle: String?
+        let posterPath: String?
+        let releaseDate: String?
+        let voteAverage: Double?
+        let voteCount: Int?
 
         enum CodingKeys: String, CodingKey {
             case adult, id, overview, popularity, title, video
@@ -53,11 +53,11 @@ extension MovieResponseModel {
         
         func toDomain() -> Movie {
             return .init(
-                id: id,
-                name: title,
-                posterPath: posterPath,
-                descriptionSubject: overview,
-                rate: voteAverage,
+                id: id ?? 0,
+                name: title ?? "",
+                posterPath: posterPath ?? "",
+                descriptionSubject: overview ?? "",
+                rate: voteAverage ?? 0,
                 isFavorite: false
             )
         }
