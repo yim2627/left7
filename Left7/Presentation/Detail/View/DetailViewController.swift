@@ -219,7 +219,7 @@ private extension DetailViewController {
         static let seperateLineViewLayerBorderWidth = 1.0
         static let seperateLineViewHeight = 1
         
-        static let movieImageViewHeight = 300
+        static let movieImageViewHeight = 450
         
         static let favoriteButtonSystemImageNameWhenTrue = "suit.heart.fill"
         static let favoriteButtonSystemImageNameWhenFalse = "suit.heart"

@@ -112,7 +112,7 @@ private extension HomeCollectionViewCell {
         static let movieNameLabelNumberOfLine = 2
         static let movieNameLabelTopMargin = 8
         
-        static let movieImageViewHeight = 120
+        static let movieImageViewHeight = 250
         
         static let movieRateStackViewTopMargin = 8
     }

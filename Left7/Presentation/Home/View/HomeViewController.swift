@@ -153,7 +153,7 @@ private extension HomeViewController {
             heightDimension: Design.collectionViewCompositionalLayoutItemHeight
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = Design.collectionViewCompositionalLayoutItemContensInset
+        item.edgeSpacing = Design.collectionViewCompositionalLayoutItemEdgeSpacing
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: Design.collectionViewCompositionalLayoutGroupWidth,
@@ -163,7 +163,7 @@ private extension HomeViewController {
             layoutSize: groupSize,
             subitems: [item]
         )
-        group.contentInsets = Design.collectionViewCompositionalLayoutGroupContensInset
+        group.interItemSpacing = Design.collectionViewCompositionalLayoutGroupInterItemSpacing
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -204,23 +204,18 @@ private extension HomeViewController {
 
 private extension HomeViewController {
     enum Design {
-        static let collectionViewCompositionalLayoutItemWidth = NSCollectionLayoutDimension.fractionalWidth(0.5)
+        static let collectionViewCompositionalLayoutItemWidth = NSCollectionLayoutDimension.fractionalWidth(0.45)
         static let collectionViewCompositionalLayoutItemHeight = NSCollectionLayoutDimension.fractionalHeight(1.0)
-        static let collectionViewCompositionalLayoutItemContensInset = NSDirectionalEdgeInsets(
-            top: 0,
-            leading: 16,
-            bottom: 0,
-            trailing: 0
+        static let collectionViewCompositionalLayoutItemEdgeSpacing = NSCollectionLayoutEdgeSpacing(
+            leading: NSCollectionLayoutSpacing.fixed(11),
+            top: nil,
+            trailing: nil,
+            bottom: nil
         )
         
         static let collectionViewCompositionalLayoutGroupWidth = NSCollectionLayoutDimension.fractionalWidth(1.0)
-        static let collectionViewCompositionalLayoutGroupHeight = NSCollectionLayoutDimension.absolute(250.0)
-        static let collectionViewCompositionalLayoutGroupContensInset = NSDirectionalEdgeInsets(
-            top: 16,
-            leading: 0,
-            bottom: 0,
-            trailing: 16
-        )
+        static let collectionViewCompositionalLayoutGroupHeight = NSCollectionLayoutDimension.estimated(350)
+        static let collectionViewCompositionalLayoutGroupInterItemSpacing = NSCollectionLayoutSpacing.fixed(5)
         
         static let collectioViewPaginationSpot = 100.0
     }
