@@ -11,16 +11,28 @@ import RxSwift
 
 import ReactorKit
 
+protocol FavoriteViewReactorDependencyType: AnyObject {
+	var useCase: FavoriteUseCaseType { get }
+}
+
+final class FavoriteViewReactorDependency: FavoriteViewReactorDependencyType {
+	let useCase: FavoriteUseCaseType
+	
+	init(useCase: FavoriteUseCaseType) {
+		self.useCase = useCase
+	}
+}
+
 final class FavoriteViewReactor: Reactor {
     //MARK: - Properties
 
-    private let useCase: FavoriteUseCaseType
+    private let dependency: FavoriteViewReactorDependencyType
     var initialState: State = State()
     
     //MARK: - Init
 
-    init(useCase: FavoriteUseCaseType = FavoriteUseCase()) {
-        self.useCase = useCase
+    init(dependency: FavoriteViewReactorDependencyType) {
+        self.dependency = dependency
     }
     
     //MARK: - Model
@@ -105,7 +117,7 @@ final class FavoriteViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .fetchFavoriteMovies:
-            return useCase.fetchFavoriteMovies()
+						return dependency.useCase.fetchFavoriteMovies()
                 .take(until: self.action.filter(Action.isUpdate))
                 .map { Mutation.setFavoriteMovies($0) }
             
@@ -123,7 +135,7 @@ final class FavoriteViewReactor: Reactor {
 
 private extension FavoriteViewReactor {
     func removeFavoriteMovie(previousState: State, movie: Movie) {
-        useCase.deleteFavoriteMovie(movie)
+			dependency.useCase.deleteFavoriteMovie(movie)
     }
 }
 

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39FF9D8328C8584D0007D394 /* AppDependencyInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */; };
+		39FF9D8628C8588E0007D394 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 39FF9D8528C8588E0007D394 /* Swinject */; };
+		39FF9D8828C95FB60007D394 /* UseCaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */; };
+		39FF9D8A28C95FCE0007D394 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8928C95FCE0007D394 /* RepositoryAssembly.swift */; };
+		39FF9D8C28C95FF10007D394 /* HomeViewReactorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8B28C95FF10007D394 /* HomeViewReactorAssembly.swift */; };
+		39FF9D8E28C95FFB0007D394 /* DetailViewReactorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8D28C95FFB0007D394 /* DetailViewReactorAssembly.swift */; };
+		39FF9D9028C960040007D394 /* FavoriteViewReactorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8F28C960040007D394 /* FavoriteViewReactorAssembly.swift */; };
 		A6075D792871666F00913FD4 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075D782871666F00913FD4 /* UIViewController+Rx.swift */; };
 		A6075D7C28718FD500913FD4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A6075D7B28718FD500913FD4 /* Kingfisher */; };
 		A6075D7E2871901F00913FD4 /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */; };
@@ -98,6 +105,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyInject.swift; sourceTree = "<group>"; };
+		39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseAssembly.swift; sourceTree = "<group>"; };
+		39FF9D8928C95FCE0007D394 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
+		39FF9D8B28C95FF10007D394 /* HomeViewReactorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactorAssembly.swift; sourceTree = "<group>"; };
+		39FF9D8D28C95FFB0007D394 /* DetailViewReactorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactorAssembly.swift; sourceTree = "<group>"; };
+		39FF9D8F28C960040007D394 /* FavoriteViewReactorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewReactorAssembly.swift; sourceTree = "<group>"; };
 		A6075D782871666F00913FD4 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		A6075D7D2871901F00913FD4 /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
 		A6075D812871997100913FD4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +202,7 @@
 			files = (
 				A6075D7C28718FD500913FD4 /* Kingfisher in Frameworks */,
 				A644393D286EE58B009E9F74 /* RxRelay in Frameworks */,
+				39FF9D8628C8588E0007D394 /* Swinject in Frameworks */,
 				A644393B286EE58B009E9F74 /* RxCocoa in Frameworks */,
 				A644393F286EE58B009E9F74 /* RxSwift in Frameworks */,
 				A6443942286EE59A009E9F74 /* ReactorKit in Frameworks */,
@@ -199,6 +213,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39FF9D9128C9603E0007D394 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */,
+				39FF9D9328C9606B0007D394 /* Assembly */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		39FF9D9228C9605B0007D394 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				39FF9D8B28C95FF10007D394 /* HomeViewReactorAssembly.swift */,
+				39FF9D8D28C95FFB0007D394 /* DetailViewReactorAssembly.swift */,
+				39FF9D8F28C960040007D394 /* FavoriteViewReactorAssembly.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		39FF9D9328C9606B0007D394 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				39FF9D9228C9605B0007D394 /* Reactor */,
+				39FF9D9528C960830007D394 /* UseCase */,
+				39FF9D9428C9607A0007D394 /* Repository */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		39FF9D9428C9607A0007D394 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				39FF9D8928C95FCE0007D394 /* RepositoryAssembly.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		39FF9D9528C960830007D394 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		A6075D7F2871910A00913FD4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				A6367A052874C09200F480A1 /* View */,
-				A6AF968D2871ECDB000E21B2 /* View */,
 				A6367A002874BCC000F480A1 /* Reactor */,
 			);
 			path = Cell;
@@ -222,6 +280,7 @@
 		A6075D832871997500913FD4 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				A6AF968D2871ECDB000E21B2 /* View */,
 				A6AF968E2871ECE3000E21B2 /* Reactor */,
 			);
 			path = Detail;
@@ -650,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				A63679FC28746C4C00F480A1 /* Application */,
+				39FF9D9128C9603E0007D394 /* Dependency */,
 				A63679FB28746C4500F480A1 /* Utility */,
 				A67F1C70287085A500DF06DB /* Presentation */,
 				A67F1C7B28708F5F00DF06DB /* Domain */,
@@ -664,8 +724,7 @@
 			children = (
 				A6075D812871997100913FD4 /* DetailViewController.swift */,
 			);
-			name = View;
-			path = ../../../Detail/View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		A6AF968E2871ECE3000E21B2 /* Reactor */ = {
@@ -778,6 +837,7 @@
 				A644393E286EE58B009E9F74 /* RxSwift */,
 				A6443941286EE59A009E9F74 /* ReactorKit */,
 				A6075D7B28718FD500913FD4 /* Kingfisher */,
+				39FF9D8528C8588E0007D394 /* Swinject */,
 			);
 			productName = Left7;
 			productReference = A6AD9763286EC80E009968B1 /* Left7.app */;
@@ -816,6 +876,7 @@
 				A6443939286EE58B009E9F74 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				A6443940286EE59A009E9F74 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				A6075D7A28718FD500913FD4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = A6AD9764286EC80E009968B1 /* Products */;
 			projectDirPath = "";
@@ -893,11 +954,13 @@
 				A6AF96962871F523000E21B2 /* Left7CoreDataModel.xcdatamodeld in Sources */,
 				A63679F928741D8A00F480A1 /* FavoriteUseCase.swift in Sources */,
 				A6E0891728AA124A00896A55 /* EndPointStorage.swift in Sources */,
+				39FF9D8E28C95FFB0007D394 /* DetailViewReactorAssembly.swift in Sources */,
 				A67F1C802870A18600DF06DB /* HomeViewReactor.swift in Sources */,
 				A63679F5287417E500F480A1 /* Left7NumberFormatter.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
 				A6AD9767286EC80E009968B1 /* AppDelegate.swift in Sources */,
 				A6AF969E287202A7000E21B2 /* CoreDataManager.swift in Sources */,
+				39FF9D8328C8584D0007D394 /* AppDependencyInject.swift in Sources */,
 				A644394F286EEBA0009E9F74 /* HttpNetwork.swift in Sources */,
 				A67F1C7D28709FEE00DF06DB /* HomeUseCase.swift in Sources */,
 				A63679FF2874A35300F480A1 /* HomeCollectionViewCellReactor.swift in Sources */,
@@ -909,6 +972,9 @@
 				A6443954287053B8009E9F74 /* HomeCollectionViewCell.swift in Sources */,
 				A6075D822871997200913FD4 /* DetailViewController.swift in Sources */,
 				A6443935286EE0F3009E9F74 /* Requsetable.swift in Sources */,
+				39FF9D8C28C95FF10007D394 /* HomeViewReactorAssembly.swift in Sources */,
+				39FF9D8A28C95FCE0007D394 /* RepositoryAssembly.swift in Sources */,
+				39FF9D8828C95FB60007D394 /* UseCaseAssembly.swift in Sources */,
 				A6075D7E2871901F00913FD4 /* UIImageView+extension.swift in Sources */,
 				A6443944286EE783009E9F74 /* HttpNetworkError.swift in Sources */,
 				A644395628705402009E9F74 /* UICollectionView+extension.swift in Sources */,
@@ -926,6 +992,7 @@
 				A644395828706790009E9F74 /* MovieImageView.swift in Sources */,
 				A6367A2828759A8D00F480A1 /* DetailUseCaseType.swift in Sources */,
 				A6AF96A42872A086000E21B2 /* CoreDataRepository.swift in Sources */,
+				39FF9D9028C960040007D394 /* FavoriteViewReactorAssembly.swift in Sources */,
 				A6AF96AE2872E1C1000E21B2 /* FavoriteCollectionViewCell.swift in Sources */,
 				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,
 			);
@@ -1192,6 +1259,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		A6075D7A28718FD500913FD4 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1227,6 +1302,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		39FF9D8528C8588E0007D394 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		A6075D7B28718FD500913FD4 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A6075D7A28718FD500913FD4 /* XCRemoteSwiftPackageReference "Kingfisher" */;
