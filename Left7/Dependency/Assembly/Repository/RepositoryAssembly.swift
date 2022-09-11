@@ -11,7 +11,7 @@ import Swinject
 final class RepositoryAssembly: Assembly {
 	func assemble(container: Container) {
 		container.register(NetworkRepository.self) { r in
-			return MovieRepository()
+			return MovieRepository(network: HttpNetwork())
 		}
 		
 		container.register(CoreDataRepository.self) { r in

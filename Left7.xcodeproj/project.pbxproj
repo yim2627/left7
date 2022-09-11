@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3937F9E228CB101D001ADEE6 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937F9E128CB101D001ADEE6 /* MovieAPI.swift */; };
+		3937F9E528CDB070001ADEE6 /* HttpNetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937F9E428CDB070001ADEE6 /* HttpNetworkType.swift */; };
+		393BD6BD28C99D4E008EE9DA /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 393BD6BC28C99D4E008EE9DA /* RxMoya */; };
 		39FF9D8328C8584D0007D394 /* AppDependencyInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */; };
 		39FF9D8628C8588E0007D394 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 39FF9D8528C8588E0007D394 /* Swinject */; };
 		39FF9D8828C95FB60007D394 /* UseCaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */; };
@@ -105,6 +108,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3937F9E128CB101D001ADEE6 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
+		3937F9E428CDB070001ADEE6 /* HttpNetworkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkType.swift; sourceTree = "<group>"; };
 		39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyInject.swift; sourceTree = "<group>"; };
 		39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseAssembly.swift; sourceTree = "<group>"; };
 		39FF9D8928C95FCE0007D394 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
@@ -206,6 +211,7 @@
 				A644393B286EE58B009E9F74 /* RxCocoa in Frameworks */,
 				A644393F286EE58B009E9F74 /* RxSwift in Frameworks */,
 				A6443942286EE59A009E9F74 /* ReactorKit in Frameworks */,
+				393BD6BD28C99D4E008EE9DA /* RxMoya in Frameworks */,
 				A6443938286EE56F009E9F74 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +219,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3937F9E328CDB030001ADEE6 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				A6443934286EE0F3009E9F74 /* Requsetable.swift */,
+				A6443945286EE8A6009E9F74 /* HttpMethod.swift */,
+				A6443947286EE8D5009E9F74 /* EndPoint.swift */,
+				A6E0891428AA06EA00896A55 /* DefaultRequester.swift */,
+				A6E0891628AA124A00896A55 /* EndPointStorage.swift */,
+			);
+			path = Legacy;
+			sourceTree = "<group>";
+		};
+		3937F9E628CDB0AB001ADEE6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3937F9E128CB101D001ADEE6 /* MovieAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		393BD6BB28C99D4E008EE9DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		39FF9D9128C9603E0007D394 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +509,7 @@
 			children = (
 				A6443933286EDCA2009E9F74 /* ResponseModel */,
 				A644394D286EEAF2009E9F74 /* Network */,
+				A644394E286EEBA0009E9F74 /* HttpNetwork.swift */,
 				A67F1C7A28708F2E00DF06DB /* Repository */,
 				A6AF96A128721082000E21B2 /* CoreData */,
 			);
@@ -490,20 +524,10 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		A644394B286EEADB009E9F74 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				A6443945286EE8A6009E9F74 /* HttpMethod.swift */,
-				A6443947286EE8D5009E9F74 /* EndPoint.swift */,
-				A6E0891628AA124A00896A55 /* EndPointStorage.swift */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
 		A644394C286EEAE3009E9F74 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				A6443934286EE0F3009E9F74 /* Requsetable.swift */,
+				3937F9E428CDB070001ADEE6 /* HttpNetworkType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -512,10 +536,8 @@
 			isa = PBXGroup;
 			children = (
 				A644394C286EEAE3009E9F74 /* Protocol */,
-				A644394B286EEADB009E9F74 /* Support */,
 				A644394A286EEAD6009E9F74 /* Error */,
-				A644394E286EEBA0009E9F74 /* HttpNetwork.swift */,
-				A6E0891428AA06EA00896A55 /* DefaultRequester.swift */,
+				3937F9E628CDB0AB001ADEE6 /* API */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -693,6 +715,7 @@
 				A6AD9765286EC80E009968B1 /* Left7 */,
 				A6367A0B2875535E00F480A1 /* Left7Tests */,
 				A6AD9764286EC80E009968B1 /* Products */,
+				393BD6BB28C99D4E008EE9DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -714,6 +737,7 @@
 				A67F1C70287085A500DF06DB /* Presentation */,
 				A67F1C7B28708F5F00DF06DB /* Domain */,
 				A6443949286EEAB4009E9F74 /* Data */,
+				3937F9E328CDB030001ADEE6 /* Legacy */,
 				A63679FD28746C5900F480A1 /* Resource */,
 			);
 			path = Left7;
@@ -838,6 +862,7 @@
 				A6443941286EE59A009E9F74 /* ReactorKit */,
 				A6075D7B28718FD500913FD4 /* Kingfisher */,
 				39FF9D8528C8588E0007D394 /* Swinject */,
+				393BD6BC28C99D4E008EE9DA /* RxMoya */,
 			);
 			productName = Left7;
 			productReference = A6AD9763286EC80E009968B1 /* Left7.app */;
@@ -877,6 +902,7 @@
 				A6443940286EE59A009E9F74 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				A6075D7A28718FD500913FD4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */,
+				39FF9D9628C995E80007D394 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = A6AD9764286EC80E009968B1 /* Products */;
 			projectDirPath = "";
@@ -955,6 +981,7 @@
 				A63679F928741D8A00F480A1 /* FavoriteUseCase.swift in Sources */,
 				A6E0891728AA124A00896A55 /* EndPointStorage.swift in Sources */,
 				39FF9D8E28C95FFB0007D394 /* DetailViewReactorAssembly.swift in Sources */,
+				3937F9E228CB101D001ADEE6 /* MovieAPI.swift in Sources */,
 				A67F1C802870A18600DF06DB /* HomeViewReactor.swift in Sources */,
 				A63679F5287417E500F480A1 /* Left7NumberFormatter.swift in Sources */,
 				A6443948286EE8D5009E9F74 /* EndPoint.swift in Sources */,
@@ -977,6 +1004,7 @@
 				39FF9D8828C95FB60007D394 /* UseCaseAssembly.swift in Sources */,
 				A6075D7E2871901F00913FD4 /* UIImageView+extension.swift in Sources */,
 				A6443944286EE783009E9F74 /* HttpNetworkError.swift in Sources */,
+				3937F9E528CDB070001ADEE6 /* HttpNetworkType.swift in Sources */,
 				A644395628705402009E9F74 /* UICollectionView+extension.swift in Sources */,
 				A644395128704139009E9F74 /* Movie.swift in Sources */,
 				A6075D792871666F00913FD4 /* UIViewController+Rx.swift in Sources */,
@@ -1264,7 +1292,15 @@
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.8.2;
+			};
+		};
+		39FF9D9628C995E80007D394 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
 			};
 		};
 		A6075D7A28718FD500913FD4 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1288,7 +1324,7 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				minimumVersion = 6.5.0;
 			};
 		};
 		A6443940286EE59A009E9F74 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
@@ -1296,12 +1332,17 @@
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 3.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		393BD6BC28C99D4E008EE9DA /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39FF9D9628C995E80007D394 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
 		39FF9D8528C8588E0007D394 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */;

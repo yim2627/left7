@@ -18,8 +18,8 @@ final class HomeUseCase: HomeUseCaseType {
     //MARK: - Init
 
     init(
-        movieRepository: NetworkRepository = MovieRepository(),
-        favoriteMovieRepository: CoreDataRepository = FavoriteMovieRepository()
+			movieRepository: NetworkRepository,
+        favoriteMovieRepository: CoreDataRepository
     ) {
         self.movieRepository = movieRepository
         self.favoriteMovieRepository = favoriteMovieRepository

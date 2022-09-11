@@ -9,35 +9,30 @@ import Foundation
 import RxSwift
 
 final class MovieRepository: NetworkRepository {
-    //MARK: - Properties
-
-    private let network: HttpNetworkType
-    
-    //MARK: - Init
-
-    init(network: HttpNetworkType = HttpNetwork()) {
-        self.network = network
-    }
-    
-    //MARK: - Method
-
-    func fetchMovies(page: Int) -> Observable<[Movie]> {
-        let url = EndPointStorage.movieList(page: page).generateURL()
-        
-        switch url {
-        case .success(let url):
-            return network.fetch(with: url)
-                .map { data -> [Movie] in
-                    let jsonDecoder = JSONDecoder()
-                    guard let decodedData = try? jsonDecoder.decode(MovieResponseModel.self, from: data),
-                          let movies = decodedData.movies else {
-                        throw HttpNetworkError.decodeError
-                    }
-                    
-                    return movies.compactMap { $0.toDomain() }
-                }
-        case .failure(let error):
-            return .error(error)
-        }
-    }
+	//MARK: - Properties
+	
+	private let network: HttpNetworkType
+	
+	//MARK: - Init
+	
+	init(network: HttpNetworkType) {
+		self.network = network
+	}
+	
+	//MARK: - Method
+	
+	func fetchMovies(page: Int) -> Observable<[Movie]> {
+		//        let url = EndPointStorage.movieList(page: page).generateURL()
+		return network.request(MovieAPI.nowPlayingList(page: page))
+			.asObservable()
+			.map { response -> [Movie] in
+				let jsonDecoder = JSONDecoder()
+				guard let decodedData = try? jsonDecoder.decode(MovieResponseModel.self, from: response.data),
+							let movies = decodedData.movies else {
+					throw HttpNetworkError.decodeError
+				}
+				
+				return movies.compactMap { $0.toDomain() }
+			}
+	}
 }
