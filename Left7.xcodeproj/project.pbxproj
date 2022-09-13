@@ -10,6 +10,9 @@
 		3937F9E228CB101D001ADEE6 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937F9E128CB101D001ADEE6 /* MovieAPI.swift */; };
 		3937F9E528CDB070001ADEE6 /* HttpNetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937F9E428CDB070001ADEE6 /* HttpNetworkType.swift */; };
 		393BD6BD28C99D4E008EE9DA /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 393BD6BC28C99D4E008EE9DA /* RxMoya */; };
+		39EBD42828D00238001E2913 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 39EBD42728D00238001E2913 /* RxDataSources */; };
+		39EBD42A28D02219001E2913 /* FavoriteDataSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBD42928D02219001E2913 /* FavoriteDataSection.swift */; };
+		39EBD42C28D02230001E2913 /* HomeDataSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBD42B28D02230001E2913 /* HomeDataSection.swift */; };
 		39FF9D8328C8584D0007D394 /* AppDependencyInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */; };
 		39FF9D8628C8588E0007D394 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 39FF9D8528C8588E0007D394 /* Swinject */; };
 		39FF9D8828C95FB60007D394 /* UseCaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */; };
@@ -110,6 +113,8 @@
 /* Begin PBXFileReference section */
 		3937F9E128CB101D001ADEE6 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
 		3937F9E428CDB070001ADEE6 /* HttpNetworkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkType.swift; sourceTree = "<group>"; };
+		39EBD42928D02219001E2913 /* FavoriteDataSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSection.swift; sourceTree = "<group>"; };
+		39EBD42B28D02230001E2913 /* HomeDataSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSection.swift; sourceTree = "<group>"; };
 		39FF9D8228C8584D0007D394 /* AppDependencyInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyInject.swift; sourceTree = "<group>"; };
 		39FF9D8728C95FB60007D394 /* UseCaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseAssembly.swift; sourceTree = "<group>"; };
 		39FF9D8928C95FCE0007D394 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
@@ -211,6 +216,7 @@
 				A644393B286EE58B009E9F74 /* RxCocoa in Frameworks */,
 				A644393F286EE58B009E9F74 /* RxSwift in Frameworks */,
 				A6443942286EE59A009E9F74 /* ReactorKit in Frameworks */,
+				39EBD42828D00238001E2913 /* RxDataSources in Frameworks */,
 				393BD6BD28C99D4E008EE9DA /* RxMoya in Frameworks */,
 				A6443938286EE56F009E9F74 /* SnapKit in Frameworks */,
 			);
@@ -244,6 +250,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39EBD42D28D02273001E2913 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				39EBD42B28D02230001E2913 /* HomeDataSection.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		39EBD42E28D022AD001E2913 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				39EBD42928D02219001E2913 /* FavoriteDataSection.swift */,
+			);
+			path = Section;
 			sourceTree = "<group>";
 		};
 		39FF9D9128C9603E0007D394 /* Dependency */ = {
@@ -304,6 +326,7 @@
 		A6075D802871911400913FD4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				39EBD42D28D02273001E2913 /* Section */,
 				A6367A052874C09200F480A1 /* View */,
 				A6367A002874BCC000F480A1 /* Reactor */,
 			);
@@ -814,6 +837,7 @@
 		A6AF96B02872E1CB000E21B2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				39EBD42E28D022AD001E2913 /* Section */,
 				A6367A042874C08D00F480A1 /* View */,
 				A6367A032874C08700F480A1 /* Reactor */,
 			);
@@ -863,6 +887,7 @@
 				A6075D7B28718FD500913FD4 /* Kingfisher */,
 				39FF9D8528C8588E0007D394 /* Swinject */,
 				393BD6BC28C99D4E008EE9DA /* RxMoya */,
+				39EBD42728D00238001E2913 /* RxDataSources */,
 			);
 			productName = Left7;
 			productReference = A6AD9763286EC80E009968B1 /* Left7.app */;
@@ -903,6 +928,7 @@
 				A6075D7A28718FD500913FD4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */,
 				39FF9D9628C995E80007D394 /* XCRemoteSwiftPackageReference "Moya" */,
+				39EBD42628D00238001E2913 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = A6AD9764286EC80E009968B1 /* Products */;
 			projectDirPath = "";
@@ -1012,6 +1038,7 @@
 				A6AF96992871F7E2000E21B2 /* MovieDataObjectMovieDataObject+CoreDataClass.swift in Sources */,
 				A67F1C7828708C4300DF06DB /* NetworkRepository.swift in Sources */,
 				A6AF968C2871D234000E21B2 /* DetailViewReactor.swift in Sources */,
+				39EBD42C28D02230001E2913 /* HomeDataSection.swift in Sources */,
 				A6AF96AB2872E115000E21B2 /* FavoriteViewController.swift in Sources */,
 				A6AD9769286EC80E009968B1 /* SceneDelegate.swift in Sources */,
 				A63679F32874172900F480A1 /* Left7DateFormatter.swift in Sources */,
@@ -1023,6 +1050,7 @@
 				39FF9D9028C960040007D394 /* FavoriteViewReactorAssembly.swift in Sources */,
 				A6AF96AE2872E1C1000E21B2 /* FavoriteCollectionViewCell.swift in Sources */,
 				A6AF96A028720726000E21B2 /* CoreDataError.swift in Sources */,
+				39EBD42A28D02219001E2913 /* FavoriteDataSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1287,6 +1315,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		39EBD42628D00238001E2913 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		39FF9D8428C8588E0007D394 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -1342,6 +1378,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39FF9D9628C995E80007D394 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		39EBD42728D00238001E2913 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39EBD42628D00238001E2913 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		39FF9D8528C8588E0007D394 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

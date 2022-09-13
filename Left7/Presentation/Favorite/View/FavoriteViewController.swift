@@ -9,22 +9,19 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 import ReactorKit
 
 import SnapKit
 
 final class FavoriteViewController: UIViewController, View {
-	private enum FavoriteSection: Hashable {
-		case favorite
-	}
-	
 	private enum SortAlertActionType {
 		case lastRegistered
 		case rate
 	}
 	
-	private typealias DiffableDataSource = UICollectionViewDiffableDataSource<FavoriteSection, Movie>
+	private typealias Section = RxCollectionViewSectionedReloadDataSource<FavoriteDataSection>
 	
 	//MARK: - Properties
 	
@@ -46,7 +43,7 @@ final class FavoriteViewController: UIViewController, View {
 		return button
 	}()
 	
-	private var dataSource: DiffableDataSource?
+	private var dataSource: Section!
 	
 	var disposeBag = DisposeBag()
 	
@@ -120,11 +117,9 @@ final class FavoriteViewController: UIViewController, View {
 	
 	private func bindState(_ reactor: FavoriteViewReactor) {
 		reactor.state
-			.map { $0.movies }
+			.map { [FavoriteDataSection(items: $0.movies)] }
 			.asDriver(onErrorJustReturn: [])
-			.drive(onNext: { [weak self] movies in
-				self?.applySnapShot(movies: movies)
-			})
+			.drive(favoriteMovieCollectionView.rx.items(dataSource: dataSource))
 			.disposed(by: disposeBag)
 	}
 	
@@ -173,17 +168,6 @@ final class FavoriteViewController: UIViewController, View {
 				alertController.dismiss(animated: true)
 			}
 		}
-	}
-	
-	//MARK: - CollectionView SnapShot
-	
-	private func applySnapShot(movies: [Movie]) {
-		var snapShot = NSDiffableDataSourceSnapshot<FavoriteSection, Movie>()
-		
-		snapShot.appendSections([.favorite])
-		snapShot.appendItems(movies, toSection: .favorite)
-		
-		dataSource?.apply(snapShot)
 	}
 }
 
@@ -249,27 +233,26 @@ private extension FavoriteViewController {
 	}
 	
 	func configureFavoriteMovieCollectionviewDataSource() {
-		dataSource = DiffableDataSource(collectionView: favoriteMovieCollectionView) { [unowned self]
-			(collectionView: UICollectionView, indexPath: IndexPath, movie: Movie) in
+		dataSource = Section(configureCell: { [weak self] dataSource, collectionView, indexPath, movie in
 			let cell = collectionView.dequeueReusableCell(
 				withClass: FavoriteCollectionViewCell.self,
 				indextPath: indexPath
 			)
-			
+
 			let initialState = FavoriteCollectionViewCellReactor.State(movie: movie)
 			let cellReactor = FavoriteCollectionViewCellReactor(state: initialState)
-			
+
 			cell.reactor = cellReactor
-			
-			reactor.flatMap { reactor in
+
+			self?.reactor.flatMap { reactor in
 				cell.favoriteButtonTap
 					.map { Reactor.Action.didTapFavoriteButton(movie) }
 					.bind(to: reactor.action)
 					.disposed(by: cell.disposeBag)
 			}
-			
+
 			return cell
-		}
+		})
 	}
 }
 
