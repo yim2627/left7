@@ -43,7 +43,28 @@ final class FavoriteViewController: UIViewController, View {
 		return button
 	}()
 	
-	private var dataSource: Section!
+	private lazy var dataSource: Section = {
+		return Section(configureCell: { [weak self] dataSource, collectionView, indexPath, movie in
+			let cell = collectionView.dequeueReusableCell(
+				withClass: FavoriteCollectionViewCell.self,
+				indextPath: indexPath
+			)
+			
+			let initialState = FavoriteCollectionViewCellReactor.State(movie: movie)
+			let cellReactor = FavoriteCollectionViewCellReactor(state: initialState)
+			
+			cell.reactor = cellReactor
+			
+			self?.reactor.flatMap { reactor in
+				cell.favoriteButtonTap
+					.map { Reactor.Action.didTapFavoriteButton(movie) }
+					.bind(to: reactor.action)
+					.disposed(by: cell.disposeBag)
+			}
+			
+			return cell
+		})
+	}()
 	
 	var disposeBag = DisposeBag()
 	
@@ -187,7 +208,6 @@ private extension FavoriteViewController {
 		
 		view.addSubview(favoriteMovieCollectionView)
 		configureFavoriteMovieCollectionViewLayout()
-		configureFavoriteMovieCollectionviewDataSource()
 	}
 	
 	func configureFavoriteMovieCollectionViewLayout() {
@@ -230,29 +250,6 @@ private extension FavoriteViewController {
 	
 	func configureFavoriteMovieCollectionViewCell() {
 		favoriteMovieCollectionView.registerCell(withClass: FavoriteCollectionViewCell.self)
-	}
-	
-	func configureFavoriteMovieCollectionviewDataSource() {
-		dataSource = Section(configureCell: { [weak self] dataSource, collectionView, indexPath, movie in
-			let cell = collectionView.dequeueReusableCell(
-				withClass: FavoriteCollectionViewCell.self,
-				indextPath: indexPath
-			)
-
-			let initialState = FavoriteCollectionViewCellReactor.State(movie: movie)
-			let cellReactor = FavoriteCollectionViewCellReactor(state: initialState)
-
-			cell.reactor = cellReactor
-
-			self?.reactor.flatMap { reactor in
-				cell.favoriteButtonTap
-					.map { Reactor.Action.didTapFavoriteButton(movie) }
-					.bind(to: reactor.action)
-					.disposed(by: cell.disposeBag)
-			}
-
-			return cell
-		})
 	}
 }
 

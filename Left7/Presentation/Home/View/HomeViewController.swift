@@ -16,8 +16,6 @@ import ReactorKit
 import SnapKit
 import Swinject
 
-
-
 final class HomeViewController: UIViewController, View {
 	private typealias Section = RxCollectionViewSectionedReloadDataSource<HomeDataSection>
 	
@@ -33,7 +31,29 @@ final class HomeViewController: UIViewController, View {
 		return collectionView
 	}()
 	
-	private var dataSource: Section! // 기존 스냅샷과 새로운 스냅샷을 비교하여 다른 상태값만 업데이트해주므로 reloadData보다 비교적으로 성능이 우수하다.
+	private lazy var dataSource: Section = {
+		Section(configureCell: { [weak self] dataSource, collectionView, indexPath, movie in
+			let cell = collectionView.dequeueReusableCell(
+				withClass: HomeCollectionViewCell.self,
+				indextPath: indexPath
+			)
+
+			let initialState = HomeCollectionViewCellReactor.State(movie: movie)
+			let cellReactor = HomeCollectionViewCellReactor(state: initialState)
+
+			cell.reactor = cellReactor
+
+			self?.reactor.flatMap { reactor in // 옵셔널을 벗기기 위해 flatMap
+				cell.favoriteButtonTap
+					.map { _ in Reactor.Action.didTapFavoriteButton(indexPath.row) }
+				// HomeViewController의 Reactor가 아닌 Cell의 Reactor로 액션을 보내서 Cell이 가진 Movie를 변경하고 favorite 상태에 따라 로컬 저장소를 업데이트 한뒤 Cell에서 reactor의 state를 구독하고 있으면 될듯
+					.bind(to: reactor.action)
+					.disposed(by: cell.disposeBag)
+			}
+
+			return cell
+		})
+	}()
 	
 	var disposeBag = DisposeBag()
 	
@@ -132,7 +152,6 @@ private extension HomeViewController {
 		
 		view.addSubview(homeCollectionView)
 		configureHomeCollectionViewLayout()
-		configureHomeCollectionviewDataSource()
 	}
 	
 	func configureHomeCollectionViewLayout() {
@@ -177,30 +196,6 @@ private extension HomeViewController {
 	
 	func configureHomeCollectionViewCell() {
 		homeCollectionView.registerCell(withClass: HomeCollectionViewCell.self)
-	}
-	
-	func configureHomeCollectionviewDataSource() {
-		dataSource = Section(configureCell: { [weak self] dataSource, collectionView, indexPath, movie in
-			let cell = collectionView.dequeueReusableCell(
-				withClass: HomeCollectionViewCell.self,
-				indextPath: indexPath
-			)
-
-			let initialState = HomeCollectionViewCellReactor.State(movie: movie)
-			let cellReactor = HomeCollectionViewCellReactor(state: initialState)
-
-			cell.reactor = cellReactor
-
-			self?.reactor.flatMap { reactor in // 옵셔널을 벗기기 위해 flatMap
-				cell.favoriteButtonTap
-					.map { _ in Reactor.Action.didTapFavoriteButton(indexPath.row) }
-				// HomeViewController의 Reactor가 아닌 Cell의 Reactor로 액션을 보내서 Cell이 가진 Movie를 변경하고 favorite 상태에 따라 로컬 저장소를 업데이트 한뒤 Cell에서 reactor의 state를 구독하고 있으면 될듯
-					.bind(to: reactor.action)
-					.disposed(by: cell.disposeBag)
-			}
-
-			return cell
-		})
 	}
 }
 
